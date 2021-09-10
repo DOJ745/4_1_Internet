@@ -20,9 +20,9 @@ namespace LB1
             get { return true; }
         }
 
+        int RESULT = 0;
         public void ProcessRequest(HttpContext context)
         {
-            int RESULT = 0;
             HttpRequest req = context.Request;
             HttpResponse res = context.Response;
             res.AddHeader("Content-Type", "application/json");
@@ -31,40 +31,45 @@ namespace LB1
             {
                 Stack<int> numbersStack = new Stack<int>();
                 context.Session.Add("sessionStack", numbersStack);
-                context.Session.Add("sessionResult", RESULT);
             }
                 
             if (req.HttpMethod.Equals("GET"))
             {
                 try
                 {
-                    //RESULT += (context.Session["sessionStack"] as Stack<int>).Peek();
-                    context.Session["sessionResult"] = (int)context.Session["sessionResult"] + (context.Session["sessionStack"] as Stack<int>).Peek();
+                    RESULT += (context.Session["sessionStack"] as Stack<int>).Peek();
                 }
                 catch (InvalidOperationException e)
                 {
-                    //RESULT += 0;
-                    context.Session["sessionResult"] = (int)context.Session["sessionResult"] + 0;
+                    RESULT += 0;
                 }
-                //res.Write($"{RESULT}");
-                res.Write($"{(int)context.Session["sessionResult"]}");
+                res.Write($"{RESULT}");
             }
 
             if (req.HttpMethod.Equals("POST") && req.Params["RESULT"] != null)
             {
-                //RESULT = Convert.ToInt32(req.Params["RESULT"]);
-                context.Session["sessionResult"] = Convert.ToInt32(req.Params["RESULT"]);
+                RESULT = Convert.ToInt32(req.Params["RESULT"]);
+                res.Write($"{RESULT}");
             }
 
-            if (req.HttpMethod.Equals("PUT") && req.Params["ADD"] != null)
-            {
+            if (
+                ( req.Form.Get("_method") != null &&
+                req.Form.Get("_method").Equals("PUT") &&
+                req.Params["ADD"] != null ) ||
+                req.HttpMethod.Equals("PUT"))
+            { 
                 int toPush = Convert.ToInt32(req.Params["ADD"]);
                 (context.Session["sessionStack"] as Stack<int>).Push(toPush);
+                res.Write($"{(context.Session["sessionStack"] as Stack<int>).Peek()}");
             }
 
-            if (req.HttpMethod.Equals("DELETE"))
+            if (
+                (req.Form.Get("_method") != null &&
+                req.Form.Get("_method").Equals("DELETE") ) || 
+                req.HttpMethod.Equals("DELETE"))
             {
                 (context.Session["sessionStack"] as Stack<int>).Pop();
+                res.Write($"{RESULT}");
             }
         }
 
