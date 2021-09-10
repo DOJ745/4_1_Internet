@@ -31,24 +31,29 @@ namespace LB1
             {
                 Stack<int> numbersStack = new Stack<int>();
                 context.Session.Add("sessionStack", numbersStack);
+                context.Session.Add("sessionResult", RESULT);
             }
                 
             if (req.HttpMethod.Equals("GET"))
             {
                 try
                 {
-                    RESULT += (context.Session["sessionStack"] as Stack<int>).Peek();
+                    //RESULT += (context.Session["sessionStack"] as Stack<int>).Peek();
+                    context.Session["sessionResult"] = (int)context.Session["sessionResult"] + (context.Session["sessionStack"] as Stack<int>).Peek();
                 }
                 catch (InvalidOperationException e)
                 {
-                    RESULT += 0;
+                    //RESULT += 0;
+                    context.Session["sessionResult"] = (int)context.Session["sessionResult"] + 0;
                 }
-                res.Write($"{RESULT}");
+                //res.Write($"{RESULT}");
+                res.Write($"{(int)context.Session["sessionResult"]}");
             }
 
             if (req.HttpMethod.Equals("POST") && req.Params["RESULT"] != null)
             {
-                RESULT = Convert.ToInt32(req.Params["RESULT"]);
+                //RESULT = Convert.ToInt32(req.Params["RESULT"]);
+                context.Session["sessionResult"] = Convert.ToInt32(req.Params["RESULT"]);
             }
 
             if (req.HttpMethod.Equals("PUT") && req.Params["ADD"] != null)
