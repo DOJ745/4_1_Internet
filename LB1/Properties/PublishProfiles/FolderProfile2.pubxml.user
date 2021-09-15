@@ -4,15 +4,15 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_PublishTargetUrl>D:\ForIIS\4_1\LB1\inetpub</_PublishTargetUrl>
-    <History>True|2021-09-15T06:18:17.0983855Z;True|2021-09-15T09:12:08.1875517+03:00;True|2021-09-15T09:07:36.5311941+03:00;True|2021-09-15T08:55:11.9721077+03:00;True|2021-09-14T08:54:24.6551399+03:00;False|2021-09-14T08:53:31.0282107+03:00;</History>
+    <_PublishTargetUrl>D:\TESTSITE\test1</_PublishTargetUrl>
+    <History>True|2021-09-15T06:29:46.5206561Z;True|2021-09-15T08:51:46.7254352+03:00;True|2021-09-15T08:40:40.6964347+03:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/LB1.dll">
-      <publishTime>09/15/2021 09:07:35</publishTime>
+      <publishTime>09/15/2021 09:29:46</publishTime>
     </File>
     <File Include="bin/LB1.pdb">
-      <publishTime>09/15/2021 09:07:35</publishTime>
+      <publishTime>09/15/2021 09:29:46</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/05/2018 16:10:50</publishTime>
@@ -165,7 +165,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/08/2018 12:18:16</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/15/2021 09:07:36</publishTime>
+      <publishTime>09/15/2021 09:29:46</publishTime>
     </File>
     <File Include="WebAppLB1.html">
       <publishTime>09/15/2021 09:18:09</publishTime>
