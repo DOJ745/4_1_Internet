@@ -64,7 +64,15 @@ namespace LB2
                 req.Form.Get("_method").Equals("DELETE")) ||
                 req.HttpMethod.Equals("DELETE"))
             {
-                numbersStack.Pop();
+                try
+                {
+                    numbersStack.Pop();
+                }
+                catch (InvalidOperationException e)
+                {
+                    res.Write("EMPTY STACK");
+                }
+                
                 res.Write($"{RESULT}");
             }
         }

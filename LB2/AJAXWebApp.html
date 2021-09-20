@@ -20,9 +20,12 @@
     <br><br>
 
     <script>
+
+        //172.16.193.234:10720/02/.FAA
+
         $("#getResult").on("submit", function () {
             $.ajax({
-                url: 'http://localhost:56953/FAA.XXX2/',
+                url: 'http://172.16.193.234:10720/02/.FAA',
                 method: 'get',
                 dataType: 'json',
                 data: $(this).serialize(),
@@ -48,7 +51,7 @@
     <script>
         $("#setResult").on("submit", function () {
             $.ajax({
-                url: 'http://localhost:56953/FAA.XXX2/',
+                url: 'http://172.16.193.234:10720/02/.FAA',
                 method: 'post',
                 dataType: 'json',
                 data: $(this).serialize(),
@@ -76,7 +79,7 @@
     <script>
         $("#addStack").on("submit", function () {
             $.ajax({
-                url: 'http://localhost:56953/FAA.XXX2/',
+                url: 'http://172.16.193.234:10720/02/.FAA',
                 method: 'put',
                 dataType: 'json',
                 data: $(this).serialize(),
@@ -102,7 +105,7 @@
     <script>
         $("#deleteStack").on("submit", function () {
             $.ajax({
-                url: 'http://localhost:56953/FAA.XXX2/',
+                url: 'http://172.16.193.234:10720/02/.FAA',
                 method: 'delete',
                 dataType: 'json',
                 data: $(this).serialize(),
