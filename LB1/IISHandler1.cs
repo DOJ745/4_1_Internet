@@ -17,7 +17,7 @@ namespace LB1
         {
             // Верните значение false в том случае, если ваш управляемый обработчик не может быть повторно использован для другого запроса.
             // Обычно значение false соответствует случаю, когда некоторые данные о состоянии сохранены по запросу.
-            get { return true; }
+            get { return false; } //true
         }
 
         int RESULT = 0;
@@ -37,11 +37,12 @@ namespace LB1
             {
                 try
                 {
-                    RESULT += (context.Session["sessionStack"] as Stack<int>).Peek();
+                   (context.Session["sessionStack"] as Stack<int>).Peek();
+                   res.Write($"{RESULT + (context.Session["sessionStack"] as Stack<int>).Peek()}");
                 }
                 catch (InvalidOperationException e)
                 {
-                    RESULT += 0;
+                    res.Write($"{RESULT}");
                 }
                 res.Write($"{RESULT}");
             }
