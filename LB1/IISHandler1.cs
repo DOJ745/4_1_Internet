@@ -66,10 +66,18 @@ namespace LB1
             if (
                 (req.Form.Get("_method") != null &&
                 req.Form.Get("_method").Equals("DELETE") ) || 
-                req.HttpMethod.Equals("DELETE"))
+                req.HttpMethod.Equals("DELETE") )
             {
-                (context.Session["sessionStack"] as Stack<int>).Pop();
-                res.Write($"{RESULT}");
+                try
+                {
+                    (context.Session["sessionStack"] as Stack<int>).Pop();
+                }
+                catch (InvalidOperationException e)
+                {
+                    //RESULT += 0;
+                    res.Write($"{RESULT}");
+                }
+                //res.Write($"{RESULT}");
             }
         }
 

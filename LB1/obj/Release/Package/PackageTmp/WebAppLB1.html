@@ -8,7 +8,14 @@
     <h1>LB1 - Web App</h1>
 
     <!-- 172.16.193.234:10720 -->
-    <form action="http://localhost:15000/.FAA" method="post">
+    <form action="http://172.16.193.234:10720/01/.FAA" method="get">
+        <label>GET RESULT</label>
+        <input type="submit" value="GET">
+    </form>
+
+    <br><br>
+
+    <form action="http://172.16.193.234:10720/01/.FAA" method="post">
         <label for="POST-name">Set RESULT:</label>
         <br><br>
         <input id="POST-name" type="number" name="RESULT">
@@ -18,7 +25,7 @@
 
     <br><br>
 
-    <form action="http://localhost:15000/.FAA" method="post">
+    <form action="http://172.16.193.234:10720/01/.FAA" method="post">
         <label for="PUT-name">Add to Stack:</label>
         <br><br>
         <input type="hidden" name="_method" value="PUT">
@@ -29,7 +36,7 @@
 
     <br><br>
 
-    <form action="http://localhost:15000/.FAA" method="post">
+    <form action="http://172.16.193.234:10720/01/.FAA" method="post">
         <label>Delete from Stack</label>
         <br><br>
         <input type="hidden" name="_method" value="DELETE">
