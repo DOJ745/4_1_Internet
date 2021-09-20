@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Web;
 using System.Collections.Generic;
+using System.Web.SessionState;
 
 namespace LB1
 {
-    public class IISHandler1 : IHttpHandler, System.Web.SessionState.IRequiresSessionState
+    public class IISHandler1 : IHttpHandler, IRequiresSessionState
     {
         /// <summary>
         /// Вам потребуется настроить этот обработчик в файле Web.config вашего 
@@ -17,14 +18,17 @@ namespace LB1
         {
             // Верните значение false в том случае, если ваш управляемый обработчик не может быть повторно использован для другого запроса.
             // Обычно значение false соответствует случаю, когда некоторые данные о состоянии сохранены по запросу.
-            get { return false; } //true
+            get { return true; } 
         }
 
-        int RESULT = 0;
+        static int RESULT = 0;
         public void ProcessRequest(HttpContext context)
         {
             HttpRequest req = context.Request;
             HttpResponse res = context.Response;
+
+            //{context.Session.IsNewSession}
+
             res.AddHeader("Content-Type", "application/json");
 
             if (context.Session["sessionStack"] == null)
@@ -37,20 +41,18 @@ namespace LB1
             {
                 try
                 {
-                   (context.Session["sessionStack"] as Stack<int>).Peek();
-                   res.Write($"{RESULT + (context.Session["sessionStack"] as Stack<int>).Peek()}");
+                   res.Write($"{RESULT + (context.Session["sessionStack"] as Stack<int>).Peek()} --- {context.Session.IsNewSession}");
                 }
                 catch (InvalidOperationException e)
                 {
-                    res.Write($"{RESULT}");
+                    res.Write($"{RESULT} --- {context.Session.IsNewSession}");
                 }
-                res.Write($"{RESULT}");
             }
 
             if (req.HttpMethod.Equals("POST") && req.Params["RESULT"] != null)
             {
                 RESULT = Convert.ToInt32(req.Params["RESULT"]);
-                res.Write($"{RESULT}");
+                res.Write($"{RESULT} --- {context.Session.IsNewSession}");
             }
 
             if (
@@ -61,24 +63,26 @@ namespace LB1
             { 
                 int toPush = Convert.ToInt32(req.Params["ADD"]);
                 (context.Session["sessionStack"] as Stack<int>).Push(toPush);
-                res.Write($"{(context.Session["sessionStack"] as Stack<int>).Peek()}");
+
+                int peeked = (context.Session["sessionStack"] as Stack<int>).Peek();
+                res.Write($"{peeked} --- {context.Session.IsNewSession}");
             }
 
             if (
                 (req.Form.Get("_method") != null &&
                 req.Form.Get("_method").Equals("DELETE") ) || 
-                req.HttpMethod.Equals("DELETE") )
+                req.HttpMethod.Equals("DELETE") 
+                )
             {
                 try
                 {
-                    (context.Session["sessionStack"] as Stack<int>).Pop();
+                    int popped = (context.Session["sessionStack"] as Stack<int>).Pop();
+                    res.Write($"{RESULT + (context.Session["sessionStack"] as Stack<int>).Peek()} --- {context.Session.IsNewSession}");
                 }
                 catch (InvalidOperationException e)
                 {
-                    //RESULT += 0;
-                    res.Write($"{RESULT}");
+                    res.Write($"{RESULT} --- {context.Session.IsNewSession}");
                 }
-                //res.Write($"{RESULT}");
             }
         }
 
