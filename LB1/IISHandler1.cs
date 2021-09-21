@@ -22,37 +22,42 @@ namespace LB1
         }
 
         static int RESULT = 0;
+        Stack<int> sessionStack;
         public void ProcessRequest(HttpContext context)
         {
             HttpRequest req = context.Request;
             HttpResponse res = context.Response;
 
-            //{context.Session.IsNewSession}
-
             res.AddHeader("Content-Type", "application/json");
 
             if (context.Session["sessionStack"] == null)
             {
-                Stack<int> numbersStack = new Stack<int>();
-                context.Session.Add("sessionStack", numbersStack);
+                //Stack<int> numbersStack = new Stack<int>();
+                //context.Session.Add("sessionStack", numbersStack);
+
+                sessionStack = new Stack<int>();
+                context.Session.Add("sessionStack", sessionStack);
+
+                //sessionStack = context.Session["sessionStack"] as Stack<int>;
             }
                 
             if (req.HttpMethod.Equals("GET"))
             {
                 try
                 {
-                   res.Write($"{RESULT + (context.Session["sessionStack"] as Stack<int>).Peek()} --- {context.Session.IsNewSession}");
+                    res.Write($"{RESULT + (context.Session["sessionStack"] as Stack<int>).Peek()}");
+                    //res.Write($"{RESULT + sessionStack.Peek()}");
                 }
                 catch (InvalidOperationException e)
                 {
-                    res.Write($"{RESULT} --- {context.Session.IsNewSession}");
+                    res.Write($"{RESULT}");
                 }
             }
 
             if (req.HttpMethod.Equals("POST") && req.Params["RESULT"] != null)
             {
                 RESULT = Convert.ToInt32(req.Params["RESULT"]);
-                res.Write($"{RESULT} --- {context.Session.IsNewSession}");
+                res.Write($"{RESULT}");
             }
 
             if (
@@ -60,12 +65,14 @@ namespace LB1
                 req.Form.Get("_method").Equals("PUT") &&
                 req.Params["ADD"] != null ) ||
                 req.HttpMethod.Equals("PUT"))
-            { 
+            {
+                context.Session.Add("sessionStack", sessionStack);
                 int toPush = Convert.ToInt32(req.Params["ADD"]);
                 (context.Session["sessionStack"] as Stack<int>).Push(toPush);
+                //sessionStack.Push(toPush);
 
-                int peeked = (context.Session["sessionStack"] as Stack<int>).Peek();
-                res.Write($"{peeked} --- {context.Session.IsNewSession}");
+                //res.Write($"{sessionStack.Peek()}");
+                res.Write($"{(context.Session["sessionStack"] as Stack<int>).Peek()}");
             }
 
             if (
@@ -76,12 +83,13 @@ namespace LB1
             {
                 try
                 {
-                    int popped = (context.Session["sessionStack"] as Stack<int>).Pop();
-                    res.Write($"{RESULT + (context.Session["sessionStack"] as Stack<int>).Peek()} --- {context.Session.IsNewSession}");
+                    context.Session.Add("sessionStack", sessionStack);
+                    res.Write($"{RESULT + (context.Session["sessionStack"] as Stack<int>).Peek()}");
+                    //res.Write($"{RESULT + sessionStack.Peek()}");
                 }
                 catch (InvalidOperationException e)
                 {
-                    res.Write($"{RESULT} --- {context.Session.IsNewSession}");
+                    res.Write($"{RESULT}");
                 }
             }
         }
