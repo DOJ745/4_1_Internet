@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>LB1</title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h2>LB1 - WebApp</h2>
+    <br/>
+
+    <input id="txt-get" type="text" disabled>
+    <br />
+
+    <button id="btn-get">GET</button>
+    <hr />
+    <input id="txt-post" type="text">
+    <br />
+
+    <button id="btn-post">POST</button>
+    <hr />
+    <input id="txt-put" type="text">
+    <br />
+
+    <button id="btn-put">PUT</button>
+    <hr />
+
+    <button id="btn-delete">DELETE</button>
+    <hr />
+
+    <input id="txt-stat" type="text" disabled>
+
+    <script type="application/javascript">
+        $.ajaxSetup({
+            xhrFields: {
+                withCredentials: true
+            }
+        });
+
+
+        $("#btn-get").click(function(){
+            $.ajax({
+                url: 'http://172.16.193.234:10720/01/.FAA',
+                method: 'get',
+                success: function(data, textStatus, request){
+                    $("#txt-get").val(JSON.parse(data).result)
+                }
+            });
+        });
+        $("#btn-post").click(function(){
+            $.ajax({
+                url: 'http://172.16.193.234:10720/01/.FAA',
+                method: 'post',
+                data: jQuery.param({ Result: $("#txt-post").val() }),
+                success: function(data){
+                    $("#txt-stat").val("POST - success")
+                },
+            });
+        });
+
+        $("#btn-put").click(function(){
+            $.ajax({
+                url: 'http://172.16.193.234:10720/01/.FAA',
+                method: 'put',
+                data: jQuery.param({ Add: $("#txt-put").val() }),
+                success: function(data){
+                    $("#txt-stat").val("PUT - success")
+                },
+            });
+        });
+
+        $("#btn-delete").click(function(){
+            $.ajax({
+                url: 'http://172.16.193.234:10720/01/.FAA',
+                method: 'delete',
+                success: function(data){
+                    $("#txt-stat").val("DELETE - success")
+                },
+            });
+        });
+    </script>
+</body>
+</html>

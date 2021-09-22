@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
+    <Content Include="WebApp2LB1.html" />
     <Content Include="WebAppLB1.html" />
   </ItemGroup>
   <ItemGroup>
