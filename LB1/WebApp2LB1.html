@@ -3,31 +3,36 @@
 <head>
     <title>LB1</title>
     <meta charset="utf-8" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <h2>LB1 - WebApp</h2>
-    <br/>
-
-    <input id="txt-get" type="text" disabled>
     <br />
 
+    <label>RESULT here:</label>
+    <input id="txt-get" type="text" disabled />
+    <br />
     <button id="btn-get">GET</button>
-    <hr />
-    <input id="txt-post" type="text">
-    <br />
+    <br /><br />
 
+    <label>SET RESULT:</label>
+    <input id="txt-post" type="text" />
+    <br />
     <button id="btn-post">POST</button>
-    <hr />
-    <input id="txt-put" type="text">
+    <br /><br />
+
+    <label>ADD TO STACK:</label>
+    <input id="txt-put" type="text" />
     <br />
-
     <button id="btn-put">PUT</button>
-    <hr />
+    <br /><br />
 
+    <label>DELETE FROM STACK:</label>
     <button id="btn-delete">DELETE</button>
     <hr />
 
+
+    <label>INFO HERE:</label>
     <input id="txt-stat" type="text" disabled>
 
     <script type="application/javascript">
@@ -44,14 +49,18 @@
                 method: 'get',
                 success: function(data, textStatus, request){
                     $("#txt-get").val(JSON.parse(data).result)
+                },
+                error: function(error){
+                    alert(error);
                 }
             });
         });
+
         $("#btn-post").click(function(){
             $.ajax({
                 url: 'http://172.16.193.234:10720/01/.FAA',
                 method: 'post',
-                data: jQuery.param({ Result: $("#txt-post").val() }),
+                data: jQuery.param({ RESULT: $("#txt-post").val() }),
                 success: function(data){
                     $("#txt-stat").val("POST - success")
                 },
@@ -62,7 +71,7 @@
             $.ajax({
                 url: 'http://172.16.193.234:10720/01/.FAA',
                 method: 'put',
-                data: jQuery.param({ Add: $("#txt-put").val() }),
+                data: jQuery.param({ ADD: $("#txt-put").val() }),
                 success: function(data){
                     $("#txt-stat").val("PUT - success")
                 },
@@ -79,5 +88,6 @@
             });
         });
     </script>
+
 </body>
 </html>

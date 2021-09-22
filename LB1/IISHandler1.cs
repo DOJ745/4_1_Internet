@@ -21,7 +21,7 @@ namespace LB1
             get { return true; } 
         }
 
-        private static int RESULT = 0;
+        static int RESULT = 0;
         public void ProcessRequest(HttpContext context)
         {
             //HttpRequest req = context.Request;
@@ -37,7 +37,6 @@ namespace LB1
                 context.Session["sessionStack"] = new Stack<int>();
             }
 
-            context.Response.AddHeader("Content-Type", "application/json");
             switch (context.Request.HttpMethod)
             {
                 case "GET":
@@ -132,6 +131,7 @@ namespace LB1
         {
             try
             {
+                string temp = context.Request.Params["RESULT"];
                 int result = int.Parse(context.Request.Params["RESULT"]);
                 RESULT = result;
             }
