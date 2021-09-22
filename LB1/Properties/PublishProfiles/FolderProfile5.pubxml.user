@@ -5,14 +5,14 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>I:\ForIIS\LB1</_PublishTargetUrl>
-    <History>True|2021-09-20T11:15:22.9852605Z;True|2021-09-20T14:11:03.8889016+03:00;True|2021-09-20T14:05:30.4542712+03:00;True|2021-09-20T13:57:56.0929144+03:00;True|2021-09-20T13:55:44.8417875+03:00;True|2021-09-20T13:45:32.9081620+03:00;True|2021-09-20T13:43:24.7358065+03:00;True|2021-09-20T13:41:12.3427311+03:00;True|2021-09-20T13:34:17.0466118+03:00;True|2021-09-20T13:30:41.0320830+03:00;True|2021-09-20T13:21:38.5622674+03:00;True|2021-09-20T13:16:41.7681874+03:00;</History>
+    <History>True|2021-09-22T15:26:24.9368423Z;True|2021-09-22T18:23:19.1385948+03:00;True|2021-09-22T18:18:29.2646063+03:00;True|2021-09-22T18:12:47.6693931+03:00;True|2021-09-22T18:00:20.4681195+03:00;True|2021-09-22T17:55:12.1915754+03:00;True|2021-09-20T14:15:22.9852605+03:00;True|2021-09-20T14:11:03.8889016+03:00;True|2021-09-20T14:05:30.4542712+03:00;True|2021-09-20T13:57:56.0929144+03:00;True|2021-09-20T13:55:44.8417875+03:00;True|2021-09-20T13:45:32.9081620+03:00;True|2021-09-20T13:43:24.7358065+03:00;True|2021-09-20T13:41:12.3427311+03:00;True|2021-09-20T13:34:17.0466118+03:00;True|2021-09-20T13:30:41.0320830+03:00;True|2021-09-20T13:21:38.5622674+03:00;True|2021-09-20T13:16:41.7681874+03:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/LB1.dll">
-      <publishTime>09/20/2021 14:15:22</publishTime>
+      <publishTime>09/22/2021 18:12:47</publishTime>
     </File>
     <File Include="bin/LB1.pdb">
-      <publishTime>09/20/2021 14:15:22</publishTime>
+      <publishTime>09/22/2021 18:12:47</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/15/2021 15:57:27</publishTime>
@@ -165,7 +165,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/15/2021 15:57:28</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/20/2021 13:45:32</publishTime>
+      <publishTime>09/22/2021 18:23:18</publishTime>
+    </File>
+    <File Include="WebApp2LB1.html">
+      <publishTime>09/22/2021 18:13:52</publishTime>
     </File>
     <File Include="WebAppLB1.html">
       <publishTime>09/20/2021 14:00:20</publishTime>

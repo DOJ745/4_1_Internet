@@ -10,19 +10,19 @@
     <br />
 
     <label>RESULT here:</label>
-    <input id="txt-get" type="text" disabled />
+    <input id="txt-get" type="text" disabled>
     <br />
     <button id="btn-get">GET</button>
     <br /><br />
 
     <label>SET RESULT:</label>
-    <input id="txt-post" type="text" />
+    <input id="txt-post" type="text">
     <br />
     <button id="btn-post">POST</button>
     <br /><br />
 
     <label>ADD TO STACK:</label>
-    <input id="txt-put" type="text" />
+    <input id="txt-put" type="text">
     <br />
     <button id="btn-put">PUT</button>
     <br /><br />
@@ -33,14 +33,16 @@
 
 
     <label>INFO HERE:</label>
-    <input id="txt-stat" type="text" disabled>
+    <input id="txt-stat" type="text" disabled />
 
     <script type="application/javascript">
+
         $.ajaxSetup({
             xhrFields: {
                 withCredentials: true
             }
         });
+
 
 
         $("#btn-get").click(function(){
@@ -50,9 +52,6 @@
                 success: function(data, textStatus, request){
                     $("#txt-get").val(JSON.parse(data).result)
                 },
-                error: function(error){
-                    alert(error);
-                }
             });
         });
 

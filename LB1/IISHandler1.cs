@@ -24,11 +24,6 @@ namespace LB1
         static int RESULT = 0;
         public void ProcessRequest(HttpContext context)
         {
-            //HttpRequest req = context.Request;
-            //HttpResponse res = context.Response;
-
-            //res.AddHeader("Content-Type", "application/json");
-
             if (context.Session["sessionStack"] == null)
             {
                 //Stack<int> numbersStack = new Stack<int>();
