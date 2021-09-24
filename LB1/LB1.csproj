@@ -69,7 +69,6 @@
   <ItemGroup>
     <Content Include="Web.config" />
     <Content Include="index.html" />
-    <Content Include="WebAppLB1.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IISHandler1.cs" />
