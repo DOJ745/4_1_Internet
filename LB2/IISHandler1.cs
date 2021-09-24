@@ -20,61 +20,77 @@ namespace LB2
             get { return true; }
         }
 
-        int RESULT = 0;
-        Stack<int> numbersStack = new Stack<int>();
-
+        static int RESULT = 0;
+        static Stack<int> STACK = new Stack<int>();
         public void ProcessRequest(HttpContext context)
         {
-            HttpRequest req = context.Request;
-            HttpResponse res = context.Response;
-            res.AddHeader("Content-Type", "application/json");
-
-            if (req.HttpMethod.Equals("GET"))
+            /*if (context.Session["sessionStack"] == null)
             {
-                try
-                {
-                    RESULT += numbersStack.Peek();
-                }
-                catch (InvalidOperationException e)
-                {
-                    RESULT += 0;
-                }
-                res.Write($"{RESULT}");
-            }
+                context.Session["sessionStack"] = new Stack<int>();
+            }*/
 
-            if (req.HttpMethod.Equals("POST") && req.Params["RESULT"] != null)
+            switch (context.Request.HttpMethod)
             {
-                RESULT = Convert.ToInt32(req.Params["RESULT"]);
-                res.Write($"{RESULT}");
+                case "GET":
+                    Get(context);
+                    break;
+                case "POST":
+                    Post(context);
+                    break;
+                case "PUT":
+                    Put(context);
+                    break;
+                case "DELETE":
+                    Delete(context);
+                    break;
+                default:
+                    context.Response.Write("Error");
+                    break;
             }
+        }
 
-            if (
-                (req.Form.Get("_method") != null &&
-                req.Form.Get("_method").Equals("PUT") &&
-                req.Params["ADD"] != null) ||
-                req.HttpMethod.Equals("PUT"))
+        private void Get(HttpContext context)
+        {
+            int result;
+            try
             {
-                int toPush = Convert.ToInt32(req.Params["ADD"]);
-                numbersStack.Push(toPush);
-                res.Write($"{numbersStack.Peek()}");
+                result = RESULT + STACK.Peek();
             }
+            catch (Exception)
+            {
+                result = RESULT;
+            }
+            context.Response.Write("{\"result\": \"" + result + "\"}");
+        }
 
-            if (
-                (req.Form.Get("_method") != null &&
-                req.Form.Get("_method").Equals("DELETE")) ||
-                req.HttpMethod.Equals("DELETE"))
+        private void Post(HttpContext context)
+        {
+            try
             {
-                try
-                {
-                    numbersStack.Pop();
-                }
-                catch (InvalidOperationException e)
-                {
-                    res.Write("EMPTY STACK");
-                }
-                
-                res.Write($"{RESULT}");
+                string temp = context.Request.Params["RESULT"];
+                int result = int.Parse(context.Request.Params["RESULT"]);
+                RESULT = result;
             }
+            catch (Exception) { }
+        }
+
+        private void Put(HttpContext context)
+        {
+            try
+            {
+                int newValue = int.Parse(context.Request.Params["ADD"]);
+                STACK.Push(newValue);
+            }
+            catch (Exception) { }
+        }
+
+        private void Delete(HttpContext context)
+        {
+            try
+            {
+                int popped = STACK.Pop();
+            }
+            catch (Exception) { }
         }
 
         #endregion
