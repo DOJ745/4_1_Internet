@@ -47,7 +47,7 @@
 
         $("#btn-get").click(function(){
             $.ajax({
-                url: serverUrl,
+                url: severUrl,
                 method: 'get',
                 success: function(data, textStatus, request){
                     $("#txt-get").val(JSON.parse(data).result)

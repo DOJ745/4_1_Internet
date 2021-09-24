@@ -5,14 +5,14 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>D:\ForIIS\LB2_CLIENT</_PublishTargetUrl>
-    <History>True|2021-09-24T06:01:35.8101503Z;</History>
+    <History>True|2021-09-24T06:06:43.8977795Z;True|2021-09-24T09:01:35.8101503+03:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/LB2_CLIENT.dll">
-      <publishTime>09/24/2021 09:01:34</publishTime>
+      <publishTime>09/24/2021 09:06:43</publishTime>
     </File>
     <File Include="bin/LB2_CLIENT.pdb">
-      <publishTime>09/24/2021 09:01:34</publishTime>
+      <publishTime>09/24/2021 09:06:43</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/05/2018 16:10:50</publishTime>
@@ -165,7 +165,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/08/2018 12:18:16</publishTime>
     </File>
     <File Include="index.html">
-      <publishTime>09/24/2021 08:52:34</publishTime>
+      <publishTime>09/24/2021 09:06:38</publishTime>
     </File>
     <File Include="Web.config">
       <publishTime>09/24/2021 09:01:35</publishTime>
