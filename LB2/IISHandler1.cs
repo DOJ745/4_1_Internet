@@ -24,11 +24,6 @@ namespace LB2
         static Stack<int> STACK = new Stack<int>();
         public void ProcessRequest(HttpContext context)
         {
-            /*if (context.Session["sessionStack"] == null)
-            {
-                context.Session["sessionStack"] = new Stack<int>();
-            }*/
-
             switch (context.Request.HttpMethod)
             {
                 case "GET":
