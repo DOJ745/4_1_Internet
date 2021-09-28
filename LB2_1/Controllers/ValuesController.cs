@@ -12,7 +12,7 @@ namespace LB2_1.Controllers
         static int VALUE = 0;
         static Stack<int> STACK = new Stack<int>();
 
-        public string Get()
+        public IHttpActionResult Get()
         {
             int result;
             try
@@ -23,38 +23,41 @@ namespace LB2_1.Controllers
             {
                 result = VALUE;
             }
-            return "{\"result\": \"" + result + "\"}";
+            return Json(new { result });
         }
 
         // POST api/values
-        public string Post([FromUri] int RESULT)
+        public IHttpActionResult Post([FromUri] int RESULT)
         {
             try
             {
                 VALUE = RESULT;
             }
             catch (Exception) { }
-            return "post";
+            return Json(new { RESULT });
         }
 
         // PUT api/values/5
-        public void Put([FromUri] int ADD)
+        public IHttpActionResult Put([FromUri] int ADD)
         {
             try
             {
                 STACK.Push(ADD);
             }
             catch (Exception) { }
+            return Json(new { ADD });
         }
 
         // DELETE api/values/5
-        public void Delete()
+        public IHttpActionResult Delete()
         {
+            int popped = 0;
             try
             {
-                int popped = STACK.Pop();
+               popped = STACK.Pop();
             }
             catch (Exception) { }
+            return Json(new { deleted = popped });
         }
     }
 }
