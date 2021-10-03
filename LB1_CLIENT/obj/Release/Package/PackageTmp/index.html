@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>LB1</title>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2>LB1 - WebApp</h2>
+    <br />
+
+    <label>RESULT here:</label>
+    <input id="txt-get" type="text" disabled>
+    <br />
+    <button id="btn-get">GET</button>
+    <br /><br />
+
+    <label>SET RESULT:</label>
+    <input id="txt-post" type="text">
+    <br />
+    <button id="btn-post">POST</button>
+    <br /><br />
+
+    <label>ADD TO STACK:</label>
+    <input id="txt-put" type="text">
+    <br />
+    <button id="btn-put">PUT</button>
+    <br /><br />
+
+    <label>DELETE FROM STACK:</label>
+    <button id="btn-delete">DELETE</button>
+    <hr />
+
+
+    <label>INFO HERE:</label>
+    <input id="txt-stat" type="text" disabled />
+
+    <script type="application/javascript">
+
+        $.ajaxSetup({
+            xhrFields: {
+                withCredentials: true
+            }
+        });
+
+        var serverUrl = 'http://172.16.193.234:10720/01/.FAA';
+
+        $("#btn-get").click(function(){
+            $.ajax({
+                url: serverUrl,
+                method: 'get',
+                success: function(data, textStatus, request){
+                    $("#txt-get").val(JSON.parse(data).result)
+                },
+            });
+        });
+
+        $("#btn-post").click(function(){
+            $.ajax({
+                url: serverUrl,
+                method: 'post',
+                dataType: 'JSON',
+                data: jQuery.param({ RESULT: $("#txt-post").val() }),
+                success: function(data){
+                    $("#txt-stat").val("POST - success")
+                },
+            });
+        });
+
+        $("#btn-put").click(function(){
+            $.ajax({
+                url: serverUrl,
+                method: 'put',
+                data: jQuery.param({ ADD: $("#txt-put").val() }),
+                success: function(data){
+                    $("#txt-stat").val("PUT - success")
+                },
+            });
+        });
+
+        $("#btn-delete").click(function(){
+            $.ajax({
+                url: serverUrl,
+                method: 'delete',
+                success: function(data){
+                    $("#txt-stat").val("DELETE - success")
+                },
+            });
+        });
+    </script>
+
+</body>
+</html>
