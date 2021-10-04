@@ -12,10 +12,15 @@ namespace LB3.Controllers
         private StudentsContext DB = new StudentsContext();
 
         // GET api/students
-        public Student Get()
+        /*public Student Get()
         {
             //return Json(new { TEST_STUD });
-            return TEST_STUD;
+            //return TEST_STUD;
+        }*/
+
+        public IHttpActionResult Get()
+        {
+            return Json(new { TEST_STUD });
         }
 
         // GET api/students/5

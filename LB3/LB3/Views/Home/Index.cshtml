@@ -4,6 +4,7 @@
 <head>
     <title>LB3</title>
     <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -11,28 +12,52 @@
     <br />
 
     <label>Choose respose data type:</label>
-    <input type="radio" id="json_type" name="data_type" value="json" checked>
+    <input type="radio" id="json-type" name="data-type" value="json" checked>
     <label for="json_type">JSON</label>
-    <input type="radio" id="xml_type" name="data_type" value="xml">
+    <input type="radio" id="xml-type" name="data-type" value="xml">
     <label for="xml_type">XML</label>
     <br />
+    <hr />
 
-    <button id="btn-get">GET LIST</button>
+    <button id="btn-get-list">GET LIST</button>
+    <br /><br />
+    <input id="student-list" type="text" disabled />
+    <br /><br />
+    <hr />
+
+
+    <label>LIMIT:</label>
+    <input id="limit-input" type="text">
+    <button id="btn-post">SET LIMIT</button>
     <br /><br />
 
-    <label>SET RESULT:</label>
+    <label>SORT:</label>
+    <button id="set-sort" value="sort">SET SORT</button>
+    <br /><br />
+
+    <label>OFFSET:</label>
+    <input id="offset-input" type="text">
+    <br /><br />
+    <hr />
+
+
+    <label>ADD STUDENT:</label>
     <input id="txt-post" type="text">
     <br />
     <button id="btn-post">POST</button>
     <br /><br />
+    <hr />
 
-    <label>ADD TO STACK:</label>
+
+    <label>UPDATE STUDENT BY ID:</label>
     <input id="txt-put" type="text">
     <br />
     <button id="btn-put">PUT</button>
     <br /><br />
+    <hr />
 
-    <label>DELETE FROM STACK:</label>
+
+    <label>DELETE STUDENT BY ID:</label>
     <button id="btn-delete">DELETE</button>
     <hr />
 
@@ -40,5 +65,8 @@
     <label>INFO HERE:</label>
     <input id="txt-stat" type="text" disabled />
 
+
 </body>
 </html>
+
+@Scripts.Render("~/Scripts/Ajax.js")
