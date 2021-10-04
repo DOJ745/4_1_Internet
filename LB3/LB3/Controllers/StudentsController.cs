@@ -18,10 +18,12 @@ namespace LB3.Controllers
             //return TEST_STUD;
         }*/
 
-        /*public IHttpActionResult Get()
+        [NonAction]
+        public IHttpActionResult Get()
         {
-            return Json(new { TEST_STUD });
-        }*/
+            string URI = ControllerContext.Request.RequestUri.AbsoluteUri;
+            return Json(new { URI });
+        }
 
         // GET api/students/5
         public IHttpActionResult Get(int id)
