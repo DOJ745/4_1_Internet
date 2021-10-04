@@ -24,13 +24,16 @@ let get_global_like_val = () => $('#global-like-input').val();
 
 var serverUrl = 'http://localhost:59089/api/students';
 
-$("#btn-get-list").click(function () {
+$('.data-type').click(function () {
 
     if ($('.data-type:checked').val() == "json") {
         current_type = ".json";
     }
     else { current_type = ".xml"; }
+    //alert(current_type);
+});
 
+$("#btn-get-list").click(function () {
     $.ajax({
         url: serverUrl + current_type,
         method: 'get',
