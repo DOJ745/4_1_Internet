@@ -15,6 +15,11 @@ namespace LB3.Models
         }
         public int ID { get; set; }
         public string NAME { get; set; }
-        public string PHONE { get; set; } 
+        public string PHONE { get; set; }
+        
+        public override string ToString()
+        {
+            return $"ID - {this.ID}\n" + $"NAME - {this.NAME}\n" + $"PHONE - {this.PHONE}";
+        }
     }
 }

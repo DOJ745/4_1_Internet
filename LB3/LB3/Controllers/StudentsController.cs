@@ -8,38 +8,38 @@ namespace LB3.Controllers
 {
     public class StudentsController : ApiController
     {
-        private string tempValue = "RESPONSE";
-        private Student TEST_STUD = new Student(10, "stud", "+1111");
+        private Student TEST_STUD = new Student(10, "stud", "+1 111-11-11");
         private StudentsContext DB = new StudentsContext();
 
         // GET api/students
-        public IHttpActionResult Get()
+        public Student Get()
         {
-            return Json(new { TEST_STUD });
+            //return Json(new { TEST_STUD });
+            return TEST_STUD;
         }
 
         // GET api/students/5
         public IHttpActionResult Get(int id)
         {
-            return Json(new { tempValue });
+            return Json(new { TEST_STUD });
         }
 
         // POST api/students
         public IHttpActionResult Post([FromBody] string value)
         {
-            return Json(new { tempValue });
+            return Json(new { TEST_STUD });
         }
 
         // PUT api/students/5
         public IHttpActionResult Put(int id, [FromBody] string value)
         {
-            return Json(new { tempValue });
+            return Json(new { TEST_STUD });
         }
 
         // DELETE api/students/5
         public IHttpActionResult Delete(int id)
         {
-            return Json(new { tempValue });
+            return Json(new { TEST_STUD });
         }
     }
 }
