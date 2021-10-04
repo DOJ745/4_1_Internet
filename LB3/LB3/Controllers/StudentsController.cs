@@ -18,10 +18,10 @@ namespace LB3.Controllers
             //return TEST_STUD;
         }*/
 
-        public IHttpActionResult Get()
+        /*public IHttpActionResult Get()
         {
             return Json(new { TEST_STUD });
-        }
+        }*/
 
         // GET api/students/5
         public IHttpActionResult Get(int id)

@@ -19,6 +19,18 @@ namespace LB3
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+                name: "XmlData",
+                routeTemplate: "api/{controller}.xml/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "JsonData",
+                routeTemplate: "api/{controller}.json/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
         }
     }
 }

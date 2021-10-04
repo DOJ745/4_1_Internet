@@ -1,4 +1,5 @@
-﻿$.ajaxSetup({
+﻿
+$.ajaxSetup({
     xhrFields: {
         withCredentials: true
     }
@@ -6,6 +7,8 @@
 
 let get_json_data_type = () => $('#json-type').val();
 let get_xml_data_type = () => $('#xml-type').val();
+
+var current_type;
 
 let get_limit_val = () => $('#limit-input').val();
 let get_sort_val = () => $('#set-sort').val();
@@ -18,14 +21,21 @@ let get_like_val = () => $('#like-input').val();
 let get_colums_val = () => $('#colums-input').val();
 let get_global_like_val = () => $('#global-like-input').val();
 
-var serverUrl = 'http://localhost:59089/api/students/';
+
+var serverUrl = 'http://localhost:59089/api/students';
 
 $("#btn-get-list").click(function () {
+
+    if ($('.data-type:checked').val() == "json") {
+        current_type = ".json";
+    }
+    else { current_type = ".xml"; }
+
     $.ajax({
-        url: serverUrl,
+        url: serverUrl + current_type,
         method: 'get',
         success: function (data) {
-            $("#student-list").val(data.TEST_STUD)
+            $("#student-list").val(data.TEST_STUD.ID)
         },
     });
 });
