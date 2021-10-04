@@ -11,7 +11,7 @@ namespace LB3.Controllers
         StudentsContext DB = new StudentsContext();
         public ActionResult Index()
         {
-            ViewBag.StudentsList = DB.Students.OrderBy(entry => entry.Name);
+            ViewBag.StudentsList = DB.Students.OrderBy(entry => entry.ID);
             ViewBag.Title = "Home Page";
 
             return View();

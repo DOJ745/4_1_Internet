@@ -1,22 +1,21 @@
 ﻿using LB3.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace LB3.Controllers
 {
     public class StudentsController : ApiController
     {
         private string tempValue = "RESPONSE";
+        private Student TEST_STUD = new Student(10, "stud", "+1111");
         private StudentsContext DB = new StudentsContext();
 
         // GET api/students
         public IHttpActionResult Get()
         {
-            return Json(new { tempValue });
+            return Json(new { TEST_STUD });
         }
 
         // GET api/students/5

@@ -93,3 +93,7 @@ D:\LabsFolder\_4_1\InternetLabs\LB3\LB3\obj\Debug\LB3.csproj.CoreCompileInputs.c
 D:\LabsFolder\_4_1\InternetLabs\LB3\LB3\obj\Debug\LB3.csproj.CopyComplete
 D:\LabsFolder\_4_1\InternetLabs\LB3\LB3\obj\Debug\LB3.dll
 D:\LabsFolder\_4_1\InternetLabs\LB3\LB3\obj\Debug\LB3.pdb
+D:\LabsFolder\_4_1\InternetLabs\LB3\LB3\bin\EntityFramework.dll
+D:\LabsFolder\_4_1\InternetLabs\LB3\LB3\bin\EntityFramework.SqlServer.dll
+D:\LabsFolder\_4_1\InternetLabs\LB3\LB3\bin\EntityFramework.xml
+D:\LabsFolder\_4_1\InternetLabs\LB3\LB3\bin\EntityFramework.SqlServer.xml
