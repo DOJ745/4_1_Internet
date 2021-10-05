@@ -12,14 +12,14 @@ namespace LB3.Controllers
         private StudentsContext DB = new StudentsContext();
 
         // GET api/students
-        /*public Student Get()
+        public Student Get()
         {
             //return Json(new { TEST_STUD });
-            //return TEST_STUD;
-        }*/
+            return TEST_STUD;
+        }
 
-        [NonAction]
-        public IHttpActionResult Get()
+        //[NonAction]
+        /*public IHttpActionResult Get()
         {
             string URI = ControllerContext.Request.RequestUri.AbsoluteUri;
             return Json(new { URI });
@@ -29,7 +29,7 @@ namespace LB3.Controllers
         public IHttpActionResult Get(int id)
         {
             return Json(new { TEST_STUD });
-        }
+        }*/
 
         // POST api/students
         public IHttpActionResult Post([FromBody] string value)

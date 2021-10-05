@@ -1,9 +1,5 @@
-﻿using System;
-using System.Xml.Serialization;
-
-namespace LB3.Models
+﻿namespace LB3.Models
 {
-    [Serializable]
     public class Student
     {
         public Student() { }

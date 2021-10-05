@@ -7,7 +7,7 @@
 let get_json_data_type = () => $('#json-type').val();
 let get_xml_data_type = () => $('#xml-type').val();
 
-var current_type;
+var current_type = ".json";
 
 let get_limit_val = () => $('#limit-input').val();
 let get_sort_val = () => $('#set-sort').val();
@@ -29,15 +29,15 @@ $('.data-type').click(function () {
         current_type = ".json";
     }
     else { current_type = ".xml"; }
-    //alert(current_type);
 });
 
 $("#btn-get-list").click(function () {
     $.ajax({
-        url: serverUrl + current_type,
+        url: serverUrl,
         method: 'get',
+        headers: { 'Accept': 'application/json' },
         success: function (data) {
-            $("#student-list").val(data.TEST_STUD.ID)
+            $("#student-list").val(data.ID)
         },
     });
 });
