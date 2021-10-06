@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace LB3
 {
@@ -9,6 +10,10 @@ namespace LB3
     {
         public static void Register(HttpConfiguration config)
         {
+            // NOW CORS ARE HERE
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
+
             // Конфигурация и службы веб-API
 
             // Маршруты веб-API
@@ -17,18 +22,6 @@ namespace LB3
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
-
-            config.Routes.MapHttpRoute(
-                name: "XmlData",
-                routeTemplate: "api/{controller}.xml/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
-
-            config.Routes.MapHttpRoute(
-                name: "JsonData",
-                routeTemplate: "api/{controller}.json/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }
