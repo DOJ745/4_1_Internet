@@ -18,7 +18,7 @@ namespace LB3.Controllers
 
     public class StudentsController : ApiController
     {
-        private Student TEST_STUD = new Student(10, "stud", "+1 111-11-11");
+        //private Student TEST_STUD = new Student(10, "stud", "+1 111-11-11");
         private StudentsContext DB = new StudentsContext();
 
         /*

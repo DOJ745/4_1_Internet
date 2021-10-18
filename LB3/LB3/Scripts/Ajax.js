@@ -1,9 +1,4 @@
-﻿/*$.ajaxSetup({
-    xhrFields: {
-        withCredentials: true
-    }
-});*/
-const SERVER = "http://localhost:59089/";
+﻿const SERVER = "http://localhost:59089/";
 const CONTROLLER_DEFAULT_PATH = SERVER + 'api/students/';
 
 let pagesNumber = 0;
@@ -12,8 +7,8 @@ let StudentList = [];
 let curOffset = 0;
 let curLimit = 5;
 
-let updateForm = $("#update-form");
-let addForm = $("#add");
+//let updateForm = $("#update-form");
+//let addForm = $("#add");
 let searchForm = $("#search");
 
 let isXml = () => $("#xml").prop("checked");
@@ -109,7 +104,7 @@ function updateStudentList(students) {
 
         let stud = students[index];
 
-        let removeBtn = '<button onclick="removeStudent(' + stud.ID + ')" class="btn btn-danger">Remove #' + stud.Id + '</button>';
+        let removeBtn = '<button onclick="removeStudent(' + stud.ID + ')" class="btn btn-danger">Remove #' + stud.ID + '</button>';
         let editBtn = '<button onclick="showEditModal(' + index + ')" class="btn btn-info">Edit</button>';
 
         let resLink = '<a href="'
@@ -128,10 +123,10 @@ function updateStudentList(students) {
     }
 }
 
-function updateStudent(sId) {
+function updateStudent(studId) {
 
     let requestParams = {
-        url: CONTROLLER_DEFAULT_PATH + sId,
+        url: CONTROLLER_DEFAULT_PATH + studId,
         type: 'put',
         data: updateForm.serializeArray()
     };
@@ -139,7 +134,7 @@ function updateStudent(sId) {
     $.ajax(requestParams)
         .done((res) => {
             if (isXml()) res = parser.parse(res).Root;
-            let sRes = 'Student successfuly updated!' + res.Id;
+            let sRes = 'Student successfuly updated!' + res.ID;
             showAlert("success", sRes);
         })
 
@@ -148,9 +143,9 @@ function updateStudent(sId) {
         });
 }
 
-function showEditModal(studentIndex) {
+function showEditModal(studIndex) {
 
-    let student = StudentList[studentIndex];
+    let student = StudentList[studIndex];
 
     $('#update-id').text(student.Id);
     $('#update-form input[name="id"]').val(student.ID);
