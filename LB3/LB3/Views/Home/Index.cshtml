@@ -1,73 +1,272 @@
-﻿<!DOCTYPE html>
+﻿@{
+    ViewBag.Title = "LB3";
+}
+<!DOCTYPE html>
 <html>
 
 <head>
-    <title>LB3</title>
+    @Scripts.Render("~/Scripts/Ajax.js")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fast-xml-parser/3.20.3/parser.min.js" integrity="sha512-gVI62Vp7WajK2jl94LrCBg8HbVcAXRx9pUbOfII0d1HGr8ahN2F/sIASFRB+qqBXq7atNBmxiWxxIoOWcDYbow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="utf-8" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
-    <h2>LB3 - WebApp</h2>
-    <br />
 
-    <label>Choose respose data type:</label>
-    <input type="radio" class="data-type" name="data-type" value="json" checked="checked">
-    <label for="json_type">JSON</label>
+    <div class="alert" id="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <div id="alert-text"></div>
+    </div>
 
-    <input type="radio" class="data-type" name="data-type" value="xml">
-    <label for="xml_type">XML</label>
-    <br />
-    <hr />
+    <div class="container">
 
-    <button id="btn-get-list">GET LIST</button>
-    <br /><br />
-    <input id="student-list" type="text" disabled />
-    <br /><br />
-    <hr />
+        <div class="row">
 
+            <div class="col-md-5">
+                <h4 class="text-center">ADD STUDENT</h4>
 
-    <label>LIMIT:</label>
-    <input id="limit-input" type="text">
-    <button id="btn-post">SET LIMIT</button>
-    <br /><br />
+                <form id="add" class="form-horizontal">
 
-    <label>SORT:</label>
-    <button id="set-sort" value="sort">SET SORT</button>
-    <br /><br />
+                    <div class="">
+                        <label for="name">Name</label>
 
-    <label>OFFSET:</label>
-    <input id="offset-input" type="text">
-    <br /><br />
-    <hr />
+                        <input name="name"
+                               id="name"
+                               type="text"
+                               class="form-control" placeholder="Enter name" />
+                    </div>
 
+                    <div class="">
+                        <label for="phone">Phone</label>
+                        <input name="phone"
+                               id="phone"
+                               type="text"
+                               class="form-control"
+                               placeholder="Enter phone number(+375 44/29/33)" />
+                    </div>
 
-    <label>ADD STUDENT:</label>
-    <input id="txt-post" type="text">
-    <br />
-    <button id="btn-post">POST</button>
-    <br /><br />
-    <hr />
+                    <div class="mt-2">
+                        <button type="button" class="btn btn-success form-control">ADD</button>
+                    </div>
+                </form>
+            </div>
 
+            <div class="col-md-5 col-md-offset-1">
+                <h4 class="text-center">SEARCH</h4>
 
-    <label>UPDATE STUDENT BY ID:</label>
-    <input id="txt-put" type="text">
-    <br />
-    <button id="btn-put">PUT</button>
-    <br /><br />
-    <hr />
+                <form id="search" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="name">NAME</label>
 
+                        <input name="name"
+                               id="name"
+                               type="text"
+                               placeholder="Name"
+                               class="form-control" />
+                    </div>
 
-    <label>DELETE STUDENT BY ID:</label>
-    <button id="btn-delete">DELETE</button>
-    <hr />
+                    <div class="form-group">
+                        <label for="phone">PHONE</label>
 
+                        <input name="phone"
+                               id="phone"
+                               type="text"
+                               placeholder="Phone"
+                               class="form-control" />
+                    </div>
 
-    <label>INFO HERE:</label>
-    <input id="txt-stat" type="text" disabled />
+                    <div class="form-group">
+                        <label for="columns">COLUMNS</label>
 
+                        <input name="columns"
+                               id="columns"
+                               type="text"
+                               placeholder="Columns"
+                               class="form-control"
+                               value="ID,NAME,PHONE" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="orderby">ORDER BY NAME</label>
+
+                        <input name="orderby"
+                               id="orderby"
+                               type="checkbox"
+                               class="checkbox-inline"
+                               placeholder="Name" />
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="offset">OFFSET</label>
+
+                            <input name="offset"
+                                   id="offset"
+                                   type="number"
+                                   class="form-control"
+                                   placeholder="Offset"
+                                   value="0" />
+                        </div>
+
+                        <div class="col">
+                            <label for="limit">LIMIT</label>
+
+                            <input name="limit"
+                                   id="limit" type="number"
+                                   class="form-control"
+                                   placeholder="Limit"
+                                   value="5" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="minId">MIN ID</label>
+
+                            <input name="minId"
+                                   id="minId"
+                                   type="number"
+                                   class="form-control"
+                                   placeholder="minId"
+                                   value="0" />
+                        </div>
+
+                        <div class="col">
+                            <label for="maxId">MAX ID</label>
+
+                            <input name="maxId"
+                                   id="maxId"
+                                   type="number"
+                                   class="form-control"
+                                   placeholder="maxId"
+                                   value="1000" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="globallike">GLOBAL LIKE</label>
+
+                        <input name="globallike"
+                               id="globallike"
+                               type="text"
+                               placeholder="ID+NAME+PHONE"
+                               class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="xml">XML</label>
+
+                        <input name="xml"
+                               id="xml"
+                               type="checkbox"
+                               class="checkbox-inline"
+                               placeholder="XML" />
+                    </div>
+
+                    <div class="form">
+                        <button class="btn btn-default form-control" type="button">Search</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+
+            <table id="student-list" class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Action</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                </tbody>
+            </table>
+
+        </div>
+
+        <nav>
+            <ul id="pag" class="pagination justify-content-center">
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="modal fade"
+         id="update-modal"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="myModalLabel">
+
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <button type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                    <h4 class="modal-title"
+                        id="myModalLabel">
+                        Edit student #<label id="update-id"></label>
+                    </h4>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <form id="update-form">
+
+                        <input name="id" type="hidden" />
+
+                        <div class="form-group">
+                            <label for="name">Name</label>
+
+                            <input name="name"
+                                   id="name"
+                                   type="text"
+                                   class="form-control"
+                                   placeholder="Enter name" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+
+                            <input name="phone"
+                                   id="phone"
+                                   type="text"
+                                   class="form-control"
+                                   placeholder="Enter phone number" />
+                        </div>
+
+                        <div class="form-group">
+                            <button type="button" class="btn btn-warning form-control">Update</button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </body>
-</html>
 
-@Scripts.Render("~/Scripts/Ajax.js")
+</html>

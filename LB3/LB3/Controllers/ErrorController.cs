@@ -1,19 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using LB3.Models;
+using System.Web.Http;
 
 namespace LB3.Controllers
 {
-    public class ErrorController : Controller
+    public class ErrorController : ApiController
     {
-        // GET: Error
-        public ActionResult BadRequest()
+        [Route("api/Error/{code}")]
+        public IHttpActionResult Get(int code)
         {
-            ViewBag.url = Request.RawUrl;
-            ViewBag.method = Request.HttpMethod;
-            return View();
+            CustomErrorDetails errorDetails;
+            switch (code)
+            {
+                case 4500:
+                    errorDetails = new CustomErrorDetails(4500, "Server error");
+                    break;
+
+                case 4444:
+                    errorDetails = new CustomErrorDetails(4444, "Model is invalid");
+                    break;
+
+                case 4404:
+                    errorDetails = new CustomErrorDetails(4404, "Not found");
+                    break;
+
+                default:
+                    errorDetails = new CustomErrorDetails(4999, "Unknown error code");
+                    break;
+            }
+
+            return Ok(errorDetails);
         }
     }
 }

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Xml.Serialization;
-
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace LB3.Models
 {
-    [Serializable]
     public class Student
     {
         public Student() { }
@@ -13,10 +11,14 @@ namespace LB3.Models
             this.NAME = name;
             this.PHONE = phone;
         }
+        [Key]
         public int ID { get; set; }
         public string NAME { get; set; }
         public string PHONE { get; set; }
-        
+
+        [NotMapped]
+        public HateoasLinks _links;
+
         public override string ToString()
         {
             return $"ID - {this.ID}\n" + $"NAME - {this.NAME}\n" + $"PHONE - {this.PHONE}";
