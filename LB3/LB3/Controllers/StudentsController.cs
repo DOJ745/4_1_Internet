@@ -21,12 +21,13 @@ namespace LB3.Controllers
         private Student TEST_STUD = new Student(10, "stud", "+1 111-11-11");
         private StudentsContext DB = new StudentsContext();
 
+        /*
         [Route("api/students/search")]
         [HttpGet]
         public IHttpActionResult SearchStudents()
         {
             return Json(TEST_STUD);
-        }
+        }*/
 
         // GET api/students
         public IHttpActionResult GetStudents(
@@ -147,6 +148,7 @@ namespace LB3.Controllers
 
             string linkStudents = Request.RequestUri.GetLeftPart(UriPartial.Path);
             student._links = new HateoasLinks(linkStudents, linkStudents + "/" + student.ID);
+
             return Ok(student);
         }
 
@@ -187,9 +189,24 @@ namespace LB3.Controllers
         }
 
         // DELETE api/students/5
-        public IHttpActionResult Delete(int id)
+        [ResponseType(typeof(Student))]
+        [Route("api/students/{id}")]
+        public IHttpActionResult DeleteStudent(int id)
         {
-            return Json(new { TEST_STUD });
+            Student student = DB.Students.Find(id);
+            if (student == null)
+            {
+                return Content(HttpStatusCode.BadRequest, 
+                    new CustomError(4404, Request.RequestUri.GetLeftPart(UriPartial.Authority)));
+            }
+
+            DB.Students.Remove(student);
+            DB.SaveChanges();
+
+            string linkStudents = Request.RequestUri.GetLeftPart(UriPartial.Path);
+            student._links = new HateoasLinks(linkStudents, linkStudents + "/" + student.ID);
+
+            return Ok(student);
         }
 
         protected override void Dispose(bool disposing)
