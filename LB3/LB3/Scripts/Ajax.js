@@ -3,7 +3,6 @@
         withCredentials: true
     }
 });*/
-
 const SERVER = "http://localhost:59089/";
 const CONTROLLER_DEFAULT_PATH = SERVER + 'api/students/';
 
@@ -13,9 +12,9 @@ let StudentList = [];
 let curOffset = 0;
 let curLimit = 5;
 
-let updateForm = $(`#update-form`);
-let addForm = $(`#add`);
-let searchForm = $(`#search`);
+let updateForm = $("#update-form");
+let addForm = $("#add");
+let searchForm = $("#search");
 
 let isXml = () => $("#xml").prop("checked");
 
@@ -51,7 +50,7 @@ function removeStudent(id) {
     $.ajax(requestParams)
         .done((res) => {
             if (isXml()) res = parser.parse(res).Root;
-            showAlert('info', 'Student ' + res.Name + ' deleted.');
+            showAlert('info', 'Student ' + res.Name + ' deleted successfuly.');
             getAllStudents();
         })
 
@@ -74,9 +73,7 @@ function searchStudents(all) {
     let requestParams = {
         url: `${CONTROLLER_DEFAULT_PATH}?${searchForm.serialize()}`,
         type: 'get',
-        headers: {
-            'Accept': isXml() ? 'application/xml' : 'application/json'
-        }
+        headers: { 'Accept': isXml() ? 'application/xml' : 'application/json' }
     };
 
     $.ajax(requestParams)
@@ -110,22 +107,22 @@ function updateStudentList(students) {
     $('#student-list > tbody').empty();
     for (let index in students) {
 
-        let s = students[index];
+        let stud = students[index];
 
-        let rBtn = '<button onclick="removeStudent(' + s.Id + ')" class="btn btn-danger">Remove #' + s.Id + '</button>';
-        let eBtn = '<button onclick="showEditModal(' + index + ')" class="btn btn-info">Edit</button>';
+        let removeBtn = '<button onclick="removeStudent(' + stud.ID + ')" class="btn btn-danger">Remove #' + stud.Id + '</button>';
+        let editBtn = '<button onclick="showEditModal(' + index + ')" class="btn btn-info">Edit</button>';
 
-        let rLink = '<a href="'
-            + s._links.self + '">student/'
-            + s.Id + '</a>';
+        let resLink = '<a href="'
+            + stud._links.self + '">student/'
+            + stud.Id + '</a>';
 
         let sRow = '<tr id="student-'
-            + s.Id + '"><td>'
-            + (s.Id == -1 ? "" : s.Id) + '</td><td>'
-            + s.Name + '</td><td>'
-            + s.Phone + '</td><td>'
-            + rBtn + ' ' + eBtn + '</td><td>'
-            + rLink + '</td><tr>';
+            + stud.ID + '"><td>'
+            + (stud.ID == -1 ? "" : stud.ID) + '</td><td>'
+            + stud.NAME + '</td><td>'
+            + stud.PHONE + '</td><td>'
+            + removeBtn + ' ' + editBtn + '</td><td>'
+            + resLink + '</td><tr>';
 
         $('#student-list > tbody').append(sRow);
     }
@@ -156,9 +153,9 @@ function showEditModal(studentIndex) {
     let student = StudentList[studentIndex];
 
     $('#update-id').text(student.Id);
-    $('#update-form input[name="id"]').val(student.Id);
-    $('#update-form input[name="name"]').val(student.Name);
-    $('#update-form input[name="phone"]').val(student.Phone);
+    $('#update-form input[name="id"]').val(student.ID);
+    $('#update-form input[name="name"]').val(student.NAME);
+    $('#update-form input[name="phone"]').val(student.PHONE);
     $('#update-modal').modal('toggle');
 
     updateForm.find("button").on('click', () => {
