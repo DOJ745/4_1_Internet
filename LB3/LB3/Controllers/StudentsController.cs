@@ -18,18 +18,10 @@ namespace LB3.Controllers
 
     public class StudentsController : ApiController
     {
-        //private Student TEST_STUD = new Student(10, "stud", "+1 111-11-11");
-        private StudentsContext DB = new StudentsContext();
-
-        /*
-        [Route("api/students/search")]
-        [HttpGet]
-        public IHttpActionResult SearchStudents()
-        {
-            return Json(TEST_STUD);
-        }*/
+        private StudentContext DB = new StudentContext();
 
         // GET api/students
+        [Route("api/students")]
         public IHttpActionResult GetStudents(
             string name = null,
             string columns = "",
@@ -49,16 +41,16 @@ namespace LB3.Controllers
             var sqlQuery = string.Empty;
             string orderBy;
 
-            if (orderby.Equals("on")) { orderBy = "Name"; }
-            else { orderBy = "Id"; }
+            if (orderby.Equals("on")) { orderBy = "NAME"; }
+            else { orderBy = "ID"; }
 
             if (globalLike.IsEmpty())
             {
                 string sqlName = "";
-                if (name != null) { sqlName = " AND Name LIKE '%' + @P2 + '%' "; }
+                if (name != null) { sqlName = " AND NAME LIKE '%' + @P2 + '%' "; }
 
                 string sqlPhone = "";
-                if (phone != null) { sqlPhone = "AND Phone = @P3 "; }
+                if (phone != null) { sqlPhone = "AND PHONE = @P3 "; }
 
                 sqlQuery = "SELECT * FROM Student " +
                     "WHERE ID > @P0 AND ID < @P1 " + sqlName + sqlPhone +
@@ -135,6 +127,7 @@ namespace LB3.Controllers
 
         // POST api/students
         [ResponseType(typeof(Student))]
+        [Route("api/students")]
         public IHttpActionResult PostStudent(Student student)
         {
             if (!ModelState.IsValid)

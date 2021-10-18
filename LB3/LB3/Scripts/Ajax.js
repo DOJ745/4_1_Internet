@@ -7,8 +7,8 @@ let StudentList = [];
 let curOffset = 0;
 let curLimit = 5;
 
-//let updateForm = $("#update-form");
-//let addForm = $("#add");
+let updateForm = $("#update-form");
+let addForm = $("#add");
 let searchForm = $("#search");
 
 let isXml = () => $("#xml").prop("checked");
@@ -25,7 +25,7 @@ function addStudentHandler() {
         $.ajax(requestParams)
             .done((res) => {
                 if (isXml()) res = parser.parse(res).Root;
-                let studRes = 'Student ' + res.Name + ' successfuly added! ID - #' + res.Id;
+                let studRes = 'Student ' + res.NAME + ' successfuly added! ID - #' + res.ID;
                 showAlert("success", studRes);
             })
 
@@ -45,7 +45,7 @@ function removeStudent(id) {
     $.ajax(requestParams)
         .done((res) => {
             if (isXml()) res = parser.parse(res).Root;
-            showAlert('info', 'Student ' + res.Name + ' deleted successfuly.');
+            showAlert('info', 'Student ' + res.NAME + ' deleted successfuly.');
             getAllStudents();
         })
 
@@ -147,14 +147,14 @@ function showEditModal(studIndex) {
 
     let student = StudentList[studIndex];
 
-    $('#update-id').text(student.Id);
+    $('#update-id').text(student.ID);
     $('#update-form input[name="id"]').val(student.ID);
     $('#update-form input[name="name"]').val(student.NAME);
     $('#update-form input[name="phone"]').val(student.PHONE);
     $('#update-modal').modal('toggle');
 
     updateForm.find("button").on('click', () => {
-        updateStudent(student.Id);
+        updateStudent(student.ID);
         $('#update-modal').modal('toggle');
     });
 

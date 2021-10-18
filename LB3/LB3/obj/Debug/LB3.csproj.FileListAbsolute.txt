@@ -199,3 +199,6 @@ H:\LabsFolder\_4_1\InternetLabs\LB3\LB3\obj\Debug\LB3.pdb
 D:\LabsFolder\_4_1\InternetLabs\LB3\LB3\bin\System.Web.Cors.dll
 D:\LabsFolder\_4_1\InternetLabs\LB3\LB3\bin\System.Web.Http.Cors.dll
 D:\LabsFolder\_4_1\InternetLabs\LB3\LB3\bin\System.Web.Http.Cors.xml
+H:\LabsFolder\_4_1\InternetLabs\LB3\LB3\bin\System.Web.Cors.dll
+H:\LabsFolder\_4_1\InternetLabs\LB3\LB3\bin\System.Web.Http.Cors.dll
+H:\LabsFolder\_4_1\InternetLabs\LB3\LB3\bin\System.Web.Http.Cors.xml

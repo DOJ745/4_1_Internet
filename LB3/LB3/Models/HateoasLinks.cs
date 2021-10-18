@@ -2,7 +2,8 @@
 
 namespace LB3.Models
 {
-    public class HateoasLinks
+	[DataContract]
+	public class HateoasLinks
     {
 		[DataMember]
 		public string allStudents;

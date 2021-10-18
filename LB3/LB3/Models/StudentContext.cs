@@ -2,13 +2,16 @@
 
 namespace LB3.Models
 {
-    public class StudentsContext : DbContext
+    public class StudentContext : DbContext
     {
+        public StudentContext()
+            : base("DBContext")
+        { }
         public DbSet<Student> Students { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            Database.SetInitializer<StudentsContext>(null);
+            Database.SetInitializer<StudentContext>(null);
             base.OnModelCreating(modelBuilder);
         }
     }

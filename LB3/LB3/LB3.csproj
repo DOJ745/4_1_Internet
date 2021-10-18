@@ -184,7 +184,7 @@
     <Compile Include="Models\HateoasLinks.cs" />
     <Compile Include="Models\Link.cs" />
     <Compile Include="Models\Student.cs" />
-    <Compile Include="Models\StudentsContext.cs" />
+    <Compile Include="Models\StudentContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
