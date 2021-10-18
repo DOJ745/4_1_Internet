@@ -109,7 +109,7 @@ function updateStudentList(students) {
 
         let resLink = '<a href="'
             + stud._links.self + '">student/'
-            + stud.Id + '</a>';
+            + stud.ID + '</a>';
 
         let sRow = '<tr id="student-'
             + stud.ID + '"><td>'
