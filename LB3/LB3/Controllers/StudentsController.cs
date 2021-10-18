@@ -52,7 +52,7 @@ namespace LB3.Controllers
                 string sqlPhone = "";
                 if (phone != null) { sqlPhone = "AND PHONE = @P3 "; }
 
-                sqlQuery = "SELECT * FROM Student " +
+                sqlQuery = "SELECT * FROM Students " +
                     "WHERE ID > @P0 AND ID < @P1 " + sqlName + sqlPhone +
                     "ORDER BY " + orderBy + " " +
                     "OFFSET @P4 ROWS FETCH NEXT @P5 ROWS ONLY";
@@ -67,7 +67,7 @@ namespace LB3.Controllers
             }
             else
             {
-                sqlQuery = "SELECT * FROM Student " +
+                sqlQuery = "SELECT * FROM Students " +
                     "WHERE ID > @P0 AND " +
                     "ID < @P1 " +
                     "AND (ID LIKE '%' + @P2 + '%' OR NAME LIKE '%' + @P2 + '%' " +
@@ -86,7 +86,7 @@ namespace LB3.Controllers
             string linkStudents = Request.RequestUri.GetLeftPart(UriPartial.Path);
 
             students.ForEach(student => student._links = 
-                new HateoasLinks(linkStudents, linkStudents + "/" + student.ID));
+                new HateoasLinks(linkStudents, linkStudents + student.ID));
 
             columns = columns.ToLower();
 
@@ -140,7 +140,7 @@ namespace LB3.Controllers
             DB.SaveChanges();
 
             string linkStudents = Request.RequestUri.GetLeftPart(UriPartial.Path);
-            student._links = new HateoasLinks(linkStudents, linkStudents + "/" + student.ID);
+            student._links = new HateoasLinks(linkStudents, linkStudents + student.ID);
 
             return Ok(student);
         }
@@ -176,7 +176,7 @@ namespace LB3.Controllers
             }
 
             string linkStudents = Request.RequestUri.GetLeftPart(UriPartial.Path);
-            student._links = new HateoasLinks(linkStudents, linkStudents + "/" + student.ID);
+            student._links = new HateoasLinks(linkStudents, linkStudents + student.ID);
 
             return Ok(student);
         }
@@ -197,7 +197,7 @@ namespace LB3.Controllers
             DB.SaveChanges();
 
             string linkStudents = Request.RequestUri.GetLeftPart(UriPartial.Path);
-            student._links = new HateoasLinks(linkStudents, linkStudents + "/" + student.ID);
+            student._links = new HateoasLinks(linkStudents, linkStudents + student.ID);
 
             return Ok(student);
         }

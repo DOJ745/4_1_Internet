@@ -134,8 +134,8 @@ function updateStudent(studId) {
     $.ajax(requestParams)
         .done((res) => {
             if (isXml()) res = parser.parse(res).Root;
-            let sRes = 'Student successfuly updated!' + res.ID;
-            showAlert("success", sRes);
+            let studRes = 'Student successfuly updated!' + res.ID;
+            showAlert("success", studRes);
         })
 
         .fail((jqXhr, textStatus, errorThrown) => {
