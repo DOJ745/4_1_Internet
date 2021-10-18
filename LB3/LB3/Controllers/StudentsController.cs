@@ -4,24 +4,12 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using System.IO;
 using Newtonsoft.Json;
+using System.Linq;
+using System;
+using System.Net;
 
 namespace LB3.Controllers
 {
-    /*class Error : HATEOASModel
-    {
-        public Error(string mdnRef)
-        {
-            _links.error = mdnRef;
-        }
-    }
-
-    class BadRequestError : Error
-    {
-        public BadRequestError() : base("https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400")
-        {
-
-        }
-    }*/
 
     public class StudentsController : ApiController
     {
@@ -35,22 +23,28 @@ namespace LB3.Controllers
             return Json(TEST_STUD);
         }
 
-            // GET api/students
-            public IHttpActionResult Get()
-        {
-            return Json(TEST_STUD);
-        }
+        // GET api/students
 
         // GET api/students/5
-        public IHttpActionResult Get(int id)
+        [Route("api/Students/{id}")]
+        public IHttpActionResult Get(int? id)
         {
             try
             {
-                return Json(new { TEST_STUD, ControllerContext.Request.Headers.Accept });
+                var student = DB.Students.Where(stud => stud.ID == id).FirstOrDefault();
+                string linkStudent = Request.RequestUri.GetLeftPart(UriPartial.Path);
+
+                student._links = new HateoasLinks(
+                    linkStudent.Substring(0, linkStudent.LastIndexOf("/")), 
+                    linkStudent);
+
+                return Ok(student);
             }
-            catch
+            catch (Exception)
             {
-                //return BadRequest( JsonConvert.SerializeObject(new BadRequestError()) );
+                return Content(
+                    HttpStatusCode.BadRequest, 
+                    new CustomError(4500, Request.RequestUri.GetLeftPart(UriPartial.Authority)));
             }
         }
 
