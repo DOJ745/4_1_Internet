@@ -3,9 +3,6 @@
     public class Link
     {
         public string href;
-        public Link(string href)
-        {
-            this.href = href;
-        }
+        public Link(string href) { this.href = href; }
     }
 }

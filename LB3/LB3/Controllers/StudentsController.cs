@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace LB3.Controllers
 {
-    class Error : HATEOASModel
+    /*class Error : HATEOASModel
     {
         public Error(string mdnRef)
         {
@@ -21,7 +21,7 @@ namespace LB3.Controllers
         {
 
         }
-    }
+    }*/
 
     public class StudentsController : ApiController
     {
@@ -50,7 +50,7 @@ namespace LB3.Controllers
             }
             catch
             {
-                return BadRequest( JsonConvert.SerializeObject(new BadRequestError()) );
+                //return BadRequest( JsonConvert.SerializeObject(new BadRequestError()) );
             }
         }
 
