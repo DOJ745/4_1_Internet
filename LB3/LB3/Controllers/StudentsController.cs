@@ -133,9 +133,21 @@ namespace LB3.Controllers
         }
 
         // POST api/students
-        public IHttpActionResult Post([FromBody] string value)
+        [ResponseType(typeof(Student))]
+        public IHttpActionResult PostStudent(Student student)
         {
-            return Json(new { TEST_STUD });
+            if (!ModelState.IsValid)
+            {
+                return Content(HttpStatusCode.BadRequest, 
+                    new CustomError(4444, Request.RequestUri.GetLeftPart(UriPartial.Authority)));
+            }
+
+            DB.Students.Add(student);
+            DB.SaveChanges();
+
+            string linkStudents = Request.RequestUri.GetLeftPart(UriPartial.Path);
+            student._links = new HateoasLinks(linkStudents, linkStudents + "/" + student.ID);
+            return Ok(student);
         }
 
         // PUT api/students/5
@@ -157,10 +169,7 @@ namespace LB3.Controllers
 
             DB.Entry(student).State = EntityState.Modified;
 
-            try
-            {
-                DB.SaveChanges();
-            }
+            try { DB.SaveChanges(); }
             catch (DbUpdateConcurrencyException)
             {
                 if (!StudentExists(id))
