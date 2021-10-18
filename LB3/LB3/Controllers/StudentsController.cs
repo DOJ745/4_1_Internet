@@ -9,6 +9,9 @@ using System.Linq;
 using System;
 using System.Net;
 using System.Collections.Generic;
+using System.Web.Http.Description;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 
 namespace LB3.Controllers
 {
@@ -95,19 +98,19 @@ namespace LB3.Controllers
             columns = columns.ToLower();
 
             if (!columns.Contains("name"))
-                students.ForEach(x => x.NAME = null);
+                students.ForEach(stud => stud.NAME = null);
 
             if (!columns.Contains("phone"))
-                students.ForEach(x => x.PHONE = null);
+                students.ForEach(stud => stud.PHONE = null);
 
             if (!columns.Contains("id"))
-                students.ForEach(x => x.ID = 0);
+                students.ForEach(stud => stud.ID = 0);
 
             return Ok(students);
         }
 
         // GET api/students/5
-        [Route("api/Students/{id}")]
+        [Route("api/students/{id}")]
         public IHttpActionResult Get(int? id)
         {
             try
@@ -136,15 +139,59 @@ namespace LB3.Controllers
         }
 
         // PUT api/students/5
-        public IHttpActionResult Put(int id, [FromBody] string value)
+        [ResponseType(typeof(void))]
+        [Route("api/students/{id}")]
+        public IHttpActionResult PutStudent(int id, Student student)
         {
-            return Json(new { TEST_STUD });
+            if (!ModelState.IsValid)
+            {
+                return Content(HttpStatusCode.BadRequest, 
+                    new CustomError(4444, Request.RequestUri.GetLeftPart(UriPartial.Authority)));
+            }
+
+            if (id != student.ID)
+            {
+                return Content(HttpStatusCode.BadRequest, 
+                    new CustomError(5000, Request.RequestUri.GetLeftPart(UriPartial.Authority)));
+            }
+
+            DB.Entry(student).State = EntityState.Modified;
+
+            try
+            {
+                DB.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!StudentExists(id))
+                {
+                    return Content(HttpStatusCode.BadRequest, 
+                        new CustomError(4404, Request.RequestUri.GetLeftPart(UriPartial.Authority)));
+                }
+                else { throw; }
+            }
+
+            string linkStudents = Request.RequestUri.GetLeftPart(UriPartial.Path);
+            student._links = new HateoasLinks(linkStudents, linkStudents + "/" + student.ID);
+
+            return Ok(student);
         }
 
         // DELETE api/students/5
         public IHttpActionResult Delete(int id)
         {
             return Json(new { TEST_STUD });
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing) { DB.Dispose(); }
+            base.Dispose(disposing);
+        }
+
+        private bool StudentExists(int id)
+        {
+            return DB.Students.Count(stud => stud.ID == id) > 0;
         }
     }
 }
