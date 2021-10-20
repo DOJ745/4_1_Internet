@@ -1,5 +1,7 @@
 ﻿const SERVER = "http://localhost:59089/";
-const CONTROLLER_DEFAULT_PATH = SERVER + 'api/students/';
+
+const CONTROLLER_DEFAULT_PATH = SERVER + 'api/students.json/';
+const CONTROLLER_DEFAULT_XML_PATH = SERVER + 'api/students.xml/';
 
 let pagesNumber = 0;
 let StudentList = [];
@@ -16,15 +18,34 @@ let isXml = () => $("#xml").prop("checked");
 function addStudentHandler() {
 
     addForm.find("button").on('click', () => {
-        let requestParams = {
+        let requestParams;
+
+        if (isXml) {
+            requestParams = {
+                url: CONTROLLER_DEFAULT_XML_PATH,
+                type: 'POST',
+                data: addForm.serialize()
+            };
+        }
+
+        else {
+            requestParams = {
+                url: CONTROLLER_DEFAULT_PATH,
+                type: 'POST',
+                data: addForm.serialize()
+            };
+        }
+
+        /*let requestParams = {
             url: CONTROLLER_DEFAULT_PATH,
             type: 'POST',
             data: addForm.serialize()
-        };
+        };*/
 
         $.ajax(requestParams)
             .done((res) => {
-                if (isXml()) res = parser.parse(res).Root;
+                if (isXml()) { res = parser.parse(res).Root; }
+
                 let studRes = 'Student ' + res.NAME + ' successfuly added! ID - #' + res.ID;
                 showAlert("success", studRes);
             })
@@ -36,15 +57,37 @@ function addStudentHandler() {
 }
 
 function removeStudent(id) {
+    let requestParams;
 
+    if (isXml) {
+        requestParams = {
+            url: (CONTROLLER_DEFAULT_XML_PATH + id),
+            type: 'delete'
+        };
+    }
+    else {
+        requestParams = {
+            url: (CONTROLLER_DEFAULT_PATH + id),
+            type: 'delete'
+        };
+    }
+    /*
     let requestParams = {
         url: (CONTROLLER_DEFAULT_PATH + id),
         type: 'delete'
-    };
+    };*/
 
     $.ajax(requestParams)
         .done((res) => {
-            if (isXml()) res = parser.parse(res).Root;
+            if (isXml()) {
+                res = parser.parse(res).Root;
+
+                //showAlert('info', 'Student ' + res.NAME + ' deleted successfuly.');
+                //getAllStudents();
+
+                //window.history.pushState(res, 'LB3', CONTROLLER_DEFAULT_XML_PATH);
+            }
+            
             showAlert('info', 'Student ' + res.NAME + ' deleted successfuly.');
             getAllStudents();
         })
@@ -73,11 +116,21 @@ function searchStudents(all) {
 
     $.ajax(requestParams)
         .done((res) => {
-            if (isXml()) res = parser.parse(
-                new XMLSerializer().serializeToString(res.documentElement)).ArrayOfStudent.Student;
+            if (isXml()) {
+                res = parser.parse(new XMLSerializer().serializeToString(res.documentElement)).ArrayOfStudent.Student;
 
+                //StudentList = res;
+                //updateStudentList(StudentList);
+
+                //window.history.pushState(res, 'LB3', CONTROLLER_DEFAULT_XML_PATH);
+            }
+            else {
+                StudentList = res;
+                updateStudentList(StudentList);
+            }
+            /*
             StudentList = res;
-            updateStudentList(StudentList);
+            updateStudentList(StudentList);*/
         })
 
         .fail((jqXhr, textStatus, errorThrown) => {
@@ -94,7 +147,7 @@ function showAlert(type, text) {
     
     $('#alert').toggleClass('alert-' + type);
 
-    $('#alert').fadeIn().delay(3000).fadeOut();
+    $('#alert').fadeIn().delay(5500).fadeOut();
 }
 
 function updateStudentList(students) {
@@ -107,11 +160,25 @@ function updateStudentList(students) {
         let removeBtn = '<button onclick="removeStudent(' + stud.ID + ')" class="btn btn-danger">Remove #' + stud.ID + '</button>';
         let editBtn = '<button onclick="showEditModal(' + index + ')" class="btn btn-info">Edit</button>';
 
+        /*
+        let resLink = "";
+
+        if (isXml) {
+            resLink = '<a href="'
+                + stud._links.self + '">student.xml/'
+                + stud.ID + '</a>';
+        }
+        else {
+            resLink = '<a href="'
+                + stud._links.self + '">student.json/'
+                + stud.ID + '</a>';
+        }*/
+
         let resLink = '<a href="'
             + stud._links.self + '">student/'
             + stud.ID + '</a>';
 
-        let sRow = '<tr id="student-'
+        let studRow = '<tr id="student-'
             + stud.ID + '"><td>'
             + (stud.ID == -1 ? "" : stud.ID) + '</td><td>'
             + stud.NAME + '</td><td>'
@@ -119,7 +186,7 @@ function updateStudentList(students) {
             + removeBtn + ' ' + editBtn + '</td><td>'
             + resLink + '</td><tr>';
 
-        $('#student-list > tbody').append(sRow);
+        $('#student-list > tbody').append(studRow);
     }
 }
 
@@ -133,9 +200,20 @@ function updateStudent(studId) {
 
     $.ajax(requestParams)
         .done((res) => {
-            if (isXml()) res = parser.parse(res).Root;
+            if (isXml()) {
+                res = parser.parse(res).Root;
+                //let studRes = 'Student successfuly updated!' + res.ID;
+                //showAlert("success", studRes);
+
+                //window.history.pushState(res, 'LB3', CONTROLLER_DEFAULT_XML_PATH);
+            }
+            else {
+                let studRes = 'Student successfuly updated!' + res.ID;
+                showAlert("success", studRes);
+            }
+            /*
             let studRes = 'Student successfuly updated!' + res.ID;
-            showAlert("success", studRes);
+            showAlert("success", studRes);*/
         })
 
         .fail((jqXhr, textStatus, errorThrown) => {

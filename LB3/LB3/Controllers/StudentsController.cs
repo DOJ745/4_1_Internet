@@ -1,10 +1,6 @@
 ﻿using LB3.Models;
 using System.Web.Http;
 using System.Web.WebPages;
-using System.Runtime.Serialization;
-using System.Xml.Serialization;
-using System.IO;
-using Newtonsoft.Json;
 using System.Linq;
 using System;
 using System.Net;
@@ -21,8 +17,11 @@ namespace LB3.Controllers
         private StudentContext DB = new StudentContext();
 
         // GET api/students
-        [Route("api/students")]
+        [Route("api/{path:regex((students)[.](json)|(students)[.](xml))}")]
+        //[Route("api/students")]
         public IHttpActionResult GetStudents(
+            string path = "students.json",
+
             string name = null,
             string columns = "",
             string phone = null,
@@ -33,8 +32,8 @@ namespace LB3.Controllers
             string globalLike = "",
             string orderby = "off",
 
-            int minId = Int32.MinValue,
-            int maxId = Int32.MaxValue
+            int minId = 0,
+            int maxId = 10000
         )
         {
             var students = new List<Student>();
@@ -103,8 +102,9 @@ namespace LB3.Controllers
         }
 
         // GET api/students/5
-        [Route("api/students/{id}")]
-        public IHttpActionResult Get(int? id)
+        //[Route("api/students/{id}")]
+        [Route("api/{path:regex((students)[.](json)|(students)[.](xml))}/{id}")]
+        public IHttpActionResult Get(int? id, string path = "students.json")
         {
             try
             {
@@ -127,8 +127,9 @@ namespace LB3.Controllers
 
         // POST api/students
         [ResponseType(typeof(Student))]
-        [Route("api/students")]
-        public IHttpActionResult PostStudent(Student student)
+        //[Route("api/students")]
+        [Route("api/{path:regex((students)[.](json)|(students)[.](xml))}")]
+        public IHttpActionResult PostStudent(Student student, string path = "students.json")
         {
             if (!ModelState.IsValid)
             {
@@ -147,8 +148,9 @@ namespace LB3.Controllers
 
         // PUT api/students/5
         [ResponseType(typeof(void))]
-        [Route("api/students/{id}")]
-        public IHttpActionResult PutStudent(int id, Student student)
+        //[Route("api/students/{id}")]
+        [Route("api/{path:regex((students)[.](json)|(students)[.](xml))}/{id}")]
+        public IHttpActionResult PutStudent(int id, Student student, string path = "students.json")
         {
             if (!ModelState.IsValid)
             {
@@ -183,8 +185,9 @@ namespace LB3.Controllers
 
         // DELETE api/students/5
         [ResponseType(typeof(Student))]
-        [Route("api/students/{id}")]
-        public IHttpActionResult DeleteStudent(int id)
+        [Route("api/{path:regex((students)[.](json)|(students)[.](xml))}/{id}")]
+        //[Route("api/students/{id}")]
+        public IHttpActionResult DeleteStudent(int id, string path = "students.json")
         {
             Student student = DB.Students.Find(id);
             if (student == null)
