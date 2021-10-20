@@ -15,12 +15,14 @@ let searchForm = $("#search");
 
 let isXml = () => $("#xml").prop("checked");
 
+let testRequestParams;
+
 function addStudentHandler() {
 
     addForm.find("button").on('click', () => {
         let requestParams;
 
-        if (isXml) {
+        if (isXml()) {
             requestParams = {
                 url: CONTROLLER_DEFAULT_XML_PATH,
                 type: 'POST',
@@ -35,12 +37,6 @@ function addStudentHandler() {
                 data: addForm.serialize()
             };
         }
-
-        /*let requestParams = {
-            url: CONTROLLER_DEFAULT_PATH,
-            type: 'POST',
-            data: addForm.serialize()
-        };*/
 
         $.ajax(requestParams)
             .done((res) => {
@@ -59,7 +55,7 @@ function addStudentHandler() {
 function removeStudent(id) {
     let requestParams;
 
-    if (isXml) {
+    if (isXml()) {
         requestParams = {
             url: (CONTROLLER_DEFAULT_XML_PATH + id),
             type: 'delete'
@@ -71,22 +67,10 @@ function removeStudent(id) {
             type: 'delete'
         };
     }
-    /*
-    let requestParams = {
-        url: (CONTROLLER_DEFAULT_PATH + id),
-        type: 'delete'
-    };*/
 
     $.ajax(requestParams)
         .done((res) => {
-            if (isXml()) {
-                res = parser.parse(res).Root;
-
-                //showAlert('info', 'Student ' + res.NAME + ' deleted successfuly.');
-                //getAllStudents();
-
-                //window.history.pushState(res, 'LB3', CONTROLLER_DEFAULT_XML_PATH);
-            }
+            if (isXml()) { res = parser.parse(res).Root; }
             
             showAlert('info', 'Student ' + res.NAME + ' deleted successfuly.');
             getAllStudents();
@@ -107,30 +91,32 @@ function searchStudentsHandler() {
 }
 
 function searchStudents(all) {
+    let requestParams;
 
-    let requestParams = {
-        url: `${CONTROLLER_DEFAULT_PATH}?${searchForm.serialize()}`,
-        type: 'get',
-        headers: { 'Accept': isXml() ? 'application/xml' : 'application/json' }
-    };
+    if (isXml()) {
+        requestParams = {
+            url: `${CONTROLLER_DEFAULT_XML_PATH}?${searchForm.serialize()}`,
+            //url: `${CONTROLLER_DEFAULT_XML_PATH}?${searchForm}`,
+            type: 'get',
+            headers: { 'Accept': 'application/xml' }
+        };
+    }
+    else {
+        requestParams = {
+            url: `${CONTROLLER_DEFAULT_PATH}?${searchForm.serialize()}`,
+            type: 'get',
+            headers: { 'Accept': 'application/json' }
+        };
+    }
 
     $.ajax(requestParams)
         .done((res) => {
             if (isXml()) {
                 res = parser.parse(new XMLSerializer().serializeToString(res.documentElement)).ArrayOfStudent.Student;
-
-                //StudentList = res;
-                //updateStudentList(StudentList);
-
-                //window.history.pushState(res, 'LB3', CONTROLLER_DEFAULT_XML_PATH);
             }
-            else {
-                StudentList = res;
-                updateStudentList(StudentList);
-            }
-            /*
+            
             StudentList = res;
-            updateStudentList(StudentList);*/
+            updateStudentList(StudentList);
         })
 
         .fail((jqXhr, textStatus, errorThrown) => {
@@ -160,10 +146,10 @@ function updateStudentList(students) {
         let removeBtn = '<button onclick="removeStudent(' + stud.ID + ')" class="btn btn-danger">Remove #' + stud.ID + '</button>';
         let editBtn = '<button onclick="showEditModal(' + index + ')" class="btn btn-info">Edit</button>';
 
-        /*
+        
         let resLink = "";
 
-        if (isXml) {
+        if (isXml()) {
             resLink = '<a href="'
                 + stud._links.self + '">student.xml/'
                 + stud.ID + '</a>';
@@ -172,11 +158,11 @@ function updateStudentList(students) {
             resLink = '<a href="'
                 + stud._links.self + '">student.json/'
                 + stud.ID + '</a>';
-        }*/
+        }
 
-        let resLink = '<a href="'
+        /*let resLink = '<a href="'
             + stud._links.self + '">student/'
-            + stud.ID + '</a>';
+            + stud.ID + '</a>';*/
 
         let studRow = '<tr id="student-'
             + stud.ID + '"><td>'
@@ -191,29 +177,29 @@ function updateStudentList(students) {
 }
 
 function updateStudent(studId) {
+    let requestParams;
 
-    let requestParams = {
-        url: CONTROLLER_DEFAULT_PATH + studId,
-        type: 'put',
-        data: updateForm.serializeArray()
-    };
+    if (isXml()) {
+        requestParams = {
+            url: CONTROLLER_DEFAULT_XML_PATH + studId,
+            type: 'put',
+            data: updateForm.serializeArray()
+        };
+    }
+    else {
+        requestParams = {
+            url: CONTROLLER_DEFAULT_PATH + studId,
+            type: 'put',
+            data: updateForm.serializeArray()
+        };
+    }
 
     $.ajax(requestParams)
         .done((res) => {
-            if (isXml()) {
-                res = parser.parse(res).Root;
-                //let studRes = 'Student successfuly updated!' + res.ID;
-                //showAlert("success", studRes);
+            if (isXml()) { res = parser.parse(res).Root; }
 
-                //window.history.pushState(res, 'LB3', CONTROLLER_DEFAULT_XML_PATH);
-            }
-            else {
-                let studRes = 'Student successfuly updated!' + res.ID;
-                showAlert("success", studRes);
-            }
-            /*
             let studRes = 'Student successfuly updated!' + res.ID;
-            showAlert("success", studRes);*/
+            showAlert("success", studRes);
         })
 
         .fail((jqXhr, textStatus, errorThrown) => {
