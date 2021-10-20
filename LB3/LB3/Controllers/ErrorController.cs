@@ -5,7 +5,7 @@ namespace LB3.Controllers
 {
     public class ErrorController : ApiController
     {
-        [Route("api/Error/{code}")]
+        [Route("api/error/{code}")]
         public IHttpActionResult Get(int code)
         {
             CustomErrorDetails errorDetails;

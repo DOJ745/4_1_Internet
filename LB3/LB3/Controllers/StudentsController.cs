@@ -159,7 +159,7 @@ namespace LB3.Controllers
             if (id != student.ID)
             {
                 return Content(HttpStatusCode.BadRequest, 
-                    new CustomError(5000, Request.RequestUri.GetLeftPart(UriPartial.Authority)));
+                    new CustomError(4404, Request.RequestUri.GetLeftPart(UriPartial.Authority)));
             }
 
             DB.Entry(student).State = EntityState.Modified;
