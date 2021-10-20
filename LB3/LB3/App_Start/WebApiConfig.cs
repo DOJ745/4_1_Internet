@@ -10,12 +10,6 @@ namespace LB3
     {
         public static void Register(HttpConfiguration config)
         {
-            // NOW CORS ARE HERE
-
-            /*
-            var cors = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(cors);*/
-
             // Конфигурация и службы веб-API
 
             // Маршруты веб-API

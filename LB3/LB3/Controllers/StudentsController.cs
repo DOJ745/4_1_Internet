@@ -18,7 +18,6 @@ namespace LB3.Controllers
 
         // GET api/students
         [Route("api/{path:regex((students)[.](json)|(students)[.](xml))}")]
-        //[Route("api/students")]
         public IHttpActionResult GetStudents(
             string path = "students.json",
 
@@ -102,7 +101,6 @@ namespace LB3.Controllers
         }
 
         // GET api/students/5
-        //[Route("api/students/{id}")]
         [Route("api/{path:regex((students)[.](json)|(students)[.](xml))}/{id}")]
         public IHttpActionResult Get(int? id, string path = "students.json")
         {
@@ -127,7 +125,6 @@ namespace LB3.Controllers
 
         // POST api/students
         [ResponseType(typeof(Student))]
-        //[Route("api/students")]
         [Route("api/{path:regex((students)[.](json)|(students)[.](xml))}")]
         public IHttpActionResult PostStudent(Student student, string path = "students.json")
         {
@@ -148,7 +145,6 @@ namespace LB3.Controllers
 
         // PUT api/students/5
         [ResponseType(typeof(void))]
-        //[Route("api/students/{id}")]
         [Route("api/{path:regex((students)[.](json)|(students)[.](xml))}/{id}")]
         public IHttpActionResult PutStudent(int id, Student student, string path = "students.json")
         {
@@ -186,7 +182,6 @@ namespace LB3.Controllers
         // DELETE api/students/5
         [ResponseType(typeof(Student))]
         [Route("api/{path:regex((students)[.](json)|(students)[.](xml))}/{id}")]
-        //[Route("api/students/{id}")]
         public IHttpActionResult DeleteStudent(int id, string path = "students.json")
         {
             Student student = DB.Students.Find(id);
