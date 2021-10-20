@@ -17,6 +17,7 @@ namespace LB3.Controllers
         private StudentContext DB = new StudentContext();
 
         // GET api/students
+        [ResponseType(typeof(Student))]
         [Route("api/{path:regex((students)[.](json)|(students)[.](xml))}")]
         public IHttpActionResult GetStudents(
             string path = "students.json",
@@ -101,6 +102,7 @@ namespace LB3.Controllers
         }
 
         // GET api/students/5
+        [ResponseType(typeof(Student))]
         [Route("api/{path:regex((students)[.](json)|(students)[.](xml))}/{id}")]
         public IHttpActionResult Get(int? id, string path = "students.json")
         {
@@ -144,7 +146,7 @@ namespace LB3.Controllers
         }
 
         // PUT api/students/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(Student))]
         [Route("api/{path:regex((students)[.](json)|(students)[.](xml))}/{id}")]
         public IHttpActionResult PutStudent(int id, Student student, string path = "students.json")
         {

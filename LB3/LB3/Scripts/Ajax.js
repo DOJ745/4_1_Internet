@@ -26,6 +26,7 @@ function addStudentHandler() {
             requestParams = {
                 url: CONTROLLER_DEFAULT_XML_PATH,
                 type: 'POST',
+                headers: { 'Accept': 'application/xml' },
                 data: addForm.serialize()
             };
         }
@@ -34,6 +35,7 @@ function addStudentHandler() {
             requestParams = {
                 url: CONTROLLER_DEFAULT_PATH,
                 type: 'POST',
+                headers: { 'Accept': 'application/json' },
                 data: addForm.serialize()
             };
         }
@@ -96,7 +98,6 @@ function searchStudents(all) {
     if (isXml()) {
         requestParams = {
             url: `${CONTROLLER_DEFAULT_XML_PATH}?${searchForm.serialize()}`,
-            //url: `${CONTROLLER_DEFAULT_XML_PATH}?${searchForm}`,
             type: 'get',
             headers: { 'Accept': 'application/xml' }
         };
@@ -183,6 +184,7 @@ function updateStudent(studId) {
         requestParams = {
             url: CONTROLLER_DEFAULT_XML_PATH + studId,
             type: 'put',
+            headers: { 'Accept': 'application/xml' },
             data: updateForm.serializeArray()
         };
     }
@@ -190,6 +192,7 @@ function updateStudent(studId) {
         requestParams = {
             url: CONTROLLER_DEFAULT_PATH + studId,
             type: 'put',
+            headers: { 'Accept': 'application/json' },
             data: updateForm.serializeArray()
         };
     }
