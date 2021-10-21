@@ -117,6 +117,8 @@ namespace LB3.Controllers
                     linkStudent.Substring(0, linkStudent.LastIndexOf("/")), 
                     linkStudent);
 
+                if(path.Equals("students.json")) { return Json(student); }
+
                 return Ok(student);
             }
             catch (Exception)
@@ -144,6 +146,8 @@ namespace LB3.Controllers
 
             string linkStudents = Request.RequestUri.GetLeftPart(UriPartial.Path);
             student._links = new HateoasLinks(linkStudents, linkStudents + student.ID);
+
+            if (path.Equals("students.json")) { return Json(student); }
 
             return Ok(student);
         }
@@ -182,6 +186,8 @@ namespace LB3.Controllers
             string linkStudents = Request.RequestUri.GetLeftPart(UriPartial.Path);
             student._links = new HateoasLinks(linkStudents, linkStudents + student.ID);
 
+            if (path.Equals("students.json")) { return Json(student); }
+
             return Ok(student);
         }
 
@@ -203,6 +209,8 @@ namespace LB3.Controllers
 
             string linkStudents = Request.RequestUri.GetLeftPart(UriPartial.Path);
             student._links = new HateoasLinks(linkStudents, linkStudents + student.ID);
+
+            if (path.Equals("students.json")) { return Json(student); }
 
             return Ok(student);
         }

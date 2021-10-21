@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>D:\ForIIS\LB3</_PublishTargetUrl>
-    <History>True|2021-10-20T17:50:37.2368347Z;True|2021-10-20T20:43:40.7031950+03:00;True|2021-10-20T20:30:17.6437845+03:00;True|2021-10-20T19:28:02.0737243+03:00;True|2021-10-20T19:24:19.9347351+03:00;True|2021-10-20T19:20:40.4667180+03:00;True|2021-10-20T19:18:45.3628214+03:00;True|2021-10-20T19:17:23.1060367+03:00;</History>
+    <History>True|2021-10-21T17:49:27.8846517Z;True|2021-10-20T20:50:37.2368347+03:00;True|2021-10-20T20:43:40.7031950+03:00;True|2021-10-20T20:30:17.6437845+03:00;True|2021-10-20T19:28:02.0737243+03:00;True|2021-10-20T19:24:19.9347351+03:00;True|2021-10-20T19:20:40.4667180+03:00;True|2021-10-20T19:18:45.3628214+03:00;True|2021-10-20T19:17:23.1060367+03:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Data/Database1.mdf">
@@ -90,10 +90,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/16/2020 20:38:56</publishTime>
     </File>
     <File Include="bin/LB3.dll">
-      <publishTime>10/20/2021 20:50:36</publishTime>
+      <publishTime>10/21/2021 20:49:27</publishTime>
     </File>
     <File Include="bin/LB3.pdb">
-      <publishTime>10/20/2021 20:50:36</publishTime>
+      <publishTime>10/21/2021 20:49:27</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/05/2018 16:10:50</publishTime>
@@ -369,7 +369,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/01/2021 09:38:03</publishTime>
     </File>
     <File Include="Scripts/Ajax.js">
-      <publishTime>10/20/2021 20:29:10</publishTime>
+      <publishTime>10/21/2021 20:47:49</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>10/01/2021 09:38:06</publishTime>
