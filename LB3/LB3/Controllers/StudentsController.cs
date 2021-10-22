@@ -28,7 +28,7 @@ namespace LB3.Controllers
             string phone = null,
 
             int offset = 0,
-            int limit = 45,
+            int limit = 5,
 
             string globalLike = "",
             string orderby = "off",
@@ -40,6 +40,8 @@ namespace LB3.Controllers
             var students = new List<Student>();
             var sqlQuery = string.Empty;
             string orderBy;
+
+            bool isStudListFilled = false;
 
             if (orderby.Equals("on")) { orderBy = "NAME"; }
             else { orderBy = "ID"; }
@@ -64,6 +66,8 @@ namespace LB3.Controllers
                     phone, 
                     offset, 
                     limit).ToList();
+
+                isStudListFilled = true;
             }
             else
             {
@@ -81,6 +85,8 @@ namespace LB3.Controllers
                     globalLike, 
                     offset, 
                     limit).ToList();
+
+                isStudListFilled = true;
             }
 
             string linkStudents = Request.RequestUri.GetLeftPart(UriPartial.Path);
@@ -90,14 +96,16 @@ namespace LB3.Controllers
 
             columns = columns.ToLower();
 
-            if (!columns.Contains("name"))
+            if (!columns.Contains("name") && !isStudListFilled)
                 students.ForEach(stud => stud.NAME = null);
-
-            if (!columns.Contains("phone"))
+                
+            if (!columns.Contains("phone") && !isStudListFilled)
                 students.ForEach(stud => stud.PHONE = null);
 
-            if (!columns.Contains("id"))
+            if (!columns.Contains("id") && !isStudListFilled)
                 students.ForEach(stud => stud.ID = 0);
+
+            if (path.Equals("students.json")) { return Json(students); }
 
             return Ok(students);
         }

@@ -1,4 +1,5 @@
 ﻿const SERVER = "http://localhost:10000/LB3/";
+//const SERVER = "http://localhost:59089/";
 
 const CONTROLLER_DEFAULT_PATH = SERVER + 'api/students.json/';
 const CONTROLLER_DEFAULT_XML_PATH = SERVER + 'api/students.xml/';

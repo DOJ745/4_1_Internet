@@ -8,17 +8,17 @@ namespace LB3.Models
     public class CustomError
     {
 		public int code;
-		public Link _links;
+		public ErrorLink _links;
 		public CustomError(int code, string link)
 		{
 			this.code = code;
-			this._links = new Link(link + "/api/error/" + code);
+			this._links = new ErrorLink(link + "/api/error/" + code);
 		}
 
-		public class Link
+		public class ErrorLink
 		{
 			public string details;
-			public Link(string details) { this.details = details; }
+			public ErrorLink(string details) { this.details = details; }
 		}
 	}
 }
