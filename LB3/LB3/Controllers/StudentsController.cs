@@ -133,7 +133,7 @@ namespace LB3.Controllers
             {
                 return Content(
                     HttpStatusCode.BadRequest, 
-                    new CustomError(4500, Request.RequestUri.GetLeftPart(UriPartial.Authority)));
+                    new CustomError(4404, Request.RequestUri.GetLeftPart(UriPartial.Authority)));
             }
         }
 

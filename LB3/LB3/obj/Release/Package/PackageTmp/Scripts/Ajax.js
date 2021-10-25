@@ -141,38 +141,71 @@ function showAlert(type, text) {
 function updateStudentList(students) {
 
     $('#student-list > tbody').empty();
+
     for (let index in students) {
+
+        let studRow;
 
         let stud = students[index];
 
-        let removeBtn = '<button onclick="removeStudent(' + stud.ID + ')" class="btn btn-danger">Remove #' + stud.ID + '</button>';
-        let editBtn = '<button onclick="showEditModal(' + index + ')" class="btn btn-info">Edit</button>';
+        let removeBtn;
+        let editBtn;
 
-        
         let resLink = "";
 
-        if (isXml()) {
+        if ((typeof stud === "number") && isXml()) {
+
+            removeBtn = '<button onclick="removeStudent(' + students.ID + ')" class="btn btn-danger">Remove #' + students.ID + '</button>';
+            editBtn = '<button onclick="showEditModal(' + students.ID + ')" class="btn btn-info">Edit</button>';
+
+            resLink = '<a href="'
+                + students._links.self + '">student.xml/'
+                + stud + '</a>';
+
+            studRow = '<tr id="student-'
+                + students.ID + '"><td>'
+                + (students.ID == -1 ? "" : students.ID) + '</td><td>'
+                + students.NAME + '</td><td>'
+                + students.PHONE + '</td><td>'
+                + removeBtn + ' ' + editBtn + '</td><td>'
+                + resLink + '</td><tr>';
+        }
+
+        else if (isXml() && (typeof stud === "object")) {
+
+            removeBtn = '<button onclick="removeStudent(' + stud.ID + ')" class="btn btn-danger">Remove #' + stud.ID + '</button>';
+            editBtn = '<button onclick="showEditModal(' + index + ')" class="btn btn-info">Edit</button>';
+
             resLink = '<a href="'
                 + stud._links.self + '">student.xml/'
                 + stud.ID + '</a>';
+
+            studRow = '<tr id="student-'
+                + stud.ID + '"><td>'
+                + (stud.ID == -1 ? "" : stud.ID) + '</td><td>'
+                + stud.NAME + '</td><td>'
+                + stud.PHONE + '</td><td>'
+                + removeBtn + ' ' + editBtn + '</td><td>'
+                + resLink + '</td><tr>';
         }
+
         else {
+
+            removeBtn = '<button onclick="removeStudent(' + stud.ID + ')" class="btn btn-danger">Remove #' + stud.ID + '</button>';
+            editBtn = '<button onclick="showEditModal(' + index + ')" class="btn btn-info">Edit</button>';
+
             resLink = '<a href="'
                 + stud._links.self + '">student.json/'
                 + stud.ID + '</a>';
+
+            studRow = '<tr id="student-'
+                + stud.ID + '"><td>'
+                + (stud.ID == -1 ? "" : stud.ID) + '</td><td>'
+                + stud.NAME + '</td><td>'
+                + stud.PHONE + '</td><td>'
+                + removeBtn + ' ' + editBtn + '</td><td>'
+                + resLink + '</td><tr>';
         }
-
-        /*let resLink = '<a href="'
-            + stud._links.self + '">student/'
-            + stud.ID + '</a>';*/
-
-        let studRow = '<tr id="student-'
-            + stud.ID + '"><td>'
-            + (stud.ID == -1 ? "" : stud.ID) + '</td><td>'
-            + stud.NAME + '</td><td>'
-            + stud.PHONE + '</td><td>'
-            + removeBtn + ' ' + editBtn + '</td><td>'
-            + resLink + '</td><tr>';
 
         $('#student-list > tbody').append(studRow);
     }
