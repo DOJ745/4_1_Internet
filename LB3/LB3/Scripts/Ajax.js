@@ -1,6 +1,6 @@
 ﻿//const SERVER = "http://localhost:10000/LB3/";
-//const SERVER = "http://localhost:59089/";
-const SERVER = "http://172.16.193.234:10720/LB3/";
+const SERVER = "http://localhost:59089/";
+//const SERVER = "http://172.16.193.234:10720/03/";
 
 const CONTROLLER_DEFAULT_PATH = SERVER + 'api/students.json/';
 const CONTROLLER_DEFAULT_XML_PATH = SERVER + 'api/students.xml/';
@@ -157,7 +157,7 @@ function updateStudentList(students) {
         if ((typeof stud === "number") && isXml()) {
 
             removeBtn = '<button onclick="removeStudent(' + students.ID + ')" class="btn btn-danger">Remove #' + students.ID + '</button>';
-            editBtn = '<button onclick="showEditModal(' + students.ID + ')" class="btn btn-info">Edit</button>';
+            editBtn = '<button onclick="showEditModal(' + 1 + ')" class="btn btn-info">Edit</button>';
 
             resLink = '<a href="'
                 + students._links.self + '">student.xml/'

@@ -96,13 +96,13 @@ namespace LB3.Controllers
 
             columns = columns.ToLower();
 
-            if (!columns.Contains("name") && !isStudListFilled)
+            if (!columns.Contains("name") && isStudListFilled)
                 students.ForEach(stud => stud.NAME = null);
                 
-            if (!columns.Contains("phone") && !isStudListFilled)
+            if (!columns.Contains("phone") && isStudListFilled)
                 students.ForEach(stud => stud.PHONE = null);
 
-            if (!columns.Contains("id") && !isStudListFilled)
+            if (!columns.Contains("id") && isStudListFilled)
                 students.ForEach(stud => stud.ID = 0);
 
             if (path.Equals("students.json")) { return Json(students); }
