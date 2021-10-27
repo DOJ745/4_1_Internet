@@ -21,12 +21,12 @@ namespace WINFORM_SUM
 "      <objOne>\n" +
 "        <str>" + this.str +"</str>\n" +
 "        <numberInt>" + this.numberInt + "</numberInt>\n" +
-"        <numberFloat>" + this.numberFloat + "</numberFloat>\n" +
+"        <numberFloat>" + this.numberFloat.ToString().Replace(",", ".") + "</numberFloat>\n" +
 "      </objOne>\n" +
 "      <objTwo>\n" +
 "        <str>" + otherObject.str + "</str>\n" +
 "        <numberInt>" + otherObject.numberInt + "</numberInt>\n" +
-"        <numberFloat>" + otherObject.numberFloat + "</numberFloat>\n" +
+"        <numberFloat>" + otherObject.numberFloat.ToString().Replace(",", ".") + "</numberFloat>\n" +
 "      </objTwo>\n" +
 "    </Sum>\n" +
 "  </soap:Body>\n" +

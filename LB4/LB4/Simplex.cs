@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Services;
 
@@ -41,6 +43,14 @@ namespace LB4
             result.str = objOne.str + objTwo.str;
             result.numberInt = objOne.numberInt + objTwo.numberInt;
             result.numberFloat = objOne.numberFloat + objTwo.numberFloat;
+
+            string reqBody;
+
+            Context.Request.InputStream.Position = 0;
+            StreamReader str = new StreamReader(Context.Request.InputStream);
+            reqBody = str.ReadToEnd();
+
+            result.str += "\n\n" + reqBody + "\n\n";
 
             return result;
         }

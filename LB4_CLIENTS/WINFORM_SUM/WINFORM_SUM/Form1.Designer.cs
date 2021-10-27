@@ -49,7 +49,7 @@ namespace WINFORM_SUM
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(248, 298);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(93, 19);
             this.button1.TabIndex = 0;
@@ -60,7 +60,7 @@ namespace WINFORM_SUM
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(126, 167);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(98, 20);
             this.textBox1.TabIndex = 1;
@@ -70,7 +70,7 @@ namespace WINFORM_SUM
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(126, 211);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(98, 20);
             this.textBox2.TabIndex = 2;
@@ -80,7 +80,7 @@ namespace WINFORM_SUM
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(124, 250);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(98, 20);
             this.textBox3.TabIndex = 3;
@@ -150,7 +150,7 @@ namespace WINFORM_SUM
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(368, 166);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(98, 20);
             this.textBox4.TabIndex = 9;
@@ -160,7 +160,7 @@ namespace WINFORM_SUM
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(368, 211);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(98, 20);
             this.textBox5.TabIndex = 8;
@@ -170,7 +170,7 @@ namespace WINFORM_SUM
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(368, 250);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(98, 20);
             this.textBox6.TabIndex = 7;
@@ -217,9 +217,9 @@ namespace WINFORM_SUM
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "SUM REQ/RES";
             this.ResumeLayout(false);
             this.PerformLayout();
 
