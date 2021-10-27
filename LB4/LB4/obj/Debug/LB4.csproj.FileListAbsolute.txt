@@ -52,8 +52,8 @@ D:\LabsFolder\_4_1\InternetLabs\LB4\LB4\bin\roslyn\VBCSCompiler.exe
 D:\LabsFolder\_4_1\InternetLabs\LB4\LB4\bin\roslyn\VBCSCompiler.exe.config
 D:\LabsFolder\_4_1\InternetLabs\LB4\LB4\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\LabsFolder\_4_1\InternetLabs\LB4\LB4\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\LabsFolder\_4_1\InternetLabs\LB4\LB4\obj\Debug\LB4.csproj.AssemblyReference.cache
 D:\LabsFolder\_4_1\InternetLabs\LB4\LB4\obj\Debug\LB4.csproj.CoreCompileInputs.cache
 D:\LabsFolder\_4_1\InternetLabs\LB4\LB4\obj\Debug\LB4.csproj.CopyComplete
 D:\LabsFolder\_4_1\InternetLabs\LB4\LB4\obj\Debug\LB4.dll
 D:\LabsFolder\_4_1\InternetLabs\LB4\LB4\obj\Debug\LB4.pdb
+D:\LabsFolder\_4_1\InternetLabs\LB4\LB4\obj\Debug\LB4.csproj.AssemblyReference.cache

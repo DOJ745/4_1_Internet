@@ -6,23 +6,34 @@ using System.Web.Services;
 
 namespace LB4
 {
-    [WebServiceBinding(ConformsTo = WsiProfiles.None)]
-    [WebService(Description = "Simplex web service")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [WebService(Description = "Simplex web service",
+        Namespace = "FAA")]
     public class Simplex : WebService
     {
-        [WebMethod(Description = "Sum of two integer")]
+        [WebMethod(Description = "Sum of two integer", 
+            MessageName = "Add")]
         public int Add(int x, int y)
         {
             return x + y;
         }
 
-        [WebMethod(Description = "Concatenation of string and double")]
+        [WebMethod(Description = "AJAX Sum of two integer",
+            MessageName = "AddS")]
+        public int AddS(int x, int y)
+        {
+            return x + y;
+        }
+
+        [WebMethod(Description = "Concatenation of string and double", 
+            MessageName = "Concat")]
         public string Concat(string str, double numberDouble)
         {
             return str + numberDouble;
         }
 
-        [WebMethod(Description = "Sum of two classes")]
+        [WebMethod(Description = "Sum of two classes",
+            MessageName = "Sum")]
         public SimpleClass Sum(SimpleClass objOne, SimpleClass objTwo)
         {
             SimpleClass result = new SimpleClass();
@@ -33,25 +44,5 @@ namespace LB4
 
             return result;
         }
-
-        [WebMethod]
-        public TestReport GetReport(int reportID)
-        {
-            TestReport testReport = new TestReport()
-            {
-                ReportID = reportID,
-                Date = DateTime.Now,
-                Info = "Some info"
-            };
-
-            return testReport;
-        }
-    }
-
-    public class TestReport
-    {
-        public int ReportID { get; set; }
-        public DateTime Date { get; set; }
-        public string Info { get; set; }
     }
 }
