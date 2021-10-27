@@ -47,8 +47,8 @@ namespace LB4
             string reqBody;
 
             Context.Request.InputStream.Position = 0;
-            StreamReader str = new StreamReader(Context.Request.InputStream);
-            reqBody = str.ReadToEnd();
+            StreamReader reader = new StreamReader(Context.Request.InputStream);
+            reqBody = reader.ReadToEnd();
 
             result.str += "\n\n" + reqBody + "\n\n";
 
