@@ -68,8 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ServerClass\wsdl.exe" />
-    <Content Include="SimplexByWSDL.asmx" />
+    <Content Include="Simplex.asmx" />
     <Content Include="Web.config" />
+    <Content Include="WebForm.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Simplex.cs">

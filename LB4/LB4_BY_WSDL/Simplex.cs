@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using System.Web.Services.Description;
 using System.Web.Services.Protocols;
 
 namespace LB4_BY_WSDL
@@ -12,7 +13,7 @@ namespace LB4_BY_WSDL
     public class Simplex : WebService
     {
         [WebMethod]
-        [SoapDocumentMethod("FAA/Add", RequestNamespace = "FAA", ResponseNamespace = "FAA", Use = System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [SoapDocumentMethod("FAA/Add", RequestNamespace = "FAA", ResponseNamespace = "FAA", Use = SoapBindingUse.Literal, ParameterStyle = SoapParameterStyle.Wrapped)]
         public int Add(int x, int y)
         {
             return x + y;
@@ -20,7 +21,7 @@ namespace LB4_BY_WSDL
 
         /// <remarks/>
         [WebMethod]
-        [SoapDocumentMethod("FAA/AddS", RequestNamespace = "FAA", ResponseNamespace = "FAA", Use = System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [SoapDocumentMethod("FAA/AddS", RequestNamespace = "FAA", ResponseNamespace = "FAA", Use = SoapBindingUse.Literal, ParameterStyle = SoapParameterStyle.Wrapped)]
         public string AddS(int x, int y)
         {
             int sum = x + y;
@@ -28,8 +29,8 @@ namespace LB4_BY_WSDL
         }
 
         /// <remarks/>
-        [WebMethod()]
-        [SoapDocumentMethod("FAA/Concat", RequestNamespace = "FAA", ResponseNamespace = "FAA", Use = System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [WebMethod]
+        [SoapDocumentMethod("FAA/Concat", RequestNamespace = "FAA", ResponseNamespace = "FAA", Use = SoapBindingUse.Literal, ParameterStyle = SoapParameterStyle.Wrapped)]
         public string Concat(string str, double numberDouble)
         {
             return str + numberDouble;
@@ -37,7 +38,7 @@ namespace LB4_BY_WSDL
 
         /// <remarks/>
         [WebMethod]
-        [SoapDocumentMethod("FAA/Sum", RequestNamespace = "FAA", ResponseNamespace = "FAA", Use = System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [SoapDocumentMethod("FAA/Sum", RequestNamespace = "FAA", ResponseNamespace = "FAA", Use = SoapBindingUse.Literal, ParameterStyle = SoapParameterStyle.Wrapped)]
         public SimpleClass Sum(SimpleClass objOne, SimpleClass objTwo)
         {
             SimpleClass result = new SimpleClass();

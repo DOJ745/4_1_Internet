@@ -70,7 +70,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WebForm.html" />
     <None Include="ProxyClass\GetServiceClassFromWSDL.bat" />
     <Content Include="ProxyClass\wsdl.exe" />
     <Content Include="Simplex.asmx" />
