@@ -1,0 +1,136 @@
+﻿<!doctype html>
+<html>
+<head>
+
+    <meta charset=utf-8>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+
+        let url = "http://localhost:50266/Simplex.asmx";
+
+        function CallService() {
+
+            var objOneStr = $("#obj_one_str").val();
+            var objOneInt = $("#obj_one_int").val();
+            var objOneFloat = $("#obj_one_float").val();
+
+            var objTwoStr = $("#obj_two_str").val();
+            var objTwoInt = $("#obj_two_int").val();
+            var objTwoFloat = $("#obj_two_float").val();
+
+            var soapMessage = '<?xml version="1.0" encoding="utf-8"?>' +
+                '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">' +
+                '  <soap:Body>' +
+                '    <Sum xmlns="FAA">' +
+                '      <objOne>' +
+                '        <str>' + objOneStr + '</str>' +
+                '        <numberInt>' + objOneInt + '</numberInt>' +
+                '        <numberFloat>' + objOneFloat + '</numberFloat>' +
+                '      </objOne>' +
+                '      <objTwo>' +
+                '        <str>' + objTwoStr + '</str>' +
+                '        <numberInt>' + objTwoInt + '</numberInt>' +
+                '        <numberFloat>' + objTwoFloat + '</numberFloat>' +
+                '      </objTwo>' +
+                '    </Sum>' +
+                '  </soap:Body>' +
+                '</soap:Envelope>';
+
+            $.ajax({
+                url: url,
+                type: "POST",
+                dataType: "xml",
+                processData: false,
+                data: soapMessage,
+                contentType: 'text/xml; charset="utf-8"',
+                success: OnSuccess,
+                error: OnError
+            });
+
+            return false;
+        }
+
+        function OnSuccess(data, status) {
+            alert(data.toString());
+        }
+
+        function OnError(request, status, error) {
+            alert('error');
+        }
+
+        $(document).ready(function () {
+            jQuery.support.cors = true;
+        });
+     </script>
+
+</head>
+<body>
+
+    <label>ADD METHOD</label>
+    <br />
+    <form method="post" action="http://localhost:50266/Simplex.asmx/Add">
+        <label>Enter x:</label>
+        <br />
+        <input type="number" name="x" />
+        <br />
+        <label>Enter y:</label>
+        <br />
+        <input type="number" name="y" />
+        <br /><br />
+        <input type="submit" value="Add" />
+    </form>
+
+    <br /><br />
+
+    <label>CONCAT METHOD</label>
+    <br />
+    <form method="post" action="http://localhost:50266/Simplex.asmx/Concat">
+        <label>Enter string:</label>
+        <br />
+        <input type="text" name="str" />
+        <br />
+        <label>Enter double number:</label>
+        <br />
+        <input type="text" name="numberDouble" />
+        <br /><br />
+        <input type="submit" value="Concat" />
+    </form>
+
+    <br /><br />
+
+    <label>SUM METHOD</label>
+    <br />
+
+    <h3>OBJ ONE</h3>
+    <label>Enter string:</label>
+    <br />
+    <input id="obj_one_str" type="text" name="str" value="def" />
+    <br />
+    <label>Enter int number:</label>
+    <br />
+    <input id="obj_one_int" type="number" name="intNum" value="4" />
+    <br />
+    <label>Enter float number:</label>
+    <br />
+    <input id="obj_one_float" type="text" name="floatNum" value="4.15" />
+    <br /><br />
+
+    <h3>OBJ TWO</h3>
+    <label>Enter string:</label>
+    <br />
+    <input id="obj_two_str" type="text" name="str2" value="ault" />
+    <br />
+    <label>Enter int number:</label>
+    <br />
+    <input id="obj_two_int" type="number" name="intNum2" value="55" />
+    <br />
+    <label>Enter float number:</label>
+    <br />
+    <input id="obj_two_float" type="text" name="floatNum2" value="14.75" />
+    <br /><br />
+
+    <input type="button" value="Sum" onclick="CallService(); return false;" />
+
+</body>
+</html>

@@ -4,10 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Script.Serialization;
+using System.Web.Script.Services;
 using System.Web.Services;
+using Newtonsoft.Json;
 
 namespace LB4
 {
+    [ScriptService]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [WebService(Description = "Simplex web service",
         Namespace = "FAA")]
@@ -20,11 +24,13 @@ namespace LB4
             return x + y;
         }
 
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         [WebMethod(Description = "AJAX Sum of two integer",
             MessageName = "AddS")]
-        public int AddS(int x, int y)
+        public string AddS(int x, int y)
         {
-            return x + y;
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            return js.Serialize(x + y);
         }
 
         [WebMethod(Description = "Concatenation of string and double", 
