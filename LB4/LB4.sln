@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WINFORM_SUM", "..\LB4_CLIEN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WINFORM_WSDL", "..\LB4_CLIENTS\WINFORM_WSDL\WINFORM_WSDL\WINFORM_WSDL.csproj", "{8655B1A2-9BA9-4EDF-986F-B7BACFCC8549}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LB4_BY_WSDL", "LB4_BY_WSDL\LB4_BY_WSDL.csproj", "{03ED6790-8821-4CCC-AA74-28B526D022B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{8655B1A2-9BA9-4EDF-986F-B7BACFCC8549}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8655B1A2-9BA9-4EDF-986F-B7BACFCC8549}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8655B1A2-9BA9-4EDF-986F-B7BACFCC8549}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03ED6790-8821-4CCC-AA74-28B526D022B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03ED6790-8821-4CCC-AA74-28B526D022B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03ED6790-8821-4CCC-AA74-28B526D022B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03ED6790-8821-4CCC-AA74-28B526D022B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
