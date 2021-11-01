@@ -116,3 +116,5 @@ H:\LabsFolder\_4_1\InternetLabs\LB4\LB4\obj\Debug\LB4.csproj.CoreCompileInputs.c
 H:\LabsFolder\_4_1\InternetLabs\LB4\LB4\obj\Debug\LB4.csproj.CopyComplete
 H:\LabsFolder\_4_1\InternetLabs\LB4\LB4\obj\Debug\LB4.dll
 H:\LabsFolder\_4_1\InternetLabs\LB4\LB4\obj\Debug\LB4.pdb
+D:\LabsFolder\_4_1\InternetLabs\LB4\LB4\bin\Newtonsoft.Json.dll
+D:\LabsFolder\_4_1\InternetLabs\LB4\LB4\bin\Newtonsoft.Json.xml
