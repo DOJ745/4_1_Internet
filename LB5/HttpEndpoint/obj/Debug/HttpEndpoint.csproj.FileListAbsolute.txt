@@ -1,0 +1,7 @@
+H:\LabsFolder\_4_1\InternetLabs\LB5\HttpEndpoint\bin\Debug\HttpEndpoint.exe.config
+H:\LabsFolder\_4_1\InternetLabs\LB5\HttpEndpoint\bin\Debug\HttpEndpoint.exe
+H:\LabsFolder\_4_1\InternetLabs\LB5\HttpEndpoint\bin\Debug\HttpEndpoint.pdb
+H:\LabsFolder\_4_1\InternetLabs\LB5\HttpEndpoint\obj\Debug\HttpEndpoint.csproj.AssemblyReference.cache
+H:\LabsFolder\_4_1\InternetLabs\LB5\HttpEndpoint\obj\Debug\HttpEndpoint.csproj.CoreCompileInputs.cache
+H:\LabsFolder\_4_1\InternetLabs\LB5\HttpEndpoint\obj\Debug\HttpEndpoint.exe
+H:\LabsFolder\_4_1\InternetLabs\LB5\HttpEndpoint\obj\Debug\HttpEndpoint.pdb
