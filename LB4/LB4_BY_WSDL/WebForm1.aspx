@@ -71,45 +71,56 @@
 
 </head>
 <body>
+
     <form id="form1" runat="server">
-        <div>
+
+        <div>  
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            <asp:Button ID="Button1" runat="server" Text="Show current time" OnClick="testClick" />
         </div>
-    </form>
+        <br/><br/>
 
+        <div>
+            <label>ADD METHOD</label>
+            <br />
 
-    <label>ADD METHOD</label>
-    <br />
-    <form method="post" action="http://localhost:50266/Simplex.asmx/Add">
-        <label>Enter x:</label>
-        <br />
-        <input type="number" name="x" />
-        <br />
-        <label>Enter y:</label>
-        <br />
-        <input type="number" name="y" />
-        <br /><br />
-        <input type="submit" value="Add" />
-    </form>
+            <label>Enter x:</label>
+            <br />
+            <asp:TextBox ID="InputX" runat="server" TextMode="Number"></asp:TextBox>
+            <br />
+            <label>Enter y:</label>
+            <br />
+            <asp:TextBox ID="InputY" runat="server" TextMode="Number"></asp:TextBox>
+            <br/>
+            <asp:Button ID="Button2" runat="server" Text="ADD" OnClick="addMethod" />
+            <br/><br/>
+            <asp:Label ID="Label2" runat="server" Text="ADD RESULT"></asp:Label>
+        </div>
 
-    <br /><br />
+        <br/><br/>
+        
+        <div>
+            <label>CONCAT METHOD</label>
+            <br />
 
-    <label>CONCAT METHOD</label>
-    <br />
-    <form method="post" action="http://localhost:50266/Simplex.asmx/Concat">
-        <label>Enter string:</label>
-        <br />
-        <input type="text" name="str" />
-        <br />
-        <label>Enter double number:</label>
-        <br />
-        <input type="text" name="numberDouble" />
-        <br /><br />
-        <input type="submit" value="Concat" />
-    </form>
+            <label>Enter string:</label>
+            <br />
+            <asp:TextBox ID="InputStr" runat="server"></asp:TextBox>
+            <br />
+            <label>Enter double number:</label>
+            <br />
+            <asp:TextBox ID="InputDouble" runat="server"></asp:TextBox>
+            <br />
+            <asp:Button ID="Button3" runat="server" Text="CONCAT" OnClick="concatMethod" />
+            <br/><br/>
+            <asp:Label ID="Label3" runat="server" Text="CONCAT RESULT"></asp:Label>
+        </div>
 
-    <br /><br />
+        <br/><br/>
 
-    <label>SUM METHOD</label>
+        <div>
+
+            <label>SUM METHOD</label>
     <br />
 
     <h3>OBJ ONE</h3>
@@ -141,6 +152,10 @@
     <br /><br />
 
     <input type="button" value="Sum" onclick="CallService(); return false;" />
+
+        </div>
+
+    </form>
 
 </body>
 </html>

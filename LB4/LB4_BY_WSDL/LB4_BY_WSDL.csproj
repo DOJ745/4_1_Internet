@@ -70,7 +70,6 @@
     <Content Include="ServerClass\wsdl.exe" />
     <Content Include="Simplex.asmx" />
     <Content Include="Web.config" />
-    <Content Include="WebForm.html" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
