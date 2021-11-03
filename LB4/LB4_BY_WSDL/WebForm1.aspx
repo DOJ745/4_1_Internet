@@ -74,14 +74,8 @@
 
     <form id="form1" runat="server">
 
-        <div>  
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-            <asp:Button ID="Button1" runat="server" Text="Show current time" OnClick="testClick" />
-        </div>
-        <br/><br/>
-
         <div>
-            <label>ADD METHOD</label>
+            <h2>ADD METHOD</h2>
             <br />
 
             <label>Enter x:</label>
@@ -100,7 +94,7 @@
         <br/><br/>
         
         <div>
-            <label>CONCAT METHOD</label>
+            <h2>CONCAT METHOD</h2>
             <br />
 
             <label>Enter string:</label>
@@ -119,39 +113,46 @@
         <br/><br/>
 
         <div>
+            <h2>SUM METHOD</h2>
+            <br />
 
-            <label>SUM METHOD</label>
-    <br />
+            <h3>OBJ ONE</h3>
+            <br/>
 
-    <h3>OBJ ONE</h3>
-    <label>Enter string:</label>
-    <br />
-    <input id="obj_one_str" type="text" name="str" value="def" />
-    <br />
-    <label>Enter int number:</label>
-    <br />
-    <input id="obj_one_int" type="number" name="intNum" value="4" />
-    <br />
-    <label>Enter float number:</label>
-    <br />
-    <input id="obj_one_float" type="text" name="floatNum" value="4.15" />
-    <br /><br />
+            <label>Enter string:</label>
+            <br />
+            <asp:TextBox ID="InputObjOneStr" runat="server" Text="def"></asp:TextBox>
+            <br />
+            <label>Enter int number:</label>
+            <br />
+            <asp:TextBox ID="InputObjOneInt" runat="server" TextMode="Number" Text="5"></asp:TextBox>
+            <br />
+            <label>Enter float number:</label>
+            <br />
+            <asp:TextBox ID="InputObjOneFloat" runat="server" Text="4,15"></asp:TextBox>
 
-    <h3>OBJ TWO</h3>
-    <label>Enter string:</label>
-    <br />
-    <input id="obj_two_str" type="text" name="str2" value="ault" />
-    <br />
-    <label>Enter int number:</label>
-    <br />
-    <input id="obj_two_int" type="number" name="intNum2" value="55" />
-    <br />
-    <label>Enter float number:</label>
-    <br />
-    <input id="obj_two_float" type="text" name="floatNum2" value="14.75" />
-    <br /><br />
+            <br /><br />
 
-    <input type="button" value="Sum" onclick="CallService(); return false;" />
+            <h3>OBJ TWO</h3>
+            <br/>
+
+            <label>Enter string:</label>
+            <br />
+
+            <asp:TextBox ID="InputObjTwoStr" runat="server" Text="ault"></asp:TextBox>
+            <br />
+            <label>Enter int number:</label>
+            <br />
+            <asp:TextBox ID="InputObjTwoInt" runat="server" TextMode="Number" Text="75"></asp:TextBox>
+            <br />
+            <label>Enter float number:</label>
+            <br />
+            <asp:TextBox ID="InputObjTwoFloat" runat="server" Text="27,75"></asp:TextBox>
+            <br /><br />
+
+            <asp:Button ID="Button4" runat="server" Text="SUM" OnClick="sumMethod" />
+            <br/><br/>
+            <asp:Label ID="Label4" runat="server" Text="SUM RESULT"></asp:Label>
 
         </div>
 

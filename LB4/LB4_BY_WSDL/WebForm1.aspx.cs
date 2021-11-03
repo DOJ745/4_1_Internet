@@ -15,11 +15,6 @@ namespace LB4_BY_WSDL
 
         }
 
-        protected void testClick(object sender, EventArgs e)
-        {
-            Label1.Text = "Current time: " + DateTime.Now.ToLongTimeString();
-        }
-
         protected void addMethod(object sender, EventArgs e)
         {
             Label2.Text = simplex.Add(int.Parse(InputX.Text), int.Parse(InputY.Text)).ToString();
@@ -27,7 +22,7 @@ namespace LB4_BY_WSDL
 
         protected void concatMethod(object sender, EventArgs e)
         {
-            Label3.Text = simplex.Concat(InputStr.Text, double.Parse(InputDouble.Text));
+            Label3.Text = simplex.Concat(InputStr.Text, double.Parse(InputDouble.Text.Replace(".", ",")));
         }
 
         protected void sumMethod(object sender, EventArgs e)
@@ -35,13 +30,15 @@ namespace LB4_BY_WSDL
             SimpleClass objOne = new SimpleClass();
             SimpleClass objTwo = new SimpleClass();
 
-            objOne.str = "";
-            objOne.numberInt = 0;
-            objOne.numberFloat = 0.0f;
+            objOne.str = InputObjOneStr.Text;
+            objOne.numberInt = int.Parse(InputObjOneInt.Text);
+            objOne.numberFloat = float.Parse(InputObjOneFloat.Text.Replace(".", ","));
 
-            objTwo.str = "";
-            objTwo.numberInt = 0;
-            objTwo.numberFloat = 0.0f;
+            objTwo.str = InputObjTwoStr.Text;
+            objTwo.numberInt = int.Parse(InputObjTwoInt.Text);
+            objTwo.numberFloat = float.Parse(InputObjTwoFloat.Text.Replace(".", ","));
+
+            Label4.Text = simplex.Sum(objOne, objTwo).ToString();
         }
     }
 }

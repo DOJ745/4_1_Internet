@@ -106,5 +106,10 @@ namespace LB4_BY_WSDL
                 this.numberFloatField = value;
             }
         }
+
+        public override string ToString()
+        {
+            return this.str + " --- " + this.numberInt + " --- " + this.numberFloat;
+        }
     }
 }
