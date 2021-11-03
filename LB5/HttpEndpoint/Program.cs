@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LB5;
+using System;
 
 namespace HttpEndpoint
 {
@@ -6,7 +7,7 @@ namespace HttpEndpoint
     {
         static void Main(string[] args)
         {
-            WCFSiplexClient client = new WCFSiplexClient();
+            WCFSiplexClient client = new WCFSiplexClient("BasicHttpBinding_IWCFSiplex");
 
             Console.WriteLine("Input x: ");
             int x = Convert.ToInt32(Console.ReadLine());

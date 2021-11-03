@@ -1,0 +1,11 @@
+H:\LabsFolder\_4_1\InternetLabs\LB5\ConsoleHost\bin\Debug\ConsoleHost.exe.config
+H:\LabsFolder\_4_1\InternetLabs\LB5\ConsoleHost\bin\Debug\ConsoleHost.exe
+H:\LabsFolder\_4_1\InternetLabs\LB5\ConsoleHost\bin\Debug\ConsoleHost.pdb
+H:\LabsFolder\_4_1\InternetLabs\LB5\ConsoleHost\bin\Debug\LB5.dll
+H:\LabsFolder\_4_1\InternetLabs\LB5\ConsoleHost\bin\Debug\LB5.pdb
+H:\LabsFolder\_4_1\InternetLabs\LB5\ConsoleHost\bin\Debug\LB5.dll.config
+H:\LabsFolder\_4_1\InternetLabs\LB5\ConsoleHost\obj\Debug\ConsoleHost.csproj.AssemblyReference.cache
+H:\LabsFolder\_4_1\InternetLabs\LB5\ConsoleHost\obj\Debug\ConsoleHost.csproj.CoreCompileInputs.cache
+H:\LabsFolder\_4_1\InternetLabs\LB5\ConsoleHost\obj\Debug\ConsoleHost.csproj.CopyComplete
+H:\LabsFolder\_4_1\InternetLabs\LB5\ConsoleHost\obj\Debug\ConsoleHost.exe
+H:\LabsFolder\_4_1\InternetLabs\LB5\ConsoleHost\obj\Debug\ConsoleHost.pdb

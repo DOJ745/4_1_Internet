@@ -1,0 +1,7 @@
+H:\LabsFolder\_4_1\InternetLabs\LB5\TcpEndpoint\bin\Debug\TcpEndpoint.exe.config
+H:\LabsFolder\_4_1\InternetLabs\LB5\TcpEndpoint\bin\Debug\TcpEndpoint.exe
+H:\LabsFolder\_4_1\InternetLabs\LB5\TcpEndpoint\bin\Debug\TcpEndpoint.pdb
+H:\LabsFolder\_4_1\InternetLabs\LB5\TcpEndpoint\obj\Debug\TcpEndpoint.csproj.CoreCompileInputs.cache
+H:\LabsFolder\_4_1\InternetLabs\LB5\TcpEndpoint\obj\Debug\TcpEndpoint.exe
+H:\LabsFolder\_4_1\InternetLabs\LB5\TcpEndpoint\obj\Debug\TcpEndpoint.pdb
+H:\LabsFolder\_4_1\InternetLabs\LB5\TcpEndpoint\obj\Debug\TcpEndpoint.csproj.AssemblyReference.cache
