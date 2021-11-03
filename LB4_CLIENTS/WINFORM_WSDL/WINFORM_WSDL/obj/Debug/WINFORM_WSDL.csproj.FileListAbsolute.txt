@@ -8,3 +8,13 @@ D:\LabsFolder\_4_1\InternetLabs\LB4_CLIENTS\WINFORM_WSDL\WINFORM_WSDL\obj\Debug\
 D:\LabsFolder\_4_1\InternetLabs\LB4_CLIENTS\WINFORM_WSDL\WINFORM_WSDL\obj\Debug\WINFORM_WSDL.csproj.CoreCompileInputs.cache
 D:\LabsFolder\_4_1\InternetLabs\LB4_CLIENTS\WINFORM_WSDL\WINFORM_WSDL\obj\Debug\WINFORM_WSDL.exe
 D:\LabsFolder\_4_1\InternetLabs\LB4_CLIENTS\WINFORM_WSDL\WINFORM_WSDL\obj\Debug\WINFORM_WSDL.pdb
+H:\LabsFolder\_4_1\InternetLabs\LB4_CLIENTS\WINFORM_WSDL\WINFORM_WSDL\bin\Debug\WINFORM_WSDL.exe.config
+H:\LabsFolder\_4_1\InternetLabs\LB4_CLIENTS\WINFORM_WSDL\WINFORM_WSDL\bin\Debug\WINFORM_WSDL.exe
+H:\LabsFolder\_4_1\InternetLabs\LB4_CLIENTS\WINFORM_WSDL\WINFORM_WSDL\bin\Debug\WINFORM_WSDL.pdb
+H:\LabsFolder\_4_1\InternetLabs\LB4_CLIENTS\WINFORM_WSDL\WINFORM_WSDL\obj\Debug\WINFORM_WSDL.csproj.AssemblyReference.cache
+H:\LabsFolder\_4_1\InternetLabs\LB4_CLIENTS\WINFORM_WSDL\WINFORM_WSDL\obj\Debug\WINFORM_WSDL.Form1.resources
+H:\LabsFolder\_4_1\InternetLabs\LB4_CLIENTS\WINFORM_WSDL\WINFORM_WSDL\obj\Debug\WINFORM_WSDL.Properties.Resources.resources
+H:\LabsFolder\_4_1\InternetLabs\LB4_CLIENTS\WINFORM_WSDL\WINFORM_WSDL\obj\Debug\WINFORM_WSDL.csproj.GenerateResource.cache
+H:\LabsFolder\_4_1\InternetLabs\LB4_CLIENTS\WINFORM_WSDL\WINFORM_WSDL\obj\Debug\WINFORM_WSDL.csproj.CoreCompileInputs.cache
+H:\LabsFolder\_4_1\InternetLabs\LB4_CLIENTS\WINFORM_WSDL\WINFORM_WSDL\obj\Debug\WINFORM_WSDL.exe
+H:\LabsFolder\_4_1\InternetLabs\LB4_CLIENTS\WINFORM_WSDL\WINFORM_WSDL\obj\Debug\WINFORM_WSDL.pdb
