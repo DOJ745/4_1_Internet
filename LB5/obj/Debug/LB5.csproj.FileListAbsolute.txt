@@ -1,0 +1,7 @@
+H:\LabsFolder\_4_1\InternetLabs\LB5\bin\LB5.dll.config
+H:\LabsFolder\_4_1\InternetLabs\LB5\bin\LB5.dll
+H:\LabsFolder\_4_1\InternetLabs\LB5\bin\LB5.pdb
+H:\LabsFolder\_4_1\InternetLabs\LB5\obj\Debug\LB5.csproj.AssemblyReference.cache
+H:\LabsFolder\_4_1\InternetLabs\LB5\obj\Debug\LB5.csproj.CoreCompileInputs.cache
+H:\LabsFolder\_4_1\InternetLabs\LB5\obj\Debug\LB5.dll
+H:\LabsFolder\_4_1\InternetLabs\LB5\obj\Debug\LB5.pdb
