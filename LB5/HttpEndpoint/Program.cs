@@ -9,7 +9,7 @@ namespace HttpEndpoint
         {
             WCFSiplexClient client = new WCFSiplexClient("BasicHttpBinding_IWCFSiplex");
 
-            Console.WriteLine("Input x: ");
+            Console.WriteLine("METHOD ADD\nInput x: ");
             int x = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Input y: ");
             int y = Convert.ToInt32(Console.ReadLine());

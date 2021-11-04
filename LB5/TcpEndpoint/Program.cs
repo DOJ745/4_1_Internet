@@ -12,10 +12,10 @@ namespace TcpEndpoint
         {
             WCFSiplexClient client = new WCFSiplexClient("NetTcpBinding_IWCFSiplex");
 
-            Console.WriteLine("Input stirng: ");
+            Console.WriteLine("METHOD CONCAT\nInput stirng: ");
             string str = Console.ReadLine();
             Console.WriteLine("Input float: ");
-            double d = double.Parse(Console.ReadLine().Replace(",", "."));
+            double d = double.Parse(Console.ReadLine().Replace(".", ","));
 
             string result = client.Concat(str, d);
             Console.WriteLine($"{str} + {d} = " + result);
