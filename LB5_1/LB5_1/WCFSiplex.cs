@@ -10,22 +10,24 @@ namespace LB5_1
     // ПРИМЕЧАНИЕ. Команду "Переименовать" в меню "Рефакторинг" можно использовать для одновременного изменения имени класса "Service1" в коде и файле конфигурации.
     public class WCFSiplex : IWCFSiplex
     {
-        public string GetData(int value)
+        public int Add(int x, int y)
         {
-            return string.Format("You entered: {0}", value);
+            return x + y;
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public string Concat(string str, double d)
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            return str + d;
+        }
+
+        public A Sum(A objOne, A objTwo)
+        {
+            A result = new A();
+
+            result.s = objOne.s + objTwo.s;
+            result.k = objOne.k + objTwo.k;
+            result.f = objOne.f + objTwo.f;
+            return result;
         }
     }
 }

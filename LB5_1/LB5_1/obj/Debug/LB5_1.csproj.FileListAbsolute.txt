@@ -1,0 +1,7 @@
+D:\LabsFolder\_4_1\InternetLabs\LB5_1\LB5_1\bin\Debug\LB5_1.dll.config
+D:\LabsFolder\_4_1\InternetLabs\LB5_1\LB5_1\bin\Debug\LB5_1.dll
+D:\LabsFolder\_4_1\InternetLabs\LB5_1\LB5_1\bin\Debug\LB5_1.pdb
+D:\LabsFolder\_4_1\InternetLabs\LB5_1\LB5_1\obj\Debug\LB5_1.csproj.AssemblyReference.cache
+D:\LabsFolder\_4_1\InternetLabs\LB5_1\LB5_1\obj\Debug\LB5_1.csproj.CoreCompileInputs.cache
+D:\LabsFolder\_4_1\InternetLabs\LB5_1\LB5_1\obj\Debug\LB5_1.dll
+D:\LabsFolder\_4_1\InternetLabs\LB5_1\LB5_1\obj\Debug\LB5_1.pdb

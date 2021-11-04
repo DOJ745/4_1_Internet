@@ -11,35 +11,28 @@ namespace LB5_1
     [ServiceContract]
     public interface IWCFSiplex
     {
-        [OperationContract]
-        string GetData(int value);
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        int Add(int x, int y);
 
-        // TODO: Добавьте здесь операции служб
+        [OperationContract]
+        string Concat(string str, double d);
+
+        [OperationContract]
+        A Sum(A objOne, A objTwo);
+
     }
 
-    // Используйте контракт данных, как показано в примере ниже, чтобы добавить составные типы к операциям служб.
-    // В проект можно добавлять XSD-файлы. После построения проекта вы можете напрямую использовать в нем определенные типы данных с пространством имен "LB5_1.ContractType".
     [DataContract]
-    public class CompositeType
+    public class A
     {
-        bool boolValue = true;
-        string stringValue = "Hello ";
+        [DataMember]
+        public string s { get; set; }
 
         [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
+        public int k { get; set; }
 
         [DataMember]
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
+        public float f { get; set; }
     }
 }
