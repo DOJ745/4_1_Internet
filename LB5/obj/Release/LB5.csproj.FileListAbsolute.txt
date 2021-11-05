@@ -1,7 +1,0 @@
-D:\LabsFolder\_4_1\InternetLabs\LB5\bin\LB5.dll.config
-D:\LabsFolder\_4_1\InternetLabs\LB5\bin\LB5.dll
-D:\LabsFolder\_4_1\InternetLabs\LB5\bin\LB5.pdb
-D:\LabsFolder\_4_1\InternetLabs\LB5\obj\Release\LB5.csproj.AssemblyReference.cache
-D:\LabsFolder\_4_1\InternetLabs\LB5\obj\Release\LB5.csproj.CoreCompileInputs.cache
-D:\LabsFolder\_4_1\InternetLabs\LB5\obj\Release\LB5.dll
-D:\LabsFolder\_4_1\InternetLabs\LB5\obj\Release\LB5.pdb
