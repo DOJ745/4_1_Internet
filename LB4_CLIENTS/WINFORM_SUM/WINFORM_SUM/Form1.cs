@@ -34,7 +34,7 @@ namespace WINFORM_SUM
 
             string soapData = objOne.formSOAP(objTwo);
 
-            var url = new Url("http://localhost:63964/Simplex.asmx").WithHeader("Content-Type", "text/xml");
+            var url = new Url("http://localhost:10000/LB4/Simplex.asmx").WithHeader("Content-Type", "text/xml");
 
             var responseString = await url
                 .PostStringAsync(soapData)

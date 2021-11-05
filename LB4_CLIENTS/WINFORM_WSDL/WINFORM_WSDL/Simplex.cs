@@ -38,6 +38,7 @@ namespace WINFORM_WSDL {
         /// <remarks/>
         public Simplex() {
             this.Url = "http://localhost:63964/Simplex.asmx";
+            //this.Url = "http://localhost:10000/LB4/Simplex.asmx";
         }
         
         /// <remarks/>

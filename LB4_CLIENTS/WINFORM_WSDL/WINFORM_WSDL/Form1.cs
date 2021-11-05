@@ -31,7 +31,7 @@ namespace WINFORM_WSDL
         public static Simplex GetSimplexService()
         {
             var service = new Simplex();
-            service.Url = "http://localhost:63964/Simplex.asmx";
+            service.Url = "http://localhost:10000/LB4/Simplex.asmx";
             service.Timeout = 100 * 1000;
             return service;
         }
