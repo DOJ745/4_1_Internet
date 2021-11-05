@@ -14,7 +14,7 @@ namespace TcpEndpoint
 
             Console.WriteLine("METHOD CONCAT\nInput stirng: ");
             string str = Console.ReadLine();
-            Console.WriteLine("Input float: ");
+            Console.WriteLine("Input double: ");
             double d = double.Parse(Console.ReadLine().Replace(".", ","));
 
             string result = client.Concat(str, d);
