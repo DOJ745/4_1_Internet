@@ -74,6 +74,7 @@
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientClass\SimplexClient.cs" />
     <Compile Include="Simplex.cs">
       <SubType>Component</SubType>
     </Compile>

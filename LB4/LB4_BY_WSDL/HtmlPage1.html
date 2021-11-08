@@ -7,7 +7,7 @@
 
     <script>
 
-        let url = "http://localhost:50266/Simplex.asmx";
+        let url = "http://localhost:10000/LB4/Simplex.asmx";
 
         function CallService() {
 
@@ -22,7 +22,7 @@
             var soapMessage = '<?xml version="1.0" encoding="utf-8"?>' +
                 '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">' +
                 '  <soap:Body>' +
-                '    <Sum xmlns="FAA">' +
+                '    <Sum xmlns="http://FAA/">' +
                 '      <objOne>' +
                 '        <str>' + objOneStr + '</str>' +
                 '        <numberInt>' + objOneInt + '</numberInt>' +
@@ -68,7 +68,7 @@
 
     <label>ADD METHOD</label>
     <br />
-    <form method="post" action="http://localhost:50266/Simplex.asmx/Add">
+    <form method="post" action="http://localhost:10000/LB4/Simplex.asmx/Add">
         <label>Enter x:</label>
         <br />
         <input type="number" name="x" />
@@ -84,7 +84,7 @@
 
     <label>CONCAT METHOD</label>
     <br />
-    <form method="post" action="http://localhost:50266/Simplex.asmx/Concat">
+    <form method="post" action="http://localhost:10000/LB4/Simplex.asmx/Concat">
         <label>Enter string:</label>
         <br />
         <input type="text" name="str" />
