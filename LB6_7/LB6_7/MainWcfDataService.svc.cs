@@ -26,11 +26,11 @@ namespace LB6_7
             // config.SetEntitySetAccessRule("MyEntityset", EntitySetRights.AllRead);
             // config.SetServiceOperationAccessRule("MyServiceOperation", ServiceOperationRights.All);
 
-            config.SetEntitySetAccessRule("Student", EntitySetRights.All);
-            config.SetEntitySetAccessRule("Note", EntitySetRights.All);
+            config.SetEntitySetAccessRule("Student", EntitySetRights.AllWrite | EntitySetRights.AllRead);
+            config.SetEntitySetAccessRule("Note", EntitySetRights.AllWrite | EntitySetRights.AllRead);
 
-            config.SetServiceOperationAccessRule("getStudents", ServiceOperationRights.All);
-            config.SetServiceOperationAccessRule("getNotes", ServiceOperationRights.All);
+            config.SetServiceOperationAccessRule("getStudents", ServiceOperationRights.AllRead);
+            config.SetServiceOperationAccessRule("getNotes", ServiceOperationRights.AllRead);
 
             config.SetServiceOperationAccessRule("addStudent", ServiceOperationRights.All);
             config.SetServiceOperationAccessRule("updateStudent", ServiceOperationRights.All);
@@ -41,6 +41,8 @@ namespace LB6_7
             config.SetServiceOperationAccessRule("deleteNote", ServiceOperationRights.All);
 
             config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V3;
+
+            config.UseVerboseErrors = true;
         }
 
         [WebGet]
