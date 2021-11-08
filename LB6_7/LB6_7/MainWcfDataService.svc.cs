@@ -28,7 +28,11 @@ namespace LB6_7
             config.SetEntitySetAccessRule("Note", EntitySetRights.All);
 
             config.SetServiceOperationAccessRule("getStudents", ServiceOperationRights.All);
+            config.SetServiceOperationAccessRule("getNotes", ServiceOperationRights.All);
             config.SetServiceOperationAccessRule("getNotesByStudentId", ServiceOperationRights.All);
+
+            config.SetServiceOperationAccessRule("addStudent", ServiceOperationRights.All);
+            config.SetServiceOperationAccessRule("addNote", ServiceOperationRights.All);
 
             config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V3;
         }
@@ -50,6 +54,22 @@ namespace LB6_7
         }
 
         [WebGet]
+        public IQueryable<Note> getNotes(WSSDAEntities source)
+        {
+            try
+            {
+                WSSDAEntities context = source;
+                var noteQuery = from note in context.Note where note.id > 0 select note;
+                return noteQuery;
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException(string.Format("An error occurred: {0}", e.Message));
+            }
+
+        }
+
+        [WebGet]
         public IQueryable<Note> getNotesByStudId(int id)
         {
             if (id.Equals(null))
@@ -63,9 +83,27 @@ namespace LB6_7
         }
 
         [WebInvoke(Method = "POST")]
-        public void addStudent(Student newStud)
+        public void addStudent(Student newStud, WSSDAEntities sourse)
         {
+            WSSDAEntities context = sourse;
+            context.Student.Add(newStud);
+            context.SaveChanges();
+        }
 
+        [WebInvoke(Method = "POST")]
+        public void addNote(Note newNote, WSSDAEntities sourse)
+        {
+            WSSDAEntities context = sourse;
+
+            try
+            {
+                context.Note.Add(newNote);
+            }
+            catch(Exception e)
+            {
+
+            }
+            context.SaveChanges();
         }
 
         /*[WebInvoke(Method = "POST")]

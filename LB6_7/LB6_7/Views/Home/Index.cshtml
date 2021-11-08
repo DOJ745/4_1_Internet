@@ -11,8 +11,12 @@
 </head>
 <body>
     <div>
-        <form method="get" action="~/Home/Add"><input type="submit" value="Add student" /></form>
+
         <hr />
+        <form method="get" action="~/Home/AddStud"><input type="submit" value="Add student" /></form>
+        <hr />
+
+        <h3>STUDENTS</h3>
 
         @foreach (var item in ViewBag.Students)
         {
@@ -21,15 +25,32 @@
             <table>
                 <tr>
                     <td>
-                        <form method="get" action="~/Home/Update">
+                        <form method="get" action="~/Home/UpdateStud">
                             <input type="submit" value="Update" />
                             <input type="hidden" name="id" value="@item.id" />
                         </form>
                     </td>
+                </tr>
+            </table>
+            <hr />
+        }
 
+        <hr />
+        <form method="get" action="~/Home/AddNote"><input type="submit" value="Add note" /></form>
+        <hr />
+        <h3>NOTES</h3>
+
+        @foreach (var item in ViewBag.Notes)
+        {
+            <p>ID: @item.id</p>
+            <p>SUBJECT: @item.subject</p>
+            <p>NOTE: @item.note1</p>
+            <p>STUD ID: @item.studentId</p>
+            <table>
+                <tr>
                     <td>
-                        <form method="get" action="~/Home/Delete">
-                            <input type="submit" value="Delete" />
+                        <form method="get" action="~/Home/UpdateNote">
+                            <input type="submit" value="Update" />
                             <input type="hidden" name="id" value="@item.id" />
                         </form>
                     </td>
