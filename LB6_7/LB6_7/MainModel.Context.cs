@@ -24,7 +24,7 @@ namespace LB6_7
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<Note> Note { get; set; }
         public virtual DbSet<Student> Student { get; set; }
     }
