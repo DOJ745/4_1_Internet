@@ -10,6 +10,7 @@ namespace LB4_BY_WSDL
     public partial class WebForm1 : Page
     {
         private Simplex simplex = new Simplex();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 

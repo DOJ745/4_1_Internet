@@ -198,10 +198,10 @@
   <wsdl:service name="Simplex">
     <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Simplex web service</wsdl:documentation>
     <wsdl:port name="SimplexSoap" binding="tns:SimplexSoap">
-      <soap:address location="http://localhost:63964/Simplex.asmx"/>
+      <soap:address location="http://localhost:10000/LB4/Simplex.asmx"/>
     </wsdl:port>
     <wsdl:port name="SimplexSoap12" binding="tns:SimplexSoap12">
-      <soap12:address location="http://localhost:63964/Simplex.asmx"/>
+      <soap12:address location="http://localhost:10000/LB4/Simplex.asmx"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
