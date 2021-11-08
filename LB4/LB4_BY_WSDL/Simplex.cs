@@ -8,12 +8,12 @@ using System.Web.Services.Protocols;
 
 namespace LB4_BY_WSDL
 {
-    [WebService(Namespace = "FAA")]
-    [WebServiceBinding(Name = "SimplexSoap", Namespace = "FAA")]
+    [WebService(Namespace = "http://FAA/")]
+    [WebServiceBinding(Name = "SimplexSoap", Namespace = "http://FAA/")]
     public class Simplex : WebService
     {
         [WebMethod]
-        [SoapDocumentMethod("FAA/Add", RequestNamespace = "FAA", ResponseNamespace = "FAA", Use = SoapBindingUse.Literal, ParameterStyle = SoapParameterStyle.Wrapped)]
+        [SoapDocumentMethod("http://FAA/Add", RequestNamespace = "http://FAA/", ResponseNamespace = "http://FAA/", Use = SoapBindingUse.Literal, ParameterStyle = SoapParameterStyle.Wrapped)]
         public int Add(int x, int y)
         {
             return x + y;
@@ -21,7 +21,7 @@ namespace LB4_BY_WSDL
 
         /// <remarks/>
         [WebMethod]
-        [SoapDocumentMethod("FAA/AddS", RequestNamespace = "FAA", ResponseNamespace = "FAA", Use = SoapBindingUse.Literal, ParameterStyle = SoapParameterStyle.Wrapped)]
+        [SoapDocumentMethod("http://FAA/AddS", RequestNamespace = "http://FAA/", ResponseNamespace = "http://FAA/", Use = SoapBindingUse.Literal, ParameterStyle = SoapParameterStyle.Wrapped)]
         public string AddS(int x, int y)
         {
             int sum = x + y;
@@ -30,7 +30,7 @@ namespace LB4_BY_WSDL
 
         /// <remarks/>
         [WebMethod]
-        [SoapDocumentMethod("FAA/Concat", RequestNamespace = "FAA", ResponseNamespace = "FAA", Use = SoapBindingUse.Literal, ParameterStyle = SoapParameterStyle.Wrapped)]
+        [SoapDocumentMethod("http://FAA/Concat", RequestNamespace = "http://FAA/", ResponseNamespace = "http://FAA/", Use = SoapBindingUse.Literal, ParameterStyle = SoapParameterStyle.Wrapped)]
         public string Concat(string str, double numberDouble)
         {
             return str + numberDouble;
@@ -38,7 +38,7 @@ namespace LB4_BY_WSDL
 
         /// <remarks/>
         [WebMethod]
-        [SoapDocumentMethod("FAA/Sum", RequestNamespace = "FAA", ResponseNamespace = "FAA", Use = SoapBindingUse.Literal, ParameterStyle = SoapParameterStyle.Wrapped)]
+        [SoapDocumentMethod("http://FAA/Sum", RequestNamespace = "http://FAA/", ResponseNamespace = "http://FAA/", Use = SoapBindingUse.Literal, ParameterStyle = SoapParameterStyle.Wrapped)]
         public SimpleClass Sum(SimpleClass objOne, SimpleClass objTwo)
         {
             SimpleClass result = new SimpleClass();

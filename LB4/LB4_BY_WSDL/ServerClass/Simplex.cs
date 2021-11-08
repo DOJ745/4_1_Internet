@@ -22,28 +22,28 @@ namespace LB4_BY_WSDL.ServerClass {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.Web.Services.WebServiceAttribute(Namespace="FAA")]
-    [System.Web.Services.WebServiceBindingAttribute(Name="SimplexSoap", Namespace="FAA")]
+    [System.Web.Services.WebServiceAttribute(Namespace="http://FAA/")]
+    [System.Web.Services.WebServiceBindingAttribute(Name="SimplexSoap", Namespace="http://FAA/")]
     public abstract partial class Simplex : System.Web.Services.WebService {
         
         /// <remarks/>
         [System.Web.Services.WebMethodAttribute()]
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("FAA/Add", RequestNamespace="FAA", ResponseNamespace="FAA", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://FAA/Add", RequestNamespace="http://FAA/", ResponseNamespace="http://FAA/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public abstract int Add(int x, int y);
         
         /// <remarks/>
         [System.Web.Services.WebMethodAttribute()]
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("FAA/AddS", RequestNamespace="FAA", ResponseNamespace="FAA", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://FAA/AddS", RequestNamespace="http://FAA/", ResponseNamespace="http://FAA/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public abstract string AddS(int x, int y);
         
         /// <remarks/>
         [System.Web.Services.WebMethodAttribute()]
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("FAA/Concat", RequestNamespace="FAA", ResponseNamespace="FAA", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://FAA/Concat", RequestNamespace="http://FAA/", ResponseNamespace="http://FAA/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public abstract string Concat(string str, double numberDouble);
         
         /// <remarks/>
         [System.Web.Services.WebMethodAttribute()]
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("FAA/Sum", RequestNamespace="FAA", ResponseNamespace="FAA", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://FAA/Sum", RequestNamespace="http://FAA/", ResponseNamespace="http://FAA/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public abstract SimpleClass Sum(SimpleClass objOne, SimpleClass objTwo);
     }
     
@@ -52,7 +52,7 @@ namespace LB4_BY_WSDL.ServerClass {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="FAA")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://FAA/")]
     public partial class SimpleClass {
         
         private string strField;

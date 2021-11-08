@@ -24,7 +24,7 @@ namespace WINFORM_WSDL {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Web.Services.WebServiceBindingAttribute(Name="SimplexSoap", Namespace="FAA")]
+    [System.Web.Services.WebServiceBindingAttribute(Name="SimplexSoap", Namespace="http://FAA/")]
     public partial class Simplex : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback AddOperationCompleted;
@@ -38,7 +38,6 @@ namespace WINFORM_WSDL {
         /// <remarks/>
         public Simplex() {
             this.Url = "http://localhost:63964/Simplex.asmx";
-            //this.Url = "http://localhost:10000/LB4/Simplex.asmx";
         }
         
         /// <remarks/>
@@ -54,7 +53,7 @@ namespace WINFORM_WSDL {
         public event SumCompletedEventHandler SumCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("FAA/Add", RequestNamespace="FAA", ResponseNamespace="FAA", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://FAA/Add", RequestNamespace="http://FAA/", ResponseNamespace="http://FAA/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public int Add(int x, int y) {
             object[] results = this.Invoke("Add", new object[] {
                         x,
@@ -98,12 +97,12 @@ namespace WINFORM_WSDL {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("FAA/AddS", RequestNamespace="FAA", ResponseNamespace="FAA", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int AddS(int x, int y) {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://FAA/AddS", RequestNamespace="http://FAA/", ResponseNamespace="http://FAA/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string AddS(int x, int y) {
             object[] results = this.Invoke("AddS", new object[] {
                         x,
                         y});
-            return ((int)(results[0]));
+            return ((string)(results[0]));
         }
         
         /// <remarks/>
@@ -114,9 +113,9 @@ namespace WINFORM_WSDL {
         }
         
         /// <remarks/>
-        public int EndAddS(System.IAsyncResult asyncResult) {
+        public string EndAddS(System.IAsyncResult asyncResult) {
             object[] results = this.EndInvoke(asyncResult);
-            return ((int)(results[0]));
+            return ((string)(results[0]));
         }
         
         /// <remarks/>
@@ -142,7 +141,7 @@ namespace WINFORM_WSDL {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("FAA/Concat", RequestNamespace="FAA", ResponseNamespace="FAA", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://FAA/Concat", RequestNamespace="http://FAA/", ResponseNamespace="http://FAA/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string Concat(string str, double numberDouble) {
             object[] results = this.Invoke("Concat", new object[] {
                         str,
@@ -186,7 +185,7 @@ namespace WINFORM_WSDL {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("FAA/Sum", RequestNamespace="FAA", ResponseNamespace="FAA", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://FAA/Sum", RequestNamespace="http://FAA/", ResponseNamespace="http://FAA/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public SimpleClass Sum(SimpleClass objOne, SimpleClass objTwo) {
             object[] results = this.Invoke("Sum", new object[] {
                         objOne,
@@ -240,7 +239,7 @@ namespace WINFORM_WSDL {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="FAA")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://FAA/")]
     public partial class SimpleClass {
         
         private string strField;
@@ -324,10 +323,10 @@ namespace WINFORM_WSDL {
         }
         
         /// <remarks/>
-        public int Result {
+        public string Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((int)(this.results[0]));
+                return ((string)(this.results[0]));
             }
         }
     }

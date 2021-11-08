@@ -14,7 +14,7 @@ namespace LB4
     [ScriptService]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [WebService(Description = "Simplex web service",
-        Namespace = "FAA")]
+        Namespace = "http://FAA/")]
     public class Simplex : WebService
     {
         [WebMethod(Description = "Sum of two integer", 

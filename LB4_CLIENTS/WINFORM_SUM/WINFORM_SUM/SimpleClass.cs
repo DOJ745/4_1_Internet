@@ -17,7 +17,7 @@ namespace WINFORM_SUM
             string SOAP = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
 "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
 "  <soap:Body>\n" +
-"    <Sum xmlns=\"FAA\">\n" +
+"    <Sum xmlns='http://FAA/'>\n" +
 "      <objOne>\n" +
 "        <str>" + this.str +"</str>\n" +
 "        <numberInt>" + this.numberInt + "</numberInt>\n" +
