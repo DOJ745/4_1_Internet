@@ -18,7 +18,7 @@ namespace LB6_7
         public WSSDAEntities()
             : base("name=WSSDAEntities")
         {
-            this.Configuration.ProxyCreationEnabled = false;
+            //this.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
