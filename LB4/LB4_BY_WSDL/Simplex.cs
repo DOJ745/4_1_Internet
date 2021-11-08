@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -47,13 +48,13 @@ namespace LB4_BY_WSDL
             result.numberInt = objOne.numberInt + objTwo.numberInt;
             result.numberFloat = objOne.numberFloat + objTwo.numberFloat;
 
-            /*string reqBody;
+            string reqBody;
 
             Context.Request.InputStream.Position = 0;
             StreamReader reader = new StreamReader(Context.Request.InputStream);
             reqBody = reader.ReadToEnd();
 
-            result.str += "\n\n" + reqBody + "\n\n";*/
+            result.str += "\n\n" + reqBody + "\n\n";
 
             return result;
         }
