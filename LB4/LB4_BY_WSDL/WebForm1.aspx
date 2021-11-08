@@ -6,69 +6,6 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>WEB FORM</title>
-
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script>
-
-        let url = "http://localhost:50266/Simplex.asmx";
-
-        function CallService() {
-
-            var objOneStr = $("#obj_one_str").val();
-            var objOneInt = $("#obj_one_int").val();
-            var objOneFloat = $("#obj_one_float").val();
-
-            var objTwoStr = $("#obj_two_str").val();
-            var objTwoInt = $("#obj_two_int").val();
-            var objTwoFloat = $("#obj_two_float").val();
-
-            var soapMessage = '<?xml version="1.0" encoding="utf-8"?>' +
-                '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">' +
-                '  <soap:Body>' +
-                '    <Sum xmlns="FAA">' +
-                '      <objOne>' +
-                '        <str>' + objOneStr + '</str>' +
-                '        <numberInt>' + objOneInt + '</numberInt>' +
-                '        <numberFloat>' + objOneFloat + '</numberFloat>' +
-                '      </objOne>' +
-                '      <objTwo>' +
-                '        <str>' + objTwoStr + '</str>' +
-                '        <numberInt>' + objTwoInt + '</numberInt>' +
-                '        <numberFloat>' + objTwoFloat + '</numberFloat>' +
-                '      </objTwo>' +
-                '    </Sum>' +
-                '  </soap:Body>' +
-                '</soap:Envelope>';
-
-            $.ajax({
-                url: url,
-                type: "POST",
-                dataType: "xml",
-                processData: false,
-                data: soapMessage,
-                contentType: 'text/xml; charset="utf-8"',
-                success: OnSuccess,
-                error: OnError
-            });
-
-            return false;
-        }
-
-        function OnSuccess(data, status) {
-            alert(data.toString());
-        }
-
-        function OnError(request, status, error) {
-            alert('error');
-        }
-
-        $(document).ready(function () {
-            jQuery.support.cors = true;
-        });
-    </script>
-
 </head>
 <body>
 
