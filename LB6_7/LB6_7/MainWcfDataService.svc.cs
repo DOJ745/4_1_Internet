@@ -6,11 +6,13 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Services;
+using System.Data.SqlClient;
 using System.Data.Services.Common;
 using System.Data.Services.Providers;
 using System.Linq;
 using System.ServiceModel.Web;
 using System.Web;
+using System.Data.Entity;
 
 namespace LB6_7
 {
@@ -29,10 +31,14 @@ namespace LB6_7
 
             config.SetServiceOperationAccessRule("getStudents", ServiceOperationRights.All);
             config.SetServiceOperationAccessRule("getNotes", ServiceOperationRights.All);
-            config.SetServiceOperationAccessRule("getNotesByStudentId", ServiceOperationRights.All);
 
             config.SetServiceOperationAccessRule("addStudent", ServiceOperationRights.All);
+            config.SetServiceOperationAccessRule("updateStudent", ServiceOperationRights.All);
+            config.SetServiceOperationAccessRule("deleteStudent", ServiceOperationRights.All);
+
             config.SetServiceOperationAccessRule("addNote", ServiceOperationRights.All);
+            config.SetServiceOperationAccessRule("updateNote", ServiceOperationRights.All);
+            config.SetServiceOperationAccessRule("deleteNote", ServiceOperationRights.All);
 
             config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V3;
         }
@@ -69,19 +75,6 @@ namespace LB6_7
 
         }
 
-        [WebGet]
-        public IQueryable<Note> getNotesByStudId(int id)
-        {
-            if (id.Equals(null))
-            {
-                throw new ArgumentNullException("id",
-                    "You must provide a value for the parameter 'id'.");
-            }
-            WSSDAEntities context = this.CurrentDataSource;
-            var noteQuery = from stud in context.Note where stud.id == id select stud;
-            return noteQuery;
-        }
-
         [WebInvoke(Method = "POST")]
         public void addStudent(Student newStud, WSSDAEntities sourse)
         {
@@ -89,6 +82,38 @@ namespace LB6_7
             context.Student.Add(newStud);
             context.SaveChanges();
         }
+        [WebInvoke(Method = "POST")]
+        public void updateStudent(string id, string newName, WSSDAEntities sourse)
+        {
+            WSSDAEntities context = sourse;
+            Student stud = sourse.Student.Find(int.Parse(id));
+            if (stud != null)
+            {
+                stud.name = newName;
+
+                context.Entry(stud).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+        [WebInvoke(Method = "POST")]
+        public void deleteStudent(string id, WSSDAEntities sourse)
+        {
+            WSSDAEntities context = sourse;
+            Student stud = context.Student.Find(int.Parse(id));
+            if (stud != null)
+            {
+                var studNotes = from obj in context.Note where obj.studentId == stud.id select obj;
+
+                foreach (var note in studNotes)
+                {
+                    context.Note.Remove(note);
+                }
+                
+                context.Student.Remove(stud);
+                context.SaveChanges();
+            }
+        }
+
 
         [WebInvoke(Method = "POST")]
         public void addNote(Note newNote, WSSDAEntities sourse)
@@ -98,18 +123,39 @@ namespace LB6_7
             try
             {
                 context.Note.Add(newNote);
+                context.SaveChanges();
             }
-            catch(Exception e)
+            catch(SqlException e)
             {
-
+                throw new ApplicationException(string.Format("No such student with ID: {0}", e.Message));
             }
-            context.SaveChanges();
+            
         }
-
-        /*[WebInvoke(Method = "POST")]
-        public void addNote(Note newNote)
+        [WebInvoke(Method = "POST")]
+        public void updateNote(string id, int newStudId, int newMark, string newSubj, WSSDAEntities sourse)
         {
+            WSSDAEntities context = sourse;
+            Note note = context.Note.Find(int.Parse(id));
+            if (note != null)
+            {
+                note.studentId = newStudId;
+                note.note1 = newMark;
+                note.subject = newSubj;
 
-        }*/
+                context.Entry(note).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+        [WebInvoke(Method = "POST")]
+        public void deleteNote(string id, WSSDAEntities sourse)
+        {
+            WSSDAEntities context = sourse;
+            Note note = context.Note.Find(int.Parse(id));
+            if (note != null)
+            {
+                context.Note.Remove(note);
+                context.SaveChanges();
+            }
+        }
     }
 }

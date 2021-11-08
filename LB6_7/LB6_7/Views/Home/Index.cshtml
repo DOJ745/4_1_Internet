@@ -30,6 +30,13 @@
                             <input type="hidden" name="id" value="@item.id" />
                         </form>
                     </td>
+
+                    <td>
+                        <form method="get" action="~/Home/DeleteStud">
+                            <input type="submit" value="Delete" />
+                            <input type="hidden" name="id" value="@item.id" />
+                        </form>
+                    </td>
                 </tr>
             </table>
             <hr />
@@ -51,6 +58,13 @@
                     <td>
                         <form method="get" action="~/Home/UpdateNote">
                             <input type="submit" value="Update" />
+                            <input type="hidden" name="id" value="@item.id" />
+                        </form>
+                    </td>
+
+                    <td>
+                        <form method="get" action="~/Home/DeleteNote">
+                            <input type="submit" value="Delete" />
                             <input type="hidden" name="id" value="@item.id" />
                         </form>
                     </td>
