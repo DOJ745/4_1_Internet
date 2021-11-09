@@ -8,13 +8,13 @@ namespace LB6_7.Controllers
 {
     public class HomeController : Controller
     {
-        private WSSDAEntities context = new WSSDAEntities();
+        public static WSSDAEntities CONTEXT = new WSSDAEntities();
         private MainWcfDataService mainService = new MainWcfDataService();
         public ActionResult Index()
         {
 
-            var students = mainService.getStudents(context);
-            var notes = mainService.getNotes(context);
+            var students = mainService.getStudents();
+            var notes = mainService.getNotes();
 
             ViewBag.Students = students;
             ViewBag.Notes = notes;
@@ -29,15 +29,12 @@ namespace LB6_7.Controllers
 
         public RedirectResult AddStudSave(string name)
         {
-            Student newStud = new Student();
-            newStud.name = name;
+            mainService.addStudent(name);
 
-            mainService.addStudent(newStud, context);
-
-            ViewBag.Students = context.Student;
+            ViewBag.Students = CONTEXT.Student;
             return Redirect("/Home/Index");
         }
-
+        /*
         public ActionResult UpdateStud(string id)
         {
             ViewBag.Id = id;
@@ -109,7 +106,7 @@ namespace LB6_7.Controllers
             mainService.deleteNote(id, context);
             ViewBag.Notes = mainService.getNotes(context);
             return Redirect("/Home/Index");
-        }
+        }*/
 
 
 

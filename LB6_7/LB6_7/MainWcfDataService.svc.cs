@@ -3,6 +3,7 @@
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
+using LB6_7.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Data.Services;
@@ -13,11 +14,15 @@ using System.Linq;
 using System.ServiceModel.Web;
 using System.Web;
 using System.Data.Entity;
+using System.ServiceModel;
 
 namespace LB6_7
 {
+    [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
+    [DataServiceKey("id")]
     public class MainWcfDataService : EntityFrameworkDataService<WSSDAEntities>
     {
+        private WSSDAEntities context = HomeController.CONTEXT;
         // This method is called only once to initialize service-wide policies.
         public static void InitializeService(DataServiceConfiguration config)
         {
@@ -26,31 +31,20 @@ namespace LB6_7
             // config.SetEntitySetAccessRule("MyEntityset", EntitySetRights.AllRead);
             // config.SetServiceOperationAccessRule("MyServiceOperation", ServiceOperationRights.All);
 
-            config.SetEntitySetAccessRule("Student", EntitySetRights.AllWrite | EntitySetRights.AllRead);
-            config.SetEntitySetAccessRule("Note", EntitySetRights.AllWrite | EntitySetRights.AllRead);
-
-            config.SetServiceOperationAccessRule("getStudents", ServiceOperationRights.AllRead);
-            config.SetServiceOperationAccessRule("getNotes", ServiceOperationRights.AllRead);
-
-            config.SetServiceOperationAccessRule("addStudent", ServiceOperationRights.All);
-            config.SetServiceOperationAccessRule("updateStudent", ServiceOperationRights.All);
-            config.SetServiceOperationAccessRule("deleteStudent", ServiceOperationRights.All);
-
-            config.SetServiceOperationAccessRule("addNote", ServiceOperationRights.All);
-            config.SetServiceOperationAccessRule("updateNote", ServiceOperationRights.All);
-            config.SetServiceOperationAccessRule("deleteNote", ServiceOperationRights.All);
+            config.SetEntitySetAccessRule("*", EntitySetRights.All);
+            config.SetServiceOperationAccessRule("*", ServiceOperationRights.All);
 
             config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V3;
 
-            config.UseVerboseErrors = true;
+            //config.UseVerboseErrors = true;
         }
 
         [WebGet]
-        public IQueryable<Student> getStudents(WSSDAEntities source)
+        public IQueryable<Student> getStudents()
         {
             try
             {
-                WSSDAEntities context = source;
+                //WSSDAEntities context = source;
                 var studQuery = from stud in context.Student where stud.id > 0 select stud;
                 return studQuery;
             }
@@ -62,11 +56,11 @@ namespace LB6_7
         }
 
         [WebGet]
-        public IQueryable<Note> getNotes(WSSDAEntities source)
+        public IQueryable<Note> getNotes()
         {
             try
             {
-                WSSDAEntities context = source;
+                //WSSDAEntities context = source;
                 var noteQuery = from note in context.Note where note.id > 0 select note;
                 return noteQuery;
             }
@@ -78,12 +72,14 @@ namespace LB6_7
         }
 
         [WebInvoke(Method = "POST")]
-        public void addStudent(Student newStud, WSSDAEntities sourse)
+        public void addStudent(string name)
         {
-            WSSDAEntities context = sourse;
+            Student newStud = new Student();
+            newStud.name = name;
             context.Student.Add(newStud);
             context.SaveChanges();
         }
+        /*
         [WebInvoke(Method = "POST")]
         public void updateStudent(string id, string newName, WSSDAEntities sourse)
         {
@@ -158,6 +154,6 @@ namespace LB6_7
                 context.Note.Remove(note);
                 context.SaveChanges();
             }
-        }
+        }*/
     }
 }
