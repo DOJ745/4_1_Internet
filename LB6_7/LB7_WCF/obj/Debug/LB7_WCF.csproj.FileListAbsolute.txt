@@ -95,3 +95,4 @@ H:\LabsFolder\_4_1\InternetLabs\LB6_7\LB7_WCF\obj\Debug\LB7_WCF.csproj.CoreCompi
 H:\LabsFolder\_4_1\InternetLabs\LB6_7\LB7_WCF\obj\Debug\LB7_WCF.csproj.CopyComplete
 H:\LabsFolder\_4_1\InternetLabs\LB6_7\LB7_WCF\obj\Debug\LB7_WCF.dll
 H:\LabsFolder\_4_1\InternetLabs\LB6_7\LB7_WCF\obj\Debug\LB7_WCF.pdb
+H:\LabsFolder\_4_1\InternetLabs\LB6_7\LB7_WCF\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
