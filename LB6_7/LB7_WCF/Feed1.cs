@@ -32,6 +32,7 @@ namespace LB7_WCF
             string query = WebOperationContext.Current.IncomingRequest.UriTemplateMatch.QueryParameters["format"];
             SyndicationFeedFormatter formatter = null;
 
+            // http://localhost:8733/Design_Time_Addresses/LB7_WCF/Feed1/?format=atom
             if (query == "atom") { formatter = new Atom10FeedFormatter(feed); }
             else { formatter = new Rss20FeedFormatter(feed); }
 
