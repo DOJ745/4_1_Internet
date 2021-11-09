@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Data.Services.Client;
 using System.Linq;
+using System.ServiceModel.Syndication;
 using System.Web.Mvc;
+using System.Xml;
 
 namespace LB6_7.Controllers
 {
@@ -100,6 +102,21 @@ namespace LB6_7.Controllers
             mainService.deleteNote(id);
             ViewBag.Notes = mainService.getNotes();
             return Redirect("/Home/Index");
+        }
+
+        // WCF
+        public ActionResult Client()
+        {
+            string result = "";
+            XmlReader xmlReader = XmlReader.Create("http://localhost:8733/Design_Time_Addresses/LB7_WCF/Feed1/");
+            SyndicationFeed feed = SyndicationFeed.Load(xmlReader);
+            foreach (SyndicationItem item in feed.Items)
+            {
+                result += item.Title.Text + "\n";
+            }
+
+            ViewBag.Result = result;
+            return View();
         }
 
 

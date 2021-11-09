@@ -239,6 +239,7 @@
     <Content Include="Views\Home\UpdateNote.cshtml" />
     <Content Include="Views\Home\DeleteNote.cshtml" />
     <Content Include="Views\Home\DeleteStud.cshtml" />
+    <Content Include="Views\Home\Client.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
