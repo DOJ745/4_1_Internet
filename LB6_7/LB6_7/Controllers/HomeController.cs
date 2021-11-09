@@ -34,18 +34,18 @@ namespace LB6_7.Controllers
             ViewBag.Students = CONTEXT.Student;
             return Redirect("/Home/Index");
         }
-        /*
+        
         public ActionResult UpdateStud(string id)
         {
             ViewBag.Id = id;
-            ViewBag.Students = mainService.getStudents(context);
+            ViewBag.Students = mainService.getStudents();
             return View();
         }
 
         public RedirectResult UpdateStudSave(string id, string name)
         {
-            mainService.updateStudent(id, name, context);
-            ViewBag.Students = mainService.getStudents(context);
+            mainService.updateStudent(id, name);
+            ViewBag.Students = mainService.getStudents();
             return Redirect("/Home/Index");
         }
 
@@ -57,41 +57,35 @@ namespace LB6_7.Controllers
 
         public RedirectResult DeleteStudSave(string id)
         {
-            mainService.deleteStudent(id, context);
-            ViewBag.Students = mainService.getStudents(context);
+            mainService.deleteStudent(id);
+            ViewBag.Students = mainService.getStudents();
             return Redirect("/Home/Index");
         }
 
 
-
+        
         public ActionResult AddNote()
         {
             return View();
         }
         public RedirectResult AddNoteSave(int studId, int mark, string subject)
         {
-            Note newNote = new Note();
+            mainService.addNote(studId, mark, subject);
 
-            newNote.studentId = studId;
-            newNote.note1 = mark;
-            newNote.subject = subject;
-
-            mainService.addNote(newNote, context);
-
-            ViewBag.Notes = context.Note;
+            ViewBag.Notes = CONTEXT.Note;
             return Redirect("/Home/Index");
         }
         public ActionResult UpdateNote(string id)
         {
             ViewBag.Id = id;
-            ViewBag.Notes = mainService.getNotes(context);
+            ViewBag.Notes = mainService.getNotes();
             return View();
         }
 
         public RedirectResult UpdateNoteSave(string id, int mark, int studentId, string subject)
         {
-            mainService.updateNote(id, studentId, mark, subject, context);
-            ViewBag.Notes = mainService.getNotes(context);
+            mainService.updateNote(id, studentId, mark, subject);
+            ViewBag.Notes = mainService.getNotes();
             return Redirect("/Home/Index");
         }
 
@@ -103,10 +97,10 @@ namespace LB6_7.Controllers
 
         public RedirectResult DeleteNoteSave(string id)
         {
-            mainService.deleteNote(id, context);
-            ViewBag.Notes = mainService.getNotes(context);
+            mainService.deleteNote(id);
+            ViewBag.Notes = mainService.getNotes();
             return Redirect("/Home/Index");
-        }*/
+        }
 
 
 

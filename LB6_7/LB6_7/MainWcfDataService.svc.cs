@@ -44,7 +44,6 @@ namespace LB6_7
         {
             try
             {
-                //WSSDAEntities context = source;
                 var studQuery = from stud in context.Student where stud.id > 0 select stud;
                 return studQuery;
             }
@@ -60,7 +59,6 @@ namespace LB6_7
         {
             try
             {
-                //WSSDAEntities context = source;
                 var noteQuery = from note in context.Note where note.id > 0 select note;
                 return noteQuery;
             }
@@ -79,12 +77,11 @@ namespace LB6_7
             context.Student.Add(newStud);
             context.SaveChanges();
         }
-        /*
+        
         [WebInvoke(Method = "POST")]
-        public void updateStudent(string id, string newName, WSSDAEntities sourse)
+        public void updateStudent(string id, string newName)
         {
-            WSSDAEntities context = sourse;
-            Student stud = sourse.Student.Find(int.Parse(id));
+            Student stud = context.Student.Find(int.Parse(id));
             if (stud != null)
             {
                 stud.name = newName;
@@ -94,9 +91,8 @@ namespace LB6_7
             }
         }
         [WebInvoke(Method = "POST")]
-        public void deleteStudent(string id, WSSDAEntities sourse)
+        public void deleteStudent(string id)
         {
-            WSSDAEntities context = sourse;
             Student stud = context.Student.Find(int.Parse(id));
             if (stud != null)
             {
@@ -112,14 +108,18 @@ namespace LB6_7
             }
         }
 
-
+        
         [WebInvoke(Method = "POST")]
-        public void addNote(Note newNote, WSSDAEntities sourse)
+        public void addNote(int studId, int mark, string subject)
         {
-            WSSDAEntities context = sourse;
-
             try
             {
+                Note newNote = new Note();
+
+                newNote.studentId = studId;
+                newNote.note1 = mark;
+                newNote.subject = subject;
+
                 context.Note.Add(newNote);
                 context.SaveChanges();
             }
@@ -130,9 +130,8 @@ namespace LB6_7
             
         }
         [WebInvoke(Method = "POST")]
-        public void updateNote(string id, int newStudId, int newMark, string newSubj, WSSDAEntities sourse)
+        public void updateNote(string id, int newStudId, int newMark, string newSubj)
         {
-            WSSDAEntities context = sourse;
             Note note = context.Note.Find(int.Parse(id));
             if (note != null)
             {
@@ -145,15 +144,14 @@ namespace LB6_7
             }
         }
         [WebInvoke(Method = "POST")]
-        public void deleteNote(string id, WSSDAEntities sourse)
+        public void deleteNote(string id)
         {
-            WSSDAEntities context = sourse;
             Note note = context.Note.Find(int.Parse(id));
             if (note != null)
             {
                 context.Note.Remove(note);
                 context.SaveChanges();
             }
-        }*/
+        }
     }
 }
