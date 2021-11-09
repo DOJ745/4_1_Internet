@@ -108,6 +108,7 @@ namespace LB6_7.Controllers
         public ActionResult Client()
         {
             string result = "";
+
             XmlReader xmlReader = XmlReader.Create("http://localhost:8733/Design_Time_Addresses/LB7_WCF/Feed1");
             SyndicationFeed feed = SyndicationFeed.Load(xmlReader);
             foreach (SyndicationItem item in feed.Items)

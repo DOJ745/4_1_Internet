@@ -99,3 +99,4 @@ H:\LabsFolder\_4_1\InternetLabs\LB6_7\ConsoleHost\bin\Debug\Antlr3.Runtime.pdb
 H:\LabsFolder\_4_1\InternetLabs\LB6_7\ConsoleHost\bin\Debug\Newtonsoft.Json.xml
 H:\LabsFolder\_4_1\InternetLabs\LB6_7\ConsoleHost\bin\Debug\ru\EntityFramework.resources.dll
 H:\LabsFolder\_4_1\InternetLabs\LB6_7\ConsoleHost\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+H:\LabsFolder\_4_1\InternetLabs\LB6_7\ConsoleHost\obj\Debug\ConsoleHost.exe.config

@@ -294,3 +294,4 @@ D:\LabsFolder\_4_1\InternetLabs\LB6_7\LB6_7\obj\Debug\LB6_7.csproj.CoreCompileIn
 D:\LabsFolder\_4_1\InternetLabs\LB6_7\LB6_7\obj\Debug\LB6_7.csproj.CopyComplete
 D:\LabsFolder\_4_1\InternetLabs\LB6_7\LB6_7\obj\Debug\LB6_7.dll
 D:\LabsFolder\_4_1\InternetLabs\LB6_7\LB6_7\obj\Debug\LB6_7.pdb
+H:\LabsFolder\_4_1\InternetLabs\LB6_7\LB6_7\bin\ru\EntityFramework.SqlServer.resources.dll
