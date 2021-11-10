@@ -48,7 +48,7 @@ namespace LB7_WCF
                 var student = (from stud in entities.Student where stud.id == note.studentId select stud).First();
 
                 items.Add(new SyndicationItem(
-                    title: note.subject + " : " + note.note1,
+                    title: student.name + " --- " + note.subject + ": " + note.note1,
                     content: student.name.ToString(),
                     itemAlternateLink: new Uri("http://localhost:56386/MainWcfDataService.svc/Note" + "(" + note.id + ")"),
                     id: student.id.ToString(),
