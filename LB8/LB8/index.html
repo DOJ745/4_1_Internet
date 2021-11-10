@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>LB8 - JsonRPC</title>
+
+    <script>
+
+        var basePath = "http://localhost:61880/api/jrservice";
+
+        function getM() {
+
+            var request = new XMLHttpRequest();
+            request.open("POST", basePath, true);
+            request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+            var resultField = document.getElementById('getMResult');
+
+            request.onreadystatechange = function () {
+                if (request.readyState == 4 && request.status == 200) {
+                    var response = JSON.parse(request.responseText);
+                    resultField.value = response[0].Result;
+                }
+            }
+
+            request.send(JSON.stringify([
+                    {
+                        "jsonrpc": "2.0",
+                        "id": "5",
+                        "method": "getm",
+                        "params": ["Age"]
+                    }
+                ]));
+        }
+
+        function setM() {
+
+            var request = new XMLHttpRequest();
+
+            request.open("POST", basePath, true);
+            request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+            var resultField = document.getElementById('getMResult');
+
+            request.onreadystatechange = function () {
+                if (request.readyState == 4 && request.status == 200) {
+                    var response = JSON.parse(request.responseText);
+                    resultField.value = response[0].Result;
+                }
+            }
+
+            var m = document.getElementById('setMField').value;
+            request.send(JSON.stringify([
+                {
+                    "jsonrpc": "2.0",
+                    "id": "5",
+                    "method": "setm",
+                    "params": ["Age", m]
+                }
+            ]));
+        }
+
+        function addM() {
+
+            var request = new XMLHttpRequest();
+
+            request.open("POST", basePath, true);
+            request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+            var resultField = document.getElementById('getMResult');
+
+            request.onreadystatechange = function () {
+                if (request.readyState == 4 && request.status == 200) {
+                    var response = JSON.parse(request.responseText);
+                    resultField.value = response[0].Result;
+                }
+            }
+
+            var m = document.getElementById('addMField').value;
+            request.send(JSON.stringify([
+                {
+                    "jsonrpc": "2.0",
+                    "id": "5",
+                    "method": "addm",
+                    "params": ["Age", m]
+                }
+            ]));
+        }
+
+        function subM() {
+
+            var request = new XMLHttpRequest();
+
+            request.open("POST", basePath, true);
+            request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+            var resultField = document.getElementById('getMResult');
+
+            request.onreadystatechange = function () {
+                if (request.readyState == 4 && request.status == 200) {
+                    var response = JSON.parse(request.responseText);
+                    resultField.value = response[0].Result;
+                }
+            }
+
+            var m = document.getElementById('subMField').value;
+            request.send(JSON.stringify([
+                {
+                    "jsonrpc": "2.0",
+                    "id": "5",
+                    "method": "subm",
+                    "params": ["Age", m]
+                }
+            ]));
+        }
+
+        function mulM() {
+
+            var request = new XMLHttpRequest();
+
+            request.open("POST", basePath, true);
+            request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+            var resultField = document.getElementById('getMResult');
+
+            request.onreadystatechange = function () {
+                if (request.readyState == 4 && request.status == 200) {
+                    var response = JSON.parse(request.responseText);
+                    resultField.value = response[0].Result;
+                }
+            }
+
+            var m = document.getElementById('mulMField').value;
+            request.send(JSON.stringify([
+                {
+                    "jsonrpc": "2.0",
+                    "id": "5",
+                    "method": "mulm",
+                    "params": ["Age", m]
+                }
+            ]));
+        }
+
+        function divM() {
+
+            var request = new XMLHttpRequest();
+
+            request.open("POST", basePath, true);
+            request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+            var resultField = document.getElementById('getMResult');
+
+            request.onreadystatechange = function () {
+                if (request.readyState == 4 && request.status == 200) {
+                    var response = JSON.parse(request.responseText);
+                    resultField.value = response[0].Result;
+                }
+            }
+
+            var m = document.getElementById('divMField').value;
+            request.send(JSON.stringify([
+                {
+                    "jsonrpc": "2.0",
+                    "id": "5",
+                    "method": "divm",
+                    "params": ["Age", m]
+                }
+            ]));
+        }
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <input type="number" id="getMResult" disabled="disabled" />
+            </td>
+
+            <td>
+                <input type="button" id="getMButton" onclick="getM()" value="GetM" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="number" id="setMField" />
+            </td>
+
+            <td>
+                <input type="button" id="setMButton" onclick="setM()" value="SetM" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="number" id="addMField" />
+            </td>
+
+            <td>
+                <input type="button" id="addMButton" onclick="addM()" value="AddM" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="number" id="subMField" />
+            </td>
+
+            <td>
+                <input type="button" id="subMButton" onclick="subM()" value="SubM" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="number" id="mulMField" />
+            </td>
+
+            <td>
+                <input type="button" id="mulMButton" onclick="mulM()" value="MulM" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="number" id="divMField" />
+            </td>
+
+            <td>
+                <input type="button" id="divMButton" onclick="divM()" value="DivM" />
+            </td>
+        </tr>
+
+    </table>
+</body>
+</html>
