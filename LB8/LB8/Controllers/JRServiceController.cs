@@ -103,16 +103,16 @@ namespace LB8.Controllers
         {
             try
             {
-                string k = request.Params[0] as string;
-                int x = int.Parse(request.Params[1].ToString());
-                cache.AddValue(k, x);
+                string key = request.Params[0] as string;
+                int value = int.Parse(request.Params[1].ToString());
+                cache.AddValue(key, value);
 
                 var response = new JsonRPCResponse();
 
                 response.Id = request.Id;
                 response.JsonRpc = request.JsonRpc;
                 response.Method = request.Method;
-                response.Result = x.ToString();
+                response.Result = value.ToString();
 
                 return response;
             }
