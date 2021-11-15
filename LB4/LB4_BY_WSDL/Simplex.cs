@@ -48,11 +48,12 @@ namespace LB4_BY_WSDL
             result.numberInt = objOne.numberInt + objTwo.numberInt;
             result.numberFloat = objOne.numberFloat + objTwo.numberFloat;
 
-            string reqBody;
+            string reqBody = "";
 
+            /*
             Context.Request.InputStream.Position = 0;
             StreamReader reader = new StreamReader(Context.Request.InputStream);
-            reqBody = reader.ReadToEnd();
+            reqBody = reader.ReadToEnd();*/
 
             result.str += "\n\n" + reqBody + "\n\n";
 

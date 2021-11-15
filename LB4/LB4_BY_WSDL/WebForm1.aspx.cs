@@ -14,7 +14,7 @@ namespace LB4_BY_WSDL
         public static WINFORM_WSDL.Simplex getSimplex()
         {
             WINFORM_WSDL.Simplex service = new WINFORM_WSDL.Simplex();
-            service.Url = "http://localhost:10000/LB4/Simplex.asmx";
+            service.Url = "http://localhost:10000/LB4_1/Simplex.asmx";
             service.Timeout = 100 * 1000;
             return service;
         }
