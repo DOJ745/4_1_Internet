@@ -5,3 +5,10 @@ D:\LabsFolder\_4_1\InternetLabs\LB5_1\LB5_1\obj\Debug\LB5_1.csproj.AssemblyRefer
 D:\LabsFolder\_4_1\InternetLabs\LB5_1\LB5_1\obj\Debug\LB5_1.csproj.CoreCompileInputs.cache
 D:\LabsFolder\_4_1\InternetLabs\LB5_1\LB5_1\obj\Debug\LB5_1.dll
 D:\LabsFolder\_4_1\InternetLabs\LB5_1\LB5_1\obj\Debug\LB5_1.pdb
+H:\LabsFolder\_4_1\InternetLabs\LB5_1\LB5_1\bin\Debug\LB5_1.dll.config
+H:\LabsFolder\_4_1\InternetLabs\LB5_1\LB5_1\bin\Debug\LB5_1.dll
+H:\LabsFolder\_4_1\InternetLabs\LB5_1\LB5_1\bin\Debug\LB5_1.pdb
+H:\LabsFolder\_4_1\InternetLabs\LB5_1\LB5_1\obj\Debug\LB5_1.csproj.AssemblyReference.cache
+H:\LabsFolder\_4_1\InternetLabs\LB5_1\LB5_1\obj\Debug\LB5_1.csproj.CoreCompileInputs.cache
+H:\LabsFolder\_4_1\InternetLabs\LB5_1\LB5_1\obj\Debug\LB5_1.dll
+H:\LabsFolder\_4_1\InternetLabs\LB5_1\LB5_1\obj\Debug\LB5_1.pdb

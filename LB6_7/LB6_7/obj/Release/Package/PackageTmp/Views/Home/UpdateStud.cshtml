@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Update</title>
+</head>
+<body>
+    @foreach (var item in ViewBag.Students)
+    {
+        if (item.id == int.Parse(ViewBag.Id))
+        {
+            <form method="post" action="~/Home/UpdateStudSave">
+                <label>Current ID: @ViewBag.Id</label> <input type="hidden" name="id" value="@ViewBag.Id" />
+                <br /><br />
+                <label>Enter new name: </label> <input type="text" name="name" value="@item.name" />
+                <br /><br />
+                <input type="submit" value="UPDATE" />
+            </form>
+        }
+    }
+</body>
+</html>

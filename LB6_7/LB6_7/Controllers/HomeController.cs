@@ -104,7 +104,7 @@ namespace LB6_7.Controllers
             return Redirect("/Home/Index");
         }
 
-        // WCF
+        // WCF (LB7)
         public ActionResult Client()
         {
             string result = "";
