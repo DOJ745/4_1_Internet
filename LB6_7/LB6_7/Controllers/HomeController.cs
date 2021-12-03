@@ -34,7 +34,7 @@ namespace LB6_7.Controllers
             mainService.addStudent(name);
 
             ViewBag.Students = CONTEXT.Student;
-            return Redirect("/Home/Index");
+            return Redirect("/LB6/Home/Index");
         }
         
         public ActionResult UpdateStud(string id)
@@ -48,7 +48,7 @@ namespace LB6_7.Controllers
         {
             mainService.updateStudent(id, name);
             ViewBag.Students = mainService.getStudents();
-            return Redirect("/Home/Index");
+            return Redirect("/LB6/Home/Index");
         }
 
         public ActionResult DeleteStud(string id)
@@ -61,7 +61,7 @@ namespace LB6_7.Controllers
         {
             mainService.deleteStudent(id);
             ViewBag.Students = mainService.getStudents();
-            return Redirect("/Home/Index");
+            return Redirect("/LB6/Home/Index");
         }
 
 
@@ -75,7 +75,7 @@ namespace LB6_7.Controllers
             mainService.addNote(studId, mark, subject);
 
             ViewBag.Notes = CONTEXT.Note;
-            return Redirect("/Home/Index");
+            return Redirect("/LB6/Home/Index");
         }
         public ActionResult UpdateNote(string id)
         {
@@ -88,7 +88,7 @@ namespace LB6_7.Controllers
         {
             mainService.updateNote(id, studentId, mark, subject);
             ViewBag.Notes = mainService.getNotes();
-            return Redirect("/Home/Index");
+            return Redirect("/LB6/Home/Index");
         }
 
         public ActionResult DeleteNote(string id)
@@ -101,7 +101,7 @@ namespace LB6_7.Controllers
         {
             mainService.deleteNote(id);
             ViewBag.Notes = mainService.getNotes();
-            return Redirect("/Home/Index");
+            return Redirect("/LB6/Home/Index");
         }
 
         // WCF

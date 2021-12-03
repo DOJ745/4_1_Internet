@@ -49,7 +49,7 @@ namespace LB7_WCF
 
                 items.Add(new SyndicationItem(
                     title: student.name + " --- " + note.subject + ": " + note.note1,
-                    content: student.name.ToString(),
+                    content: student.name,
                     itemAlternateLink: new Uri("http://localhost:56386/MainWcfDataService.svc/Note" + "(" + note.id + ")"),
                     id: student.id.ToString(),
                     lastUpdatedTime: DateTime.Now)

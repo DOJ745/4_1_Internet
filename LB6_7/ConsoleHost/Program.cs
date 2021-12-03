@@ -14,7 +14,8 @@ namespace ConsoleHost
             using (ServiceHost host = new ServiceHost(typeof(LB7_WCF.Feed1)))
             {
                 host.Open();
-                Console.WriteLine("Host status: OK.");
+                Console.WriteLine("Press a button to close the host");
+                Console.WriteLine("Host status: " + host.State);
                 Console.ReadLine();
             }
         }

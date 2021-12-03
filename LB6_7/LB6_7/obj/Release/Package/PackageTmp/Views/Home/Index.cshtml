@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+
+        <hr />
+        <form method="get" action="~/Home/AddStud"><input type="submit" value="Add student" /></form>
+        <hr />
+
+        <h3>STUDENTS</h3>
+
+        @foreach (var item in ViewBag.Students)
+        {
+            <p>ID: @item.id</p>
+            <p>NAME: @item.name</p>
+            <table>
+                <tr>
+                    <td>
+                        <form method="get" action="~/Home/UpdateStud">
+                            <input type="submit" value="Update" />
+                            <input type="hidden" name="id" value="@item.id" />
+                        </form>
+                    </td>
+
+                    <td>
+                        <form method="get" action="~/Home/DeleteStud">
+                            <input type="submit" value="Delete" />
+                            <input type="hidden" name="id" value="@item.id" />
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            <hr />
+        }
+
+        <hr />
+        <form method="get" action="~/Home/AddNote"><input type="submit" value="Add note" /></form>
+        <hr />
+        <h3>NOTES</h3>
+
+        @foreach (var item in ViewBag.Notes)
+        {
+            <p>ID: @item.id</p>
+            <p>SUBJECT: @item.subject</p>
+            <p>NOTE: @item.note1</p>
+            <p>STUD ID: @item.studentId</p>
+            <table>
+                <tr>
+                    <td>
+                        <form method="get" action="~/Home/UpdateNote">
+                            <input type="submit" value="Update" />
+                            <input type="hidden" name="id" value="@item.id" />
+                        </form>
+                    </td>
+
+                    <td>
+                        <form method="get" action="~/Home/DeleteNote">
+                            <input type="submit" value="Delete" />
+                            <input type="hidden" name="id" value="@item.id" />
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            <hr />
+        }
+    </div>
+</body>
+</html>

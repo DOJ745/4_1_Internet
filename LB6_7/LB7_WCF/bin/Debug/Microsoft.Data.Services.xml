@@ -2313,9 +2313,6 @@
             An <see cref="T:Microsoft.Data.Edm.IEdmComplexType"/> implementation that supports delay-loading of properties.
             </summary>
         </member>
-        <member name="F:System.Data.Services.Providers.EdmComplexTypeWithDelayLoadedProperties.lockObject">
-            <summary>The lock object for the delayed property loading.</summary>
-        </member>
         <member name="F:System.Data.Services.Providers.EdmComplexTypeWithDelayLoadedProperties.propertyLoadAction">
             <summary>An action that is used to create the properties for this type.</summary>
         </member>
@@ -2343,9 +2340,6 @@
             <summary>
             An <see cref="T:Microsoft.Data.Edm.IEdmEntityType"/> implementation that supports delay-loading of properties.
             </summary>
-        </member>
-        <member name="F:System.Data.Services.Providers.EdmEntityTypeWithDelayLoadedProperties.lockObject">
-            <summary>The lock object for the delayed property loading.</summary>
         </member>
         <member name="F:System.Data.Services.Providers.EdmEntityTypeWithDelayLoadedProperties.propertyLoadAction">
             <summary>An action that is used to create the properties for this type.</summary>
@@ -17662,6 +17656,23 @@
             Checks that $format is not on a $batch request
             </summary>
             <param name="service">Service to check.</param>
+        </member>
+        <member name="M:System.Data.Services.RequestUriProcessor.GetDelegateTypeForLambdaExpression(System.Linq.Expressions.Expression,System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            Gets the delegate type for constructing a lambda expression, given a parameter
+            and the body for the lambda.
+            </summary>
+            <param name="body">Expression representing the body of the lambda.</param>
+            <param name="param">Parameter for the lambda.</param>
+            <returns>The delegate type for the lambda.</returns>
+        </member>
+        <member name="M:System.Data.Services.RequestUriProcessor.GetTypeArgs(System.Linq.Expressions.Expression,System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            Get an array of types for a lambda delegate from parameter and body expressions.
+            </summary>
+            <param name="body">Expression representing the body of the lambda.</param>
+            <param name="param">Parameter for the lambda.</param>
+            <returns>Array of types for the lambda delegate.</returns>
         </member>
         <member name="T:System.Data.Services.UpdateOperations">
             <summary>Describes an action performed on a resource.</summary>
