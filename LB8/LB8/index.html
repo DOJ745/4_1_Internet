@@ -171,67 +171,33 @@
 </head>
 
 <body>
-    <table>
-        <tr>
-            <td>
-                <input type="number" id="getMResult" disabled="disabled" />
-            </td>
+    <h3>GET M</h3>
+    <input type="number" id="getMResult" disabled="disabled" />
+    <input type="button" id="getMButton" onclick="getM()" value="GetM" />
+    <br /><br />
 
-            <td>
-                <input type="button" id="getMButton" onclick="getM()" value="GetM" />
-            </td>
-        </tr>
+    <h3>SET M</h3>
+    <input type="number" id="setMField" />
+    <input type="button" id="setMButton" onclick="setM()" value="SetM" />
+    <br /><br />
 
-        <tr>
-            <td>
-                <input type="number" id="setMField" />
-            </td>
+    <h3>ADD M</h3>
+    <input type="number" id="addMField" />
+    <input type="button" id="addMButton" onclick="addM()" value="AddM" />
+    <br /><br />
 
-            <td>
-                <input type="button" id="setMButton" onclick="setM()" value="SetM" />
-            </td>
-        </tr>
+    <h3>SUB(-) M</h3>
+    <input type="number" id="subMField" />
+    <input type="button" id="subMButton" onclick="subM()" value="SubM" />
+    <br /><br />
 
-        <tr>
-            <td>
-                <input type="number" id="addMField" />
-            </td>
+    <h3>MUL(*) M</h3>
+    <input type="number" id="mulMField" />
+    <input type="button" id="mulMButton" onclick="mulM()" value="MulM" />
+    <br /><br />
 
-            <td>
-                <input type="button" id="addMButton" onclick="addM()" value="AddM" />
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <input type="number" id="subMField" />
-            </td>
-
-            <td>
-                <input type="button" id="subMButton" onclick="subM()" value="SubM" />
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <input type="number" id="mulMField" />
-            </td>
-
-            <td>
-                <input type="button" id="mulMButton" onclick="mulM()" value="MulM" />
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <input type="number" id="divMField" />
-            </td>
-
-            <td>
-                <input type="button" id="divMButton" onclick="divM()" value="DivM" />
-            </td>
-        </tr>
-
-    </table>
+    <h3>DIV(/) M</h3>
+    <input type="number" id="divMField" />
+    <input type="button" id="divMButton" onclick="divM()" value="DivM" />
 </body>
 </html>
