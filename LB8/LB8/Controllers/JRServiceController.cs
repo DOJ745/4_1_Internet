@@ -27,6 +27,8 @@ namespace LB8.Controllers
 
         public class JsonRPCError
         {
+            public string Id { get; set; }
+            public string JsonRpc { get; set; }
             public int Code { get; set; }
             public string Message { get; set; }
         }
@@ -54,10 +56,12 @@ namespace LB8.Controllers
         public List<JsonRPCResponse> Post(JsonRPCRequest[] request)
         {
             List<JsonRPCResponse> response = new List<JsonRPCResponse>();
+            List<JsonRPCError> errorResponse = new List<JsonRPCError>();
 
             foreach (JsonRPCRequest requestItem in request)
             {
                 JsonRPCResponse responseItem = null;
+                JsonRPCError responseError = null;
 
                 switch (requestItem.Method.ToLower())
                 {
@@ -93,7 +97,16 @@ namespace LB8.Controllers
                         responseItem = methodNotFound(requestItem);
                         break;
                 }
-                response.Add(responseItem);
+
+                if(responseItem != null)
+                {
+                    response.Add(responseItem);
+                }
+                else
+                {
+                    errorResponse.Add(responseError);
+                }
+                
             }
             return response;
         }
@@ -235,10 +248,13 @@ namespace LB8.Controllers
 
             JsonRPCError error = new JsonRPCError();
 
+            error.Id = response.Id;
+            error.JsonRpc = response.JsonRpc;
             error.Code = -32601;
             error.Message = "Method not found";
 
             return response;
+            //return error;
         }
 
         [NonAction]
