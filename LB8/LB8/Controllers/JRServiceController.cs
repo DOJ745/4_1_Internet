@@ -23,14 +23,21 @@ namespace LB8.Controllers
             public string JsonRpc { get; set; }
             public string Method { get; set; }
             public string Result { get; set; }
+
+            public JsonRPCError error { get; set; }
+
         }
 
         public class JsonRPCError
         {
-            public string Id { get; set; }
-            public string JsonRpc { get; set; }
             public int Code { get; set; }
             public string Message { get; set; }
+
+            /*
+            public override string ToString()
+            {
+                return "error: {" + "code: " + Code.ToString() + ", message: " + Message + "}";
+            }*/
         }
 
         public class CustomCache
@@ -56,12 +63,10 @@ namespace LB8.Controllers
         public List<JsonRPCResponse> Post(JsonRPCRequest[] request)
         {
             List<JsonRPCResponse> response = new List<JsonRPCResponse>();
-            List<JsonRPCError> errorResponse = new List<JsonRPCError>();
 
             foreach (JsonRPCRequest requestItem in request)
             {
                 JsonRPCResponse responseItem = null;
-                JsonRPCError responseError = null;
 
                 switch (requestItem.Method.ToLower())
                 {
@@ -97,16 +102,7 @@ namespace LB8.Controllers
                         responseItem = methodNotFound(requestItem);
                         break;
                 }
-
-                if(responseItem != null)
-                {
-                    response.Add(responseItem);
-                }
-                else
-                {
-                    errorResponse.Add(responseError);
-                }
-                
+                response.Add(responseItem);
             }
             return response;
         }
@@ -248,13 +244,12 @@ namespace LB8.Controllers
 
             JsonRPCError error = new JsonRPCError();
 
-            error.Id = response.Id;
-            error.JsonRpc = response.JsonRpc;
             error.Code = -32601;
             error.Message = "Method not found";
 
+            response.error = error;
+
             return response;
-            //return error;
         }
 
         [NonAction]
@@ -271,6 +266,9 @@ namespace LB8.Controllers
 
             error.Code = -32602;
             error.Message = "Invalid params";
+
+            response.error = error;
+
             return response;
         }
     }
