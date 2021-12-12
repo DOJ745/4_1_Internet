@@ -19,25 +19,45 @@ namespace LB8.Controllers
 
         public class JsonRPCResponse
         {
-            public string Id { get; set; }
-            public string JsonRpc { get; set; }
-            public string Method { get; set; }
-            public string Result { get; set; }
+            public string id { get; set; }
+            public string jsonrpc { get; set; }
 
-            public JsonRPCError error { get; set; }
+            public string method { get; set; }
 
+            /*
+            public string getMethod()
+            {
+                return method;
+            }
+
+            public void setMethod(string _method)
+            {
+                method = _method;
+            }
+            */
+            public string result { get; set; }
+            /*
+            public string getResult()
+            {
+                return result;
+            }
+
+            public void setResult(string _result)
+            {
+                result = _result;
+            }
+            */
         }
 
         public class JsonRPCError
         {
-            public int Code { get; set; }
-            public string Message { get; set; }
+            public int code { get; set; }
+            public string message { get; set; }
+        }
 
-            /*
-            public override string ToString()
-            {
-                return "error: {" + "code: " + Code.ToString() + ", message: " + Message + "}";
-            }*/
+        public class JsonRPCErrorResponse: JsonRPCResponse
+        {
+            public JsonRPCError error;
         }
 
         public class CustomCache
@@ -118,10 +138,12 @@ namespace LB8.Controllers
 
                 var response = new JsonRPCResponse();
 
-                response.Id = request.Id;
-                response.JsonRpc = request.JsonRpc;
-                response.Method = request.Method;
-                response.Result = value.ToString();
+                response.id = request.Id;
+                response.jsonrpc = request.JsonRpc;
+                response.method = request.Method;
+                response.result = value.ToString();
+                //response.setMethod(request.Method);
+                //response.setResult(value.ToString());
 
                 return response;
             }
@@ -136,10 +158,12 @@ namespace LB8.Controllers
                 var key = request.Params[0] as string;
                 var response = new JsonRPCResponse();
 
-                response.Id = request.Id;
-                response.JsonRpc = request.JsonRpc;
-                response.Method = request.Method;
-                response.Result = cache.GetValue(key).ToString();
+                response.id = request.Id;
+                response.jsonrpc = request.JsonRpc;
+                response.method = request.Method;
+                response.result = cache.GetValue(key).ToString();
+                //response.setMethod(request.Method);
+                //response.setResult(cache.GetValue(key).ToString());
 
                 return response;
             }
@@ -156,10 +180,12 @@ namespace LB8.Controllers
                 int value = int.Parse(request.Params[1].ToString());
                 cache.AddValue(key, cache.GetValue(key) + value);
 
-                response.Id = request.Id;
-                response.JsonRpc = request.JsonRpc;
-                response.Method = request.Method;
-                response.Result = cache.GetValue(key).ToString();
+                response.id = request.Id;
+                response.jsonrpc = request.JsonRpc;
+                response.method = request.Method;
+                response.result = cache.GetValue(key).ToString();
+                //response.setMethod(request.Method);
+                //response.setResult(cache.GetValue(key).ToString());
 
                 return response;
             }
@@ -180,10 +206,12 @@ namespace LB8.Controllers
 
                 cache.AddValue(key, cache.GetValue(key) - value);
 
-                response.Id = request.Id; ;
-                response.JsonRpc = request.JsonRpc;
-                response.Method = request.Method;
-                response.Result = cache.GetValue(key).ToString();
+                response.id = request.Id; ;
+                response.jsonrpc = request.JsonRpc;
+                response.method = request.Method;
+                response.result = cache.GetValue(key).ToString();
+                //response.setMethod(request.Method);
+                //response.setResult(cache.GetValue(key).ToString());
 
                 return response;
             }
@@ -201,10 +229,12 @@ namespace LB8.Controllers
 
                 cache.AddValue(key, cache.GetValue(key) * value);
 
-                response.Id = request.Id;
-                response.JsonRpc = request.JsonRpc;
-                response.Method = request.Method;
-                response.Result = cache.GetValue(key).ToString();
+                response.id = request.Id;
+                response.jsonrpc = request.JsonRpc;
+                response.method = request.Method;
+                response.result = cache.GetValue(key).ToString();
+                //response.setMethod(request.Method);
+                //response.setResult(cache.GetValue(key).ToString());
 
                 return response;
             }
@@ -222,10 +252,12 @@ namespace LB8.Controllers
 
                 cache.AddValue(key, cache.GetValue(key) / value);
 
-                response.Id = request.Id;
-                response.JsonRpc = request.JsonRpc;
-                response.Method = request.Method;
-                response.Result = cache.GetValue(key).ToString();
+                response.id = request.Id;
+                response.jsonrpc = request.JsonRpc;
+                response.method = request.Method;
+                response.result = cache.GetValue(key).ToString();
+                //response.setMethod(request.Method);
+                //response.setResult(cache.GetValue(key).ToString());
 
                 return response;
             }
@@ -235,41 +267,43 @@ namespace LB8.Controllers
         [NonAction]
         private JsonRPCResponse methodNotFound(JsonRPCRequest request)
         {
-            JsonRPCResponse response = new JsonRPCResponse();
+            JsonRPCErrorResponse errorRes = new JsonRPCErrorResponse();
 
-            response.JsonRpc = request.JsonRpc;
-            response.Id = request.Id;
-            response.Method = request.Method;
-            response.Result = null;
+            errorRes.jsonrpc = request.JsonRpc;
+            errorRes.id = request.Id;
+            errorRes.method = request.Method;
+            errorRes.result = null;
+            //errorRes.setMethod(request.Method);
+            //errorRes.setResult(null);
 
             JsonRPCError error = new JsonRPCError();
 
-            error.Code = -32601;
-            error.Message = "Method not found";
+            error.code = -32601;
+            error.message = "Method not found";
 
-            response.error = error;
+            errorRes.error = error;
 
-            return response;
+            return errorRes;
         }
 
         [NonAction]
         private JsonRPCResponse invalidParams(JsonRPCRequest request)
         {
-            JsonRPCResponse response = new JsonRPCResponse();
+            JsonRPCErrorResponse errorRes = new JsonRPCErrorResponse();
 
-            response.JsonRpc = request.JsonRpc;
-            response.Id = request.Id;
-            response.Method = request.Method;
-            response.Result = null;
+            errorRes.jsonrpc = request.JsonRpc;
+            errorRes.id = request.Id;
+            errorRes.method = request.Method;
+            errorRes.result = null;
 
             JsonRPCError error = new JsonRPCError();
 
-            error.Code = -32602;
-            error.Message = "Invalid params";
+            error.code = -32602;
+            error.message = "Invalid params";
+            
+            errorRes.error = error;
 
-            response.error = error;
-
-            return response;
+            return errorRes;
         }
     }
 }
