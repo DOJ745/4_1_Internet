@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace LB8.Controllers
 {
     public class JRServiceController : ApiController
     {
+
         public class JsonRPCRequest
         {
             public string Id { get; set; }
@@ -21,32 +23,8 @@ namespace LB8.Controllers
         {
             public string id { get; set; }
             public string jsonrpc { get; set; }
-
             public string method { get; set; }
-
-            /*
-            public string getMethod()
-            {
-                return method;
-            }
-
-            public void setMethod(string _method)
-            {
-                method = _method;
-            }
-            */
             public string result { get; set; }
-            /*
-            public string getResult()
-            {
-                return result;
-            }
-
-            public void setResult(string _result)
-            {
-                result = _result;
-            }
-            */
         }
 
         public class JsonRPCError
@@ -62,7 +40,7 @@ namespace LB8.Controllers
 
         public class CustomCache
         {
-            private Dictionary<String, int> cache = new Dictionary<String, int>();
+            private Dictionary<string, int> cache = new Dictionary<string, int>();
 
             public void AddValue(string key, int value)
             {
@@ -136,14 +114,14 @@ namespace LB8.Controllers
                 int value = int.Parse(request.Params[1].ToString());
                 cache.AddValue(key, value);
 
+                HttpContext.Current.Session[key] = value;
+
                 var response = new JsonRPCResponse();
 
                 response.id = request.Id;
                 response.jsonrpc = request.JsonRpc;
                 response.method = request.Method;
-                response.result = value.ToString();
-                //response.setMethod(request.Method);
-                //response.setResult(value.ToString());
+                response.result = HttpContext.Current.Session[key].ToString();
 
                 return response;
             }
@@ -157,13 +135,11 @@ namespace LB8.Controllers
             {
                 var key = request.Params[0] as string;
                 var response = new JsonRPCResponse();
-
+                
                 response.id = request.Id;
                 response.jsonrpc = request.JsonRpc;
                 response.method = request.Method;
-                response.result = cache.GetValue(key).ToString();
-                //response.setMethod(request.Method);
-                //response.setResult(cache.GetValue(key).ToString());
+                response.result = HttpContext.Current.Session[key].ToString();
 
                 return response;
             }
@@ -183,9 +159,8 @@ namespace LB8.Controllers
                 response.id = request.Id;
                 response.jsonrpc = request.JsonRpc;
                 response.method = request.Method;
-                response.result = cache.GetValue(key).ToString();
-                //response.setMethod(request.Method);
-                //response.setResult(cache.GetValue(key).ToString());
+                int sum = (int)HttpContext.Current.Session[key] + value;
+                response.result = sum.ToString();
 
                 return response;
             }
@@ -209,9 +184,8 @@ namespace LB8.Controllers
                 response.id = request.Id; ;
                 response.jsonrpc = request.JsonRpc;
                 response.method = request.Method;
-                response.result = cache.GetValue(key).ToString();
-                //response.setMethod(request.Method);
-                //response.setResult(cache.GetValue(key).ToString());
+                int sub = (int)HttpContext.Current.Session[key] - value;
+                response.result = sub.ToString();
 
                 return response;
             }
@@ -232,9 +206,8 @@ namespace LB8.Controllers
                 response.id = request.Id;
                 response.jsonrpc = request.JsonRpc;
                 response.method = request.Method;
-                response.result = cache.GetValue(key).ToString();
-                //response.setMethod(request.Method);
-                //response.setResult(cache.GetValue(key).ToString());
+                int mul = (int)HttpContext.Current.Session[key] * value;
+                response.result = mul.ToString();
 
                 return response;
             }
@@ -255,9 +228,8 @@ namespace LB8.Controllers
                 response.id = request.Id;
                 response.jsonrpc = request.JsonRpc;
                 response.method = request.Method;
-                response.result = cache.GetValue(key).ToString();
-                //response.setMethod(request.Method);
-                //response.setResult(cache.GetValue(key).ToString());
+                int div = (int)HttpContext.Current.Session[key] / value;
+                response.result = div.ToString();
 
                 return response;
             }
@@ -273,8 +245,6 @@ namespace LB8.Controllers
             errorRes.id = request.Id;
             errorRes.method = request.Method;
             errorRes.result = null;
-            //errorRes.setMethod(request.Method);
-            //errorRes.setResult(null);
 
             JsonRPCError error = new JsonRPCError();
 

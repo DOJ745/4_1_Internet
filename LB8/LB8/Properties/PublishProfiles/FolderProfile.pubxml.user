@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>D:\ForIIS\LB8</_PublishTargetUrl>
-    <History>True|2021-12-06T06:53:57.6498605Z;True|2021-12-06T09:52:41.9227084+03:00;True|2021-12-06T09:43:14.6331342+03:00;True|2021-12-06T09:41:18.2715409+03:00;True|2021-12-06T09:37:39.2667982+03:00;</History>
+    <History>True|2021-12-14T12:49:30.4812043Z;True|2021-12-13T10:14:10.3852267+03:00;True|2021-12-13T09:47:03.4144132+03:00;True|2021-12-13T09:38:59.7410424+03:00;True|2021-12-13T09:34:49.5392508+03:00;True|2021-12-06T09:53:57.6498605+03:00;True|2021-12-06T09:52:41.9227084+03:00;True|2021-12-06T09:43:14.6331342+03:00;True|2021-12-06T09:41:18.2715409+03:00;True|2021-12-06T09:37:39.2667982+03:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/HelpPage/HelpPage.css">
@@ -78,10 +78,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/10/2013 17:29:20</publishTime>
     </File>
     <File Include="bin/LB8.dll">
-      <publishTime>12/06/2021 09:52:41</publishTime>
+      <publishTime>12/14/2021 15:49:29</publishTime>
     </File>
     <File Include="bin/LB8.pdb">
-      <publishTime>12/06/2021 09:52:41</publishTime>
+      <publishTime>12/14/2021 15:49:29</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/05/2018 16:10:50</publishTime>
@@ -356,8 +356,11 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Global.asax">
       <publishTime>11/10/2021 08:12:44</publishTime>
     </File>
+    <File Include="Index.cshtml">
+      <publishTime>12/14/2021 15:15:00</publishTime>
+    </File>
     <File Include="index.html">
-      <publishTime>12/06/2021 09:38:31</publishTime>
+      <publishTime>12/14/2021 15:48:50</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>11/10/2021 08:12:46</publishTime>
@@ -402,7 +405,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/10/2021 08:12:44</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/06/2021 09:53:57</publishTime>
+      <publishTime>12/14/2021 15:49:29</publishTime>
     </File>
   </ItemGroup>
 </Project>
