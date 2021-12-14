@@ -5,7 +5,6 @@
     <title>LB8</title>
 
     <script src="Scripts/jquery-3.4.1.js"></script>
-
     <script>
 
         var baseUrl = "http://localhost:61880/api/jrservice/";
@@ -109,7 +108,6 @@
                 },
 
                 error: error => {
-                    var response = JSON.parse(JSON.stringify(result));
                     resultField.value = -1;
                 }
             })
@@ -145,70 +143,77 @@
                 },
 
                 error: error => {
-                    var response = JSON.parse(JSON.stringify(result));
                     resultField.value = -1;
                 }
             })
         }
 
         function mulM() {
-            var key = $("#mul-key").val();
-            var value = $("#mul-value").val();
-            var jsonrpc = {
-                "jsonrpc": "2.0",
-                "method": "MulM",
-                "id": "1",
-                "params":
-                {
-                    "key": key,
-                    "value": value
-                }
-            }
+
+            var resultField = document.getElementById('getMResult');
+            var value = document.getElementById('mulMField').value;
+
+            var jsonrpc =
+                [
+                    {
+                        "jsonrpc": "2.0",
+                        "method": "mulm",
+                        "id": "5",
+                        "params": ["Age", value]
+                    }
+                ];
 
             $.ajax({
-                url: sendursl,
+                url: baseUrl,
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 traditional: true,
                 processData: false,
                 data: JSON.stringify(jsonrpc),
+
                 success: result => {
-                    document.getElementById("result").value = document.getElementById("result").value + "\n" + JSON.stringify(result);
+                    var response = JSON.parse(JSON.stringify(result));
+                    resultField.value = response[0].result;
                 },
+
                 error: error => {
-                    document.getElementById("result").value = document.getElementById("result").value + "\n" + JSON.stringify(result);
+                    resultField.value = -1;
                 }
             })
         }
 
         function divM() {
-            var key = $("#div-key").val();
-            var value = $("#div-value").val();
-            var jsonrpc = {
-                "jsonrpc": "2.0",
-                "method": "DivM",
-                "id": "1",
-                "params":
-                {
-                    "key": key,
-                    "value": value
-                }
-            }
+
+            var resultField = document.getElementById('getMResult');
+            var value = document.getElementById('divMField').value;
+
+            var jsonrpc =
+                [
+                    {
+                        "jsonrpc": "2.0",
+                        "method": "divm",
+                        "id": "5",
+                        "params": ["Age", value]
+                    }
+                ];
 
             $.ajax({
-                url: sendursl,
+                url: baseUrl,
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 traditional: true,
                 processData: false,
                 data: JSON.stringify(jsonrpc),
+
                 success: result => {
-                    document.getElementById("result").value = document.getElementById("result").value + "\n" + JSON.stringify(result);
+                    var response = JSON.parse(JSON.stringify(result));
+                    resultField.value = response[0].result;
                 },
+
                 error: error => {
-                    document.getElementById("result").value = document.getElementById("result").value + "\n" + JSON.stringify(result);
+                    resultField.value = -1;
                 }
             })
         }
