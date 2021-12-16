@@ -113,7 +113,7 @@ namespace LB6_7.Controllers
             SyndicationFeed feed = SyndicationFeed.Load(xmlReader);
             foreach (SyndicationItem item in feed.Items)
             {
-                result += item.Title.Text;
+                result += item.Title.Text + "\n";
             }
 
             ViewBag.Result = result;
