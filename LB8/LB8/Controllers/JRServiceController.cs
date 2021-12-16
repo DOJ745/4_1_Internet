@@ -38,25 +38,6 @@ namespace LB8.Controllers
             public JsonRPCError error;
         }
 
-        public class CustomCache
-        {
-            private Dictionary<string, int> cache = new Dictionary<string, int>();
-
-            public void AddValue(string key, int value)
-            {
-                cache[key] = value;
-            }
-
-            public int GetValue(string key)
-            {
-                try { return cache[key]; }
-                catch (KeyNotFoundException) { return 0; }
-            }
-            public void Clear() { cache.Clear(); }
-        }
-
-        private static CustomCache cache = new CustomCache();
-
         [HttpPost]
         public List<JsonRPCResponse> Post(JsonRPCRequest[] request)
         {
@@ -93,7 +74,6 @@ namespace LB8.Controllers
                         break;
 
                     case "errorexit":
-                        cache.Clear();
                         return response;
 
                     default:
@@ -112,7 +92,6 @@ namespace LB8.Controllers
             {
                 string key = request.Params[0] as string;
                 int value = int.Parse(request.Params[1].ToString());
-                cache.AddValue(key, value);
 
                 HttpContext.Current.Session[key] = value;
 
@@ -154,13 +133,15 @@ namespace LB8.Controllers
                 var response = new JsonRPCResponse();
                 var key = request.Params[0] as string;
                 int value = int.Parse(request.Params[1].ToString());
-                cache.AddValue(key, cache.GetValue(key) + value);
 
                 response.id = request.Id;
                 response.jsonrpc = request.JsonRpc;
                 response.method = request.Method;
+
                 int sum = (int)HttpContext.Current.Session[key] + value;
                 response.result = sum.ToString();
+
+                HttpContext.Current.Session[key] = sum;
 
                 return response;
             }
@@ -179,13 +160,13 @@ namespace LB8.Controllers
                 var key = request.Params[0] as string;
                 int value = int.Parse(request.Params[1].ToString());
 
-                cache.AddValue(key, cache.GetValue(key) - value);
-
                 response.id = request.Id; ;
                 response.jsonrpc = request.JsonRpc;
                 response.method = request.Method;
                 int sub = (int)HttpContext.Current.Session[key] - value;
                 response.result = sub.ToString();
+
+                HttpContext.Current.Session[key] = sub;
 
                 return response;
             }
@@ -201,13 +182,13 @@ namespace LB8.Controllers
                 var key = request.Params[0] as string;
                 int value = int.Parse(request.Params[1].ToString());
 
-                cache.AddValue(key, cache.GetValue(key) * value);
-
                 response.id = request.Id;
                 response.jsonrpc = request.JsonRpc;
                 response.method = request.Method;
                 int mul = (int)HttpContext.Current.Session[key] * value;
                 response.result = mul.ToString();
+
+                HttpContext.Current.Session[key] = mul;
 
                 return response;
             }
@@ -223,13 +204,13 @@ namespace LB8.Controllers
                 var key = request.Params[0] as string;
                 int value = int.Parse(request.Params[1].ToString());
 
-                cache.AddValue(key, cache.GetValue(key) / value);
-
                 response.id = request.Id;
                 response.jsonrpc = request.JsonRpc;
                 response.method = request.Method;
                 int div = (int)HttpContext.Current.Session[key] / value;
                 response.result = div.ToString();
+
+                HttpContext.Current.Session[key] = div;
 
                 return response;
             }
