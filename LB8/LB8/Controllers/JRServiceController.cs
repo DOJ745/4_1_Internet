@@ -10,6 +10,31 @@ namespace LB8.Controllers
 {
     public class JRServiceController : ApiController
     {
+        public class CustomCache
+        {
+            private Dictionary<String, int> cache = new Dictionary<String, int>();
+            public void AddValue(string key, int value)
+            {
+                cache[key] = value;
+            }
+            public int GetValue(string key)
+            {
+                try
+                {
+                    return cache[key];
+                }
+                catch (KeyNotFoundException)
+                {
+                    return 0;
+                }
+            }
+            public void Clear(JsonRPCRequest request) 
+            {
+                var key = request.Params[0] as string;
+                HttpContext.Current.Session[key] = 0;
+                cache.Clear(); 
+            }
+        }
 
         public class JsonRPCRequest
         {
@@ -37,6 +62,8 @@ namespace LB8.Controllers
         {
             public JsonRPCError error;
         }
+
+        private static CustomCache cache = new CustomCache();
 
         [HttpPost]
         public List<JsonRPCResponse> Post(JsonRPCRequest[] request)
@@ -74,6 +101,7 @@ namespace LB8.Controllers
                         break;
 
                     case "errorexit":
+                        cache.Clear(requestItem);
                         return response;
 
                     default:
@@ -92,6 +120,7 @@ namespace LB8.Controllers
             {
                 string key = request.Params[0] as string;
                 int value = int.Parse(request.Params[1].ToString());
+                cache.AddValue(key, value);
 
                 HttpContext.Current.Session[key] = value;
 
@@ -133,6 +162,7 @@ namespace LB8.Controllers
                 var response = new JsonRPCResponse();
                 var key = request.Params[0] as string;
                 int value = int.Parse(request.Params[1].ToString());
+                cache.AddValue(key, cache.GetValue(key) + value);
 
                 response.id = request.Id;
                 response.jsonrpc = request.JsonRpc;
@@ -159,6 +189,7 @@ namespace LB8.Controllers
                 var response = new JsonRPCResponse();
                 var key = request.Params[0] as string;
                 int value = int.Parse(request.Params[1].ToString());
+                cache.AddValue(key, cache.GetValue(key) - value);
 
                 response.id = request.Id; ;
                 response.jsonrpc = request.JsonRpc;
@@ -181,6 +212,7 @@ namespace LB8.Controllers
                 var response = new JsonRPCResponse();
                 var key = request.Params[0] as string;
                 int value = int.Parse(request.Params[1].ToString());
+                cache.AddValue(key, cache.GetValue(key) * value);
 
                 response.id = request.Id;
                 response.jsonrpc = request.JsonRpc;
@@ -203,6 +235,7 @@ namespace LB8.Controllers
                 var response = new JsonRPCResponse();
                 var key = request.Params[0] as string;
                 int value = int.Parse(request.Params[1].ToString());
+                cache.AddValue(key, cache.GetValue(key) / value);
 
                 response.id = request.Id;
                 response.jsonrpc = request.JsonRpc;
@@ -256,5 +289,18 @@ namespace LB8.Controllers
 
             return errorRes;
         }
+
+        /*public JsonRPCResponse ErrorExit(JsonRPCRequest request)
+        {
+            JsonRPCResponse resJson = new JsonRPCResponse()
+            {
+                id = "404",
+                jsonrpc = "2.0",
+                method = "ErrorExit()",
+                result = "0"
+            };
+
+            return resJson;
+        }*/
     }
 }

@@ -285,13 +285,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\AddStud.cshtml" />
-    <Content Include="Views\Home\UpdateStud.cshtml" />
-    <Content Include="Views\Home\AddNote.cshtml" />
-    <Content Include="Views\Home\UpdateNote.cshtml" />
-    <Content Include="Views\Home\DeleteNote.cshtml" />
-    <Content Include="Views\Home\DeleteStud.cshtml" />
-    <Content Include="Views\Home\Client.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
