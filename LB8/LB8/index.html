@@ -2,172 +2,224 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>LB8 - JsonRPC</title>
+    <title>LB8</title>
 
+    <script src="Scripts/jquery-3.4.1.js"></script>
     <script>
 
-        var basePath = "http://localhost:61880/api/jrservice";
-
-        function getM() {
-
-            var request = new XMLHttpRequest();
-            request.open("POST", basePath, true);
-            request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-            var resultField = document.getElementById('getMResult');
-
-            request.onreadystatechange = function () {
-                if (request.readyState == 4 && request.status == 200) {
-                    var response = JSON.parse(request.responseText);
-                    resultField.value = response[0].Result;
-                }
-            }
-
-            request.send(JSON.stringify([
-                    {
-                        "jsonrpc": "2.0",
-                        "id": "5",
-                        "method": "getm",
-                        "params": ["Age"]
-                    }
-                ]));
-        }
+        var baseUrl = "http://localhost:61880/api/jrservice/";
 
         function setM() {
 
-            var request = new XMLHttpRequest();
+            var value = document.getElementById('setMField').value;
+            var resultField = document.getElementById('getMResult');
 
-            request.open("POST", basePath, true);
-            request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            var jsonrpc =
+                [
+                    {
+                        "jsonrpc": "2.0",
+                        "method": "setm",
+                        "id": "5",
+                        "params": ["Age", value]
+                    }
+                ];
+
+            $.ajax({
+                url: baseUrl,
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                processData: false,
+                data: JSON.stringify(jsonrpc),
+
+                success: result => {
+                    var response = JSON.parse(JSON.stringify(result));
+                    resultField.value = response[0].result;
+                },
+
+                error: error => {
+                    resultField.value = -1;
+                }
+            })
+        }
+
+        function getM() {
 
             var resultField = document.getElementById('getMResult');
 
-            request.onreadystatechange = function () {
-                if (request.readyState == 4 && request.status == 200) {
-                    var response = JSON.parse(request.responseText);
-                    resultField.value = response[0].Result;
-                }
-            }
+            var jsonrpc =
+                [
+                    {
+                        "jsonrpc": "2.0",
+                        "method": "getm",
+                        "id": "5",
+                        "params": ["Age"]
+                    }
+                ];
 
-            var m = document.getElementById('setMField').value;
-            request.send(JSON.stringify([
-                {
-                    "jsonrpc": "2.0",
-                    "id": "5",
-                    "method": "setm",
-                    "params": ["Age", m]
+            $.ajax({
+                url: baseUrl,
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                processData: false,
+                data: JSON.stringify(jsonrpc),
+
+                success: result => {
+                    var response = JSON.parse(JSON.stringify(result));
+                    resultField.value = response[0].result;
+                },
+
+                error: error => {
+                    resultField.value = -1;
                 }
-            ]));
+            })
         }
 
         function addM() {
 
-            var request = new XMLHttpRequest();
-
-            request.open("POST", basePath, true);
-            request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
             var resultField = document.getElementById('getMResult');
+            var value = document.getElementById('addMField').value;
 
-            request.onreadystatechange = function () {
-                if (request.readyState == 4 && request.status == 200) {
-                    var response = JSON.parse(request.responseText);
-                    resultField.value = response[0].Result;
-                }
-            }
+            var jsonrpc =
+                [
+                    {
+                        "jsonrpc": "2.0",
+                        "method": "addm",
+                        "id": "5",
+                        "params": ["Age", value]
+                    }
+                ];
 
-            var m = document.getElementById('addMField').value;
-            request.send(JSON.stringify([
-                {
-                    "jsonrpc": "2.0",
-                    "id": "5",
-                    "method": "addm",
-                    "params": ["Age", m]
+            $.ajax({
+                url: baseUrl,
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                processData: false,
+                data: JSON.stringify(jsonrpc),
+
+                success: result => {
+                    var response = JSON.parse(JSON.stringify(result));
+                    resultField.value = response[0].result;
+                },
+
+                error: error => {
+                    resultField.value = -1;
                 }
-            ]));
+            })
         }
 
         function subM() {
 
-            var request = new XMLHttpRequest();
-
-            request.open("POST", basePath, true);
-            request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
             var resultField = document.getElementById('getMResult');
+            var value = document.getElementById('subMField').value;
 
-            request.onreadystatechange = function () {
-                if (request.readyState == 4 && request.status == 200) {
-                    var response = JSON.parse(request.responseText);
-                    resultField.value = response[0].Result;
-                }
-            }
+            var jsonrpc =
+                [
+                    {
+                        "jsonrpc": "2.0",
+                        "method": "subm",
+                        "id": "5",
+                        "params": ["Age", value]
+                    }
+                ];
 
-            var m = document.getElementById('subMField').value;
-            request.send(JSON.stringify([
-                {
-                    "jsonrpc": "2.0",
-                    "id": "5",
-                    "method": "subm",
-                    "params": ["Age", m]
+            $.ajax({
+                url: baseUrl,
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                processData: false,
+                data: JSON.stringify(jsonrpc),
+
+                success: result => {
+                    var response = JSON.parse(JSON.stringify(result));
+                    resultField.value = response[0].result;
+                },
+
+                error: error => {
+                    resultField.value = -1;
                 }
-            ]));
+            })
         }
 
         function mulM() {
 
-            var request = new XMLHttpRequest();
-
-            request.open("POST", basePath, true);
-            request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
             var resultField = document.getElementById('getMResult');
+            var value = document.getElementById('mulMField').value;
 
-            request.onreadystatechange = function () {
-                if (request.readyState == 4 && request.status == 200) {
-                    var response = JSON.parse(request.responseText);
-                    resultField.value = response[0].Result;
-                }
-            }
+            var jsonrpc =
+                [
+                    {
+                        "jsonrpc": "2.0",
+                        "method": "mulm",
+                        "id": "5",
+                        "params": ["Age", value]
+                    }
+                ];
 
-            var m = document.getElementById('mulMField').value;
-            request.send(JSON.stringify([
-                {
-                    "jsonrpc": "2.0",
-                    "id": "5",
-                    "method": "mulm",
-                    "params": ["Age", m]
+            $.ajax({
+                url: baseUrl,
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                processData: false,
+                data: JSON.stringify(jsonrpc),
+
+                success: result => {
+                    var response = JSON.parse(JSON.stringify(result));
+                    resultField.value = response[0].result;
+                },
+
+                error: error => {
+                    resultField.value = -1;
                 }
-            ]));
+            })
         }
 
         function divM() {
 
-            var request = new XMLHttpRequest();
-
-            request.open("POST", basePath, true);
-            request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
             var resultField = document.getElementById('getMResult');
+            var value = document.getElementById('divMField').value;
 
-            request.onreadystatechange = function () {
-                if (request.readyState == 4 && request.status == 200) {
-                    var response = JSON.parse(request.responseText);
-                    resultField.value = response[0].Result;
-                }
-            }
+            var jsonrpc =
+                [
+                    {
+                        "jsonrpc": "2.0",
+                        "method": "divm",
+                        "id": "5",
+                        "params": ["Age", value]
+                    }
+                ];
 
-            var m = document.getElementById('divMField').value;
-            request.send(JSON.stringify([
-                {
-                    "jsonrpc": "2.0",
-                    "id": "5",
-                    "method": "divm",
-                    "params": ["Age", m]
+            $.ajax({
+                url: baseUrl,
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                processData: false,
+                data: JSON.stringify(jsonrpc),
+
+                success: result => {
+                    var response = JSON.parse(JSON.stringify(result));
+                    resultField.value = response[0].result;
+                },
+
+                error: error => {
+                    resultField.value = -1;
                 }
-            ]));
+            })
         }
+
     </script>
+
 </head>
 
 <body>

@@ -93,3 +93,6 @@ D:\LabsFolder\_4_1\InternetLabs\LB8\LB8\obj\Debug\LB8.csproj.CoreCompileInputs.c
 D:\LabsFolder\_4_1\InternetLabs\LB8\LB8\obj\Debug\LB8.csproj.CopyComplete
 D:\LabsFolder\_4_1\InternetLabs\LB8\LB8\obj\Debug\LB8.dll
 D:\LabsFolder\_4_1\InternetLabs\LB8\LB8\obj\Debug\LB8.pdb
+D:\LabsFolder\_4_1\InternetLabs\LB8\LB8\bin\System.Web.Cors.dll
+D:\LabsFolder\_4_1\InternetLabs\LB8\LB8\bin\System.Web.Http.Cors.dll
+D:\LabsFolder\_4_1\InternetLabs\LB8\LB8\bin\System.Web.Http.Cors.xml

@@ -1,0 +1,417 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>LB8</title>
+
+    <script src="Scripts/jquery-3.4.1.js"></script>
+
+    <script>
+
+        var sendursl = "http://localhost:10000/LB8/api/jrservice/";
+
+        function setM() {
+
+            var value = document.getElementById('setMField').value;
+            var resultField = document.getElementById('getMResult');
+
+            var jsonrpc =
+                [
+                    {
+                        "jsonrpc": "2.0",
+                        "method": "setm",
+                        "id": "5",
+                        "params": ["Age", value]
+                    }
+                ];
+
+            $.ajax({
+                url: sendursl,
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                processData: false,
+                data: JSON.stringify(jsonrpc),
+
+                success: result => {
+                    var response = JSON.parse(JSON.stringify(result));
+                    resultField.value = response[0].result;
+                },
+
+                error: error => {
+                    var response = JSON.parse(JSON.stringify(result));
+                    resultField.value = response[0].result;
+                }
+            })
+        }
+
+        function getM() {
+
+            var resultField = document.getElementById('getMResult');
+
+            var jsonrpc =
+                [
+                    {
+                        "jsonrpc": "2.0",
+                        "method": "getm",
+                        "id": "5",
+                        "params": ["Age"]
+                    }
+                ];
+
+            $.ajax({
+                url: sendursl,
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                processData: false,
+                data: JSON.stringify(jsonrpc),
+
+                success: result => {
+                    var response = JSON.parse(JSON.stringify(result));
+                    resultField.value = response[0].result;
+                },
+
+                error: error => {
+                    var response = JSON.parse(JSON.stringify(result));
+                    resultField.value = response[0].error.code;
+                }
+            })
+        }
+
+        function addM() {
+
+            var value = document.getElementById('addMField').value;
+
+            var jsonrpc =
+                [
+                    {
+                        "jsonrpc": "2.0",
+                        "method": "addm",
+                        "id": "5",
+                        "params": ["Age", value]
+                    }
+                ];
+
+            $.ajax({
+                url: sendursl,
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                processData: false,
+                data: JSON.stringify(jsonrpc),
+
+                success: result => {
+                    var response = JSON.parse(JSON.stringify(result));
+                    resultField.value = response[0].result;
+                },
+
+                error: error => {
+                    var response = JSON.parse(JSON.stringify(result));
+                    resultField.value = response[0].result;
+                }
+            })
+        }
+
+        function subM() {
+            var key = $("#sub-key").val();
+            var value = $("#sub-value").val();
+            var jsonrpc = {
+                "jsonrpc": "2.0",
+                "method": "SubM",
+                "id": "1",
+                "params":
+                {
+                    "key": key,
+                    "value": value
+                }
+            }
+
+            $.ajax({
+                url: sendursl,
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                processData: false,
+                data: JSON.stringify(jsonrpc),
+                success: result => {
+                    document.getElementById("result").value = document.getElementById("result").value + "\n" + JSON.stringify(result);
+                },
+                error: error => {
+                    document.getElementById("result").value = document.getElementById("result").value + "\n" + JSON.stringify(result);
+                }
+            })
+        }
+
+        function mulM() {
+            var key = $("#mul-key").val();
+            var value = $("#mul-value").val();
+            var jsonrpc = {
+                "jsonrpc": "2.0",
+                "method": "MulM",
+                "id": "1",
+                "params":
+                {
+                    "key": key,
+                    "value": value
+                }
+            }
+
+            $.ajax({
+                url: sendursl,
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                processData: false,
+                data: JSON.stringify(jsonrpc),
+                success: result => {
+                    document.getElementById("result").value = document.getElementById("result").value + "\n" + JSON.stringify(result);
+                },
+                error: error => {
+                    document.getElementById("result").value = document.getElementById("result").value + "\n" + JSON.stringify(result);
+                }
+            })
+        }
+
+        function divM() {
+            var key = $("#div-key").val();
+            var value = $("#div-value").val();
+            var jsonrpc = {
+                "jsonrpc": "2.0",
+                "method": "DivM",
+                "id": "1",
+                "params":
+                {
+                    "key": key,
+                    "value": value
+                }
+            }
+
+            $.ajax({
+                url: sendursl,
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                processData: false,
+                data: JSON.stringify(jsonrpc),
+                success: result => {
+                    document.getElementById("result").value = document.getElementById("result").value + "\n" + JSON.stringify(result);
+                },
+                error: error => {
+                    document.getElementById("result").value = document.getElementById("result").value + "\n" + JSON.stringify(result);
+                }
+            })
+        }
+
+    </script>
+
+    <!-- <script>
+
+         var basePath = "http://localhost:61880/api/jrservice/";
+
+         function getM() {
+
+             var request = new XMLHttpRequest();
+             request.open("POST", basePath, true);
+             request.setRequestHeader("Content-Type", "application/json");
+
+             var resultField = document.getElementById('getMResult');
+
+             request.onreadystatechange = function () {
+                 if (request.readyState == 4 && request.status == 200) {
+                     var response = JSON.parse(request.responseText);
+                     resultField.value = response[0].result;
+                 }
+             }
+
+             request.send(JSON.stringify(
+                 [
+                     {
+                         "jsonrpc": "2.0",
+                         "id": "5",
+                         "method": "getm",
+                         "params": ["Age"]
+                     }
+                 ]
+             ));
+         }
+
+         function setM() {
+
+             var request = new XMLHttpRequest();
+
+             request.open("POST", basePath, true);
+             request.setRequestHeader("Content-Type", "application/json");
+
+             var resultField = document.getElementById('getMResult');
+
+             request.onreadystatechange = function () {
+                 if (request.readyState == 4 && request.status == 200) {
+                     var response = JSON.parse(request.responseText);
+                     resultField.value = response[0].result;
+                 }
+             }
+
+             var m = document.getElementById('setMField').value;
+             request.send(JSON.stringify(
+                 [
+                     {
+                         "jsonrpc": "2.0",
+                         "id": "5",
+                         "method": "setm",
+                         "params": ["Age", m]
+                     }
+                 ]
+             ));
+         }
+
+         function addM() {
+
+             var request = new XMLHttpRequest();
+
+             request.open("POST", basePath, true);
+             request.setRequestHeader("Content-Type", "application/json");
+
+             var resultField = document.getElementById('getMResult');
+
+             request.onreadystatechange = function () {
+                 if (request.readyState == 4 && request.status == 200) {
+                     var response = JSON.parse(request.responseText);
+                     resultField.value = response[0].result;
+                 }
+             }
+
+             var m = document.getElementById('addMField').value;
+             request.send(JSON.stringify([
+                 {
+                     "jsonrpc": "2.0",
+                     "id": "5",
+                     "method": "addm",
+                     "params": ["Age", m]
+                 }
+             ]));
+         }
+
+         function subM() {
+
+             var request = new XMLHttpRequest();
+
+             request.open("POST", basePath, true);
+             request.setRequestHeader("Content-Type", "application/json");
+
+             var resultField = document.getElementById('getMResult');
+
+             request.onreadystatechange = function () {
+                 if (request.readyState == 4 && request.status == 200) {
+                     var response = JSON.parse(request.responseText);
+                     resultField.value = response[0].result;
+                 }
+             }
+
+             var m = document.getElementById('subMField').value;
+             request.send(JSON.stringify([
+                 {
+                     "jsonrpc": "2.0",
+                     "id": "5",
+                     "method": "subm",
+                     "params": ["Age", m]
+                 }
+             ]));
+         }
+
+         function mulM() {
+
+             var request = new XMLHttpRequest();
+
+             request.open("POST", basePath, true);
+             request.setRequestHeader("Content-Type", "application/json");
+
+             var resultField = document.getElementById('getMResult');
+
+             request.onreadystatechange = function () {
+                 if (request.readyState == 4 && request.status == 200) {
+                     var response = JSON.parse(request.responseText);
+                     resultField.value = response[0].result;
+                 }
+             }
+
+             var m = document.getElementById('mulMField').value;
+             request.send(JSON.stringify([
+                 {
+                     "jsonrpc": "2.0",
+                     "id": "5",
+                     "method": "mulm",
+                     "params": ["Age", m]
+                 }
+             ]));
+         }
+
+         function divM() {
+
+             var request = new XMLHttpRequest();
+
+             request.open("POST", basePath, true);
+             request.setRequestHeader("Content-Type", "application/json");
+
+             var resultField = document.getElementById('getMResult');
+
+             request.onreadystatechange = function () {
+
+                 if (request.readyState == 4 && request.status == 200) {
+                     var response = JSON.parse(request.responseText);
+                     resultField.value = response[0].result;
+                 }
+             }
+
+             var m = document.getElementById('divMField').value;
+             request.send(JSON.stringify([
+                 {
+                     "jsonrpc": "2.0",
+                     "id": "5",
+                     "method": "divm",
+                     "params": ["Age", m]
+                 }
+             ]));
+         }
+
+     </script>
+    -->
+</head>
+
+<body>
+    <h3>GET M</h3>
+    <input type="number" id="getMResult" disabled="disabled" />
+    <input type="button" id="getMButton" onclick="getM()" value="GetM" />
+    <br /><br />
+
+    <h3>SET M</h3>
+    <input type="number" id="setMField" />
+    <input type="button" id="setMButton" onclick="setM()" value="SetM" />
+    <br /><br />
+
+    <h3>ADD M</h3>
+    <input type="number" id="addMField" />
+    <input type="button" id="addMButton" onclick="addM()" value="AddM" />
+    <br /><br />
+
+    <h3>SUB(-) M</h3>
+    <input type="number" id="subMField" />
+    <input type="button" id="subMButton" onclick="subM()" value="SubM" />
+    <br /><br />
+
+    <h3>MUL(*) M</h3>
+    <input type="number" id="mulMField" />
+    <input type="button" id="mulMButton" onclick="mulM()" value="MulM" />
+    <br /><br />
+
+    <h3>DIV(/) M</h3>
+    <input type="number" id="divMField" />
+    <input type="button" id="divMButton" onclick="divM()" value="DivM" />
+</body>
+</html>
