@@ -46,7 +46,8 @@
         let get_post_val = () => $('#txt-post').val();
         let get_put_val = () => $('#txt-put').val();
 
-        var serverUrl = 'http://172.16.193.234:10720/02/api/values';
+        var serverUrl = 'http://localhost:10000/LB2/api/values';
+        //var serverUrl = 'http://172.16.193.234:10720/02/api/values';
 
         $("#btn-get").click(function(){
             $.ajax({
