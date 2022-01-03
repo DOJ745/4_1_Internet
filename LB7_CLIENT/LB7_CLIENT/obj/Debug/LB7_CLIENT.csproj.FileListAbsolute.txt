@@ -5,3 +5,10 @@ D:\LabsFolder\_4_1\InternetLabs\LB7_CLIENT\LB7_CLIENT\obj\Debug\LB7_CLIENT.cspro
 D:\LabsFolder\_4_1\InternetLabs\LB7_CLIENT\LB7_CLIENT\obj\Debug\LB7_CLIENT.csproj.CoreCompileInputs.cache
 D:\LabsFolder\_4_1\InternetLabs\LB7_CLIENT\LB7_CLIENT\obj\Debug\LB7_CLIENT.exe
 D:\LabsFolder\_4_1\InternetLabs\LB7_CLIENT\LB7_CLIENT\obj\Debug\LB7_CLIENT.pdb
+H:\LabsFolder\_4_1\InternetLabs\LB7_CLIENT\LB7_CLIENT\bin\Debug\LB7_CLIENT.exe.config
+H:\LabsFolder\_4_1\InternetLabs\LB7_CLIENT\LB7_CLIENT\bin\Debug\LB7_CLIENT.exe
+H:\LabsFolder\_4_1\InternetLabs\LB7_CLIENT\LB7_CLIENT\bin\Debug\LB7_CLIENT.pdb
+H:\LabsFolder\_4_1\InternetLabs\LB7_CLIENT\LB7_CLIENT\obj\Debug\LB7_CLIENT.csproj.AssemblyReference.cache
+H:\LabsFolder\_4_1\InternetLabs\LB7_CLIENT\LB7_CLIENT\obj\Debug\LB7_CLIENT.csproj.CoreCompileInputs.cache
+H:\LabsFolder\_4_1\InternetLabs\LB7_CLIENT\LB7_CLIENT\obj\Debug\LB7_CLIENT.exe
+H:\LabsFolder\_4_1\InternetLabs\LB7_CLIENT\LB7_CLIENT\obj\Debug\LB7_CLIENT.pdb
